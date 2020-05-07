@@ -20,19 +20,6 @@ class User extends Model {
       }
     })
   }
-  
-  project(){
-    return this.hasOne('App/Models/Project')
-  }
-  student(){
-    return this.hasOne('App/Models/Student')
-  }
-  teacher(){
-    return this.hasOne('App/Models/Teacher')
-  }
-  musician(){
-    return this.hasOne('App/Models/Musician')
-  }
   tokens () {
     return this.hasMany('App/Models/Token')
   }
