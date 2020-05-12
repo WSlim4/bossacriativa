@@ -20,6 +20,12 @@ Route.post('users', 'UserController.store')
 
 Route.post('sessions', 'SessionController.store')
 
-Route.post('courses/:id', 'CourseController.store')
+Route.post('courses', 'CourseController.store')
 
 Route.put('course/:id', 'CourseController.edit')
+
+Route.post('lessons/:id', 'LessonController.store')
+
+Route.get('lessons/:id', 'LessonController.index')
+
+
