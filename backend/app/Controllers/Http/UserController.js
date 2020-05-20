@@ -8,10 +8,36 @@ class UserController {
             'password', 
             'email' 
         ])
-
+    
         const user = await User.create(userData)
                
         return user
+    }
+    async edit({ request, params }){
+        const user = await User.find(params.id)
+
+        if(user){
+            user.username = request.input('username')
+            user.email = request.input('email')
+
+            await user.save()
+            return user
+
+        } else{
+            return "User not found"
+        }
+    }
+    async destroy( { params, response } ){
+        const user = await User.find(params.id)
+        
+        if(user){
+            user.delete()
+
+            return response.status(200).send({ error: { message: "User successfully deleted!"}})
+
+        } else{
+            return response.status(404).send({ error: { message: "Cannot find user"}})
+        }
     }
 }
 
