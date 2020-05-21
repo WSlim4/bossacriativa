@@ -13,10 +13,9 @@ class UserController {
                
         return user
     }
-    async edit({ request, params }){
-        const user = await User.find(params.id)
+    async edit({ request, params, auth }){
 
-        if(user){
+        if(auth.user.id == Number(params.id)){
             user.username = request.input('username')
             user.email = request.input('email')
 
@@ -33,11 +32,28 @@ class UserController {
         if(user){
             user.delete()
 
-            return response.status(200).send({ error: { message: "User successfully deleted!"}})
+            return response.status(200).send({ error: { message: "Usuário deletado"}})
 
         } else{
-            return response.status(404).send({ error: { message: "Cannot find user"}})
+            return response.status(404).send({ error: { message: "Usuário não encontrado"}})
         }
+    }
+    async show ({ auth, params }){
+        const user = await auth.getUser()
+        
+        if(user){
+            if(user.id !== Number(params.id)){
+                return "Você não pode ver outro perfil"
+            }
+            return user
+        } else{
+            return "Você precisa estar logado"
+        }
+    }
+        
+    async index (){
+        const users = await User.all()
+        return users
     }
 }
 

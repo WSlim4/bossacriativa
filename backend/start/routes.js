@@ -16,16 +16,24 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route')
 
-Route.post('users', 'UserController.store')
+Route.post('/users', 'UserController.store')
+Route.put('/user/:id', 'UserController.edit')
+Route.delete('/user/:id', 'UserController.destroy')
+Route.get('/user/:id', 'UserController.show').middleware(['auth'])
 
-Route.post('sessions', 'SessionController.store')
 
-Route.post('courses', 'CourseController.store')
+Route.post('/profile', 'ProfileController.store').middleware(['auth'])
 
-Route.put('course/:id', 'CourseController.edit')
+Route.post('/sessions', 'SessionController.store')
+Route.get('/logout', 'SessionController.destroy').middleware(['auth'])
 
-Route.post('lessons/:id', 'LessonController.store')
+Route.post('/courses', 'CourseController.store')
+Route.put('/course/:id', 'CourseController.edit')
 
-Route.get('lessons/:id', 'LessonController.index')
+Route.post('/lessons/:id', 'LessonController.store')
+Route.get('/lessons/:id', 'LessonController.index')
+
+Route.post('/forgotPassword', 'ForgotPasswordController.store')
+Route.put('/resetPassword', 'ForgotPasswordController.update')
 
 

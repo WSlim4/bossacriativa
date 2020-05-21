@@ -10,6 +10,17 @@ class SessionController {
 
         return token
     }
+    
+    async destroy({ auth }){
+        const user = await auth.getUser()
+
+        await auth
+            .authenticator('jwt')
+            .revokeTokensForUser(user)
+        
+        return "Deslogado"
+            
+    }
 }
 
 module.exports = SessionController
