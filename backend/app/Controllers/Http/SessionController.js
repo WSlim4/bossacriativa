@@ -11,14 +11,14 @@ class SessionController {
         return token
     }
     
-    async destroy({ auth }){
+    async destroy({ auth, response }){
         const user = await auth.getUser()
 
         await auth
             .authenticator('jwt')
             .revokeTokensForUser(user)
         
-        return "Deslogado"
+        return response.removeHeader()
             
     }
 }

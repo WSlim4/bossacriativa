@@ -1,10 +1,10 @@
 import React from 'react';
-import './App.css';
+import Player from '../src/pages/videoplayer'
+import './global.css';
 
 function App() {
   return (
-    <div className="App">
-    </div>
+    <Player />
   );
 }
 

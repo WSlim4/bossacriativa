@@ -1,0 +1,15 @@
+.background {
+    background-color: blueviolet;
+    height: 90vh;
+    border-radius: 8px;
+    justify-content: center;
+    margin: 0;
+}
+
+.background .player ul{
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+
+    list-style: none;
+
+}
