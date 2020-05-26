@@ -30,6 +30,7 @@ Route.get('/logout', 'SessionController.destroy').middleware(['auth'])
 
 Route.post('/courses', 'CourseController.store')
 Route.put('/course/:id', 'CourseController.edit')
+Route.get('/courses', 'CourseController.index')
 
 Route.post('/lessons/:id', 'LessonController.store')
 Route.get('/lessons/:id', 'LessonController.index')

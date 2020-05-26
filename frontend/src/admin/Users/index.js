@@ -13,13 +13,13 @@ export default function Users(){
     async function handleDelete(id){
         try{
             await api.delete(`user/${id}`)
-            
+
             return alert("Usuário deletado")
         
         } catch(err){
             alert("Erro ao deletar usuário")
         }
-        setUsers(users.filter(user => user.id != id))
+        setUsers(users.filter(user => user.id !== id))
     }
 
     return (
@@ -27,20 +27,20 @@ export default function Users(){
                 <ul className="user-information">
                     {users.map(user => 
                         <li key={user.id} className="user">
-                            <span>
-                                <strong>ID</strong>
-                                <h4>{user.id}</h4>
-                            </span>
+                            <p>
+                                <h4>ID</h4>
+                                {user.id}
+                            </p>
 
-                            <span>
-                                <strong>Nome</strong><br/>
-                                <h4>{user.username}</h4>
-                            </span>
+                            <p>
+                                <h4>Nome</h4>
+                                {user.username}
+                            </p>
                             
-                            <span>
-                                <strong>E-mail</strong><br/>
-                                <h4>{user.email}</h4>
-                            </span>
+                            <p>
+                                <h4>E-mail</h4>
+                                {user.email}
+                            </p>
                             <span className="button-group">
                                 <button className="admin-buttons" type="button">Editar</button>
                                 <button className="admin-buttons" type="button" onClick={() => handleDelete(user.id)}>Deletar</button>

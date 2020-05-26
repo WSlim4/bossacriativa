@@ -40,3 +40,7 @@
     text-align: center;
     overflow: auto;
 }
+
+.admin-section2 .panel{
+    border-bottom: 1px solid;
+}

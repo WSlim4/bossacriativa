@@ -7,6 +7,10 @@ class CourseController {
         const course = Course.create(data)
         return course
     }
+    async index(){
+        const courses = await Course.all()
+        return courses
+    }
 }
 
 module.exports = CourseController
