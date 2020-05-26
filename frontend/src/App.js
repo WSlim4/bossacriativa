@@ -1,10 +1,10 @@
 import React from 'react';
-import Player from '../src/pages/videoplayer'
+import Routes from './routes'
 import './global.css';
 
 function App() {
   return (
-    <Player />
+    <Routes />
   );
 }
 

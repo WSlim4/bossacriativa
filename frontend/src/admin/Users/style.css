@@ -1,0 +1,42 @@
+
+.users{
+    border-top: 1px solid;
+    display: flex;
+    margin-top: 2vh;
+}
+
+.admin-buttons{
+    height: 60px;
+    width: 60px;
+}
+.admin-buttons:hover{
+    cursor: pointer;
+}
+.user-information{
+    list-style: none;
+}
+
+.user{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    border: 1px solid;
+    box-sizing: border-box;
+}
+
+.user p{
+    margin: 0;
+}
+
+.user strong{
+    margin-bottom: 2vh;
+}
+.button-group{
+    display:flex;
+}
+.admin-buttons{
+    margin-left: 10vw;
+    margin-top: 1vh;
+}
+.button-group button + button {
+    margin-left: 5px;
+}

@@ -1,0 +1,42 @@
+.admin-container{
+    background-color: azure;
+    
+    width: 100%;
+    height: 90vh;
+    
+    display: flex;
+}
+.admin-section1{
+    width: 20%;
+    height: 90vh;
+    
+    text-align: center;
+    background-color: gray;
+}
+.options{
+    list-style: none;
+
+    margin-top: 10vh;
+    padding: 0;
+}
+.options li{
+    width: 100%;
+    margin-top: 1vh;
+    
+    font-size: 1.1em;
+    background-color: sandybrown;
+
+    box-sizing: border-box;
+
+    padding: 3%;
+}
+
+.options li:hover{
+    cursor: pointer;
+    font-weight: bold;
+}
+.admin-section2{
+    width: 80%;
+    text-align: center;
+    overflow: auto;
+}
