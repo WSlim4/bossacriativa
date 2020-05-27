@@ -1,5 +1,5 @@
 import React from 'react'
-import './videoplayer.css';
+import './VideoPlayer.css';
 import ReactPlayer from 'react-player'
 
 class Player extends React.Component{

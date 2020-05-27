@@ -1,0 +1,132 @@
+html,
+body,
+.wrapper {
+  min-height: 535px;
+}
+
+.wrapper {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.content {
+  flex: 1;
+}
+
+.footer {
+    background-color: gold;
+}
+
+.bloco {
+    height: 50px;
+    width: 100%;
+    display: inline-block;
+    bottom: 0;
+    font: 400 15px 'Barlow', sans-serif !important;
+    
+}
+
+.grey {
+    background-color: lightgrey;
+    width: 100%;
+    text-align: left;
+    height: 120px;
+    display: inline-flex;
+}
+
+.apoio {
+    text-align: right;
+    position: absolute;
+    right: 2vh;
+}
+
+.ufrj-logo {
+    height: 35px;
+}
+
+.funarte-logo {
+    height: 30px;
+}
+
+.copyright {
+    position: absolute;
+    margin-top: 20px;
+    left: 2vw;
+    font: 400 15px 'Barlow', sans-serif !important;
+}
+
+.link {
+  text-decoration: inherit;
+  color: black;
+  font: 400 15px 'Barlow', sans-serif !important;
+}
+
+.footer-text {
+  font: 400 15px 'Barlow', sans-serif !important;
+}
+
+.footer-title {
+  margin-bottom: 2vh;
+  margin-top: 1vh;
+}
+
+.contato {
+  position: absolute;
+  right: 2vw;
+}
+
+.inst {
+  position: absolute;
+  right: 275px;
+}
+
+@media only screen and (min-width: 701px) and (max-width: 1000px) {
+
+  .copyright {
+    font-size: 0.9em !important;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+
+  .inst {
+    right: unset;
+    left: 20px;
+  }
+
+  .contato {
+    right: 20px;
+  }
+  
+  .footer-title {
+    margin-top: 2vh; 
+  }
+
+  .bloco {
+    height: 100px;
+  }
+
+  .copyright {
+    font-size: 0.6em !important;
+  }
+
+  .ufrj-logo, .funarte-logo {
+    margin-top: 45px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+
+  .link, .footer-text {
+    font-size: 0.8em !important;
+  }
+
+  .contato {
+    right: 5px !important;
+  }
+
+  .inst {
+    left: 5px !important;
+  }
+
+}
