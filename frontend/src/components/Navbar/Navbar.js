@@ -15,11 +15,12 @@ class NavBar extends Component {
                 </Link>
                 <Nav className="mr-auto">
                 <ul id="nav-mobile" className="right hide-on-med-and-down">
-                    <li><NavLink className="link" to="/about/">O PROJETO</NavLink></li>
-                    <li><NavLink className="link" to="/programacao/">PALESTRAS</NavLink></li>
-                    <li><NavLink className="link" to="/publicacoes/">VIDEOAULAS</NavLink></li>
-                    <li><NavLink className="link" to="/noticias/">MIDIA</NavLink></li>
-                    <li><NavLink className="link" to="/multimidia/">IMPRENSA</NavLink></li>     
+                    <li><NavLink className="link" to="/">O PROJETO</NavLink></li>
+                    <li><NavLink className="link" to="/">PALESTRAS</NavLink></li>
+                    <li><NavLink className="link" to="/">VIDEOAULAS</NavLink></li>
+                    <li><NavLink className="link" to="/">MIDIA</NavLink></li>
+                    <li><NavLink className="link" to="/">IMPRENSA</NavLink></li> 
+                    <li><NavLink className="link" to="/">EDITAIS</NavLink></li>    
                 </ul>
                 </Nav>
             </Navbar>
