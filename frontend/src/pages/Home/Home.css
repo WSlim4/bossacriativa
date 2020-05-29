@@ -7,12 +7,16 @@
     margin-top: 5vh;
 }
 
-.event-list-div {
+.event-list-div, .video-list-div {
     width: 80%;
     margin-left: 10%;
     min-height: 250px;
     background-color: black;
     margin-top: 5vh;
+}
+
+.video-list-div {
+    margin-bottom: 10vh;
 }
 
 .title-div {
@@ -33,11 +37,19 @@
     background-repeat: no-repeat;
 }
 
-.event-list>*>* {
+.video {
+    height: 200px;
+    background-image: url("../../assets/ed.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-align: right;
+}
+
+.event-list>*>*, .video-list>*>* {
     padding: 0 !important;
 }
 
-.event-list {
+.event-list, .video-list {
     padding-left: 15px;
     padding-right: 15px;
 }
@@ -57,6 +69,25 @@
 .data, .local {
     font: 200 15px 'Barlow', sans-serif;
     visibility: hidden;
+}
+
+.videoaula {
+    font: 600 22px 'Barlow', sans-serif;
+    padding-top: 5%;
+    color: darkblue;
+    margin-right: 5%;
+}
+
+.instrumento {
+    margin-right: 5%;
+    font: 500 25px 'Barlow', sans-serif;
+    margin-top: -3.5%;
+}
+
+.aula {
+    margin-right: 5%;
+    font: 500 15px 'Barlow', sans-serif;
+    margin-top: 1vh;
 }
 
 .event:hover .data, .event:hover .local {
