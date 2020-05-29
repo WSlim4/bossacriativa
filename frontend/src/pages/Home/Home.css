@@ -1,0 +1,109 @@
+.banner {
+    width: 80%;
+}
+
+.banner-div {
+    text-align: center;
+    margin-top: 5vh;
+}
+
+.event-list-div, .video-list-div {
+    width: 80%;
+    margin-left: 10%;
+    min-height: 250px;
+    background-color: black;
+    margin-top: 5vh;
+}
+
+.video-list-div {
+    margin-bottom: 10vh;
+}
+
+.title-div {
+    height: 50px;
+    background-color: gold;
+}
+
+.title-home {
+    padding-top: 15px;
+    margin-left: 3%;
+    font: 500 20px 'Barlow', sans-serif;
+}
+
+.event {
+    height: 200px;
+    background-image: url("../../assets/themaine.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.video {
+    height: 200px;
+    background-image: url("../../assets/ed.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-align: right;
+}
+
+.event-list>*>*, .video-list>*>* {
+    padding: 0 !important;
+}
+
+.event-list, .video-list {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.event:hover {
+    opacity: 0.7;
+    transition: 1s ease-in-out;
+  }
+
+.artist {
+    font: 400 25px 'Barlow', sans-serif;
+    visibility: hidden;
+    margin-left: 5%;
+    padding-top: 2%;
+}
+
+.data, .local {
+    font: 200 15px 'Barlow', sans-serif;
+    visibility: hidden;
+}
+
+.videoaula {
+    font: 600 22px 'Barlow', sans-serif;
+    padding-top: 5%;
+    color: darkblue;
+    margin-right: 5%;
+}
+
+.instrumento {
+    margin-right: 5%;
+    font: 500 25px 'Barlow', sans-serif;
+    margin-top: -3.5%;
+}
+
+.aula {
+    margin-right: 5%;
+    font: 500 15px 'Barlow', sans-serif;
+    margin-top: 1vh;
+}
+
+.event:hover .data, .event:hover .local {
+    visibility: visible !important;
+    transition: 0.7s ease-in-out;
+    color: white;
+}
+
+.event:hover .artist {
+    visibility: visible !important;
+    transition: 1s ease-in-out;
+    color: gold;
+}
+
+.infos {
+    text-align: right;
+    margin-right: 5%;
+    padding-top: 120px;
+}
