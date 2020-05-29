@@ -22,15 +22,16 @@ Route.delete('/user/:id', 'UserController.destroy')
 Route.get('/user/:id', 'UserController.show').middleware(['auth'])
 Route.get('/users', 'UserController.index')
 
-
 Route.post('/profile', 'ProfileController.store').middleware(['auth'])
 
+Route.post('/adminSessions', 'AdminSessionController.store')
 Route.post('/sessions', 'SessionController.store')
 Route.get('/logout', 'SessionController.destroy').middleware(['auth'])
 
 Route.post('/courses', 'CourseController.store')
 Route.put('/course/:id', 'CourseController.edit')
 Route.get('/courses', 'CourseController.index')
+Route.delete('/course/:id', 'CourseController.destroy')
 
 Route.post('/lessons/:id', 'LessonController.store')
 Route.get('/lessons/:id', 'LessonController.index')

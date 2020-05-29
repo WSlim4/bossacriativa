@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import api from '../../services/api'
+import Modal from '../../components/lessonModal/modal'
+import CourseModal from '../../components/courseModal/courseModal'
 import './style.css'
 
 function Cursos(){
@@ -9,8 +11,24 @@ function Cursos(){
         api.get('/courses').then(res=>setCursos(res.data))
     }, [cursos])
     
+    async function handleDelete(id){
+        try{
+            await api.delete(`/course/${id}`)
+
+            return alert("Curso deletado")
+        }catch(err){
+            alert("Não foi possível deletar o curso, verifique se ele existe")
+        }
+        setCursos(cursos.filter(curso => curso.id !== id))
+    }
+
     return(
         <div className="cursos">
+            <CourseModal 
+            addCourse 
+            action="adicionar"
+            />
+            <h3>Cursos</h3>
             <ul className="course-info">
                 {cursos.map(curso=>
                     <li key={curso.id} className="course">
@@ -33,9 +51,15 @@ function Cursos(){
 
                         <div className="course-buttons">
                             <h4>Ações</h4>
-                            <button>Adicionar aula</button>
-                            <button>Deletar</button>
-                            <button>Editar</button>
+                            <Modal
+                                id={curso.id}
+                                name={curso.name}
+                            />
+                            <button className="course-btn" onClick={() => handleDelete(curso.id)}>Deletar</button>
+                            <CourseModal 
+                            id={curso.id}
+                            action="editar"
+                            />
                         </div>
                     </li>
                     

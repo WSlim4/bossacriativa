@@ -2,28 +2,32 @@
 const User = use('App/Models/User')
 
 class UserController {
-    async store({ request }){
-        const userData = await request.only([
+    async store({ request, response }){
+        const userData = request.only([
             'username', 
             'password', 
-            'email' 
-        ])
-    
-        const user = await User.create(userData)
-               
-        return user
+            'email',
+            'is_artist'
+        ]) 
+        try{
+            const user = await User.create(userData)
+            return user
+        } catch(err){
+            return "Não foi possível criar usuário"
+        }
+        
     }
-    async edit({ request, params, auth }){
-
-        if(auth.user.id == Number(params.id)){
+    
+    async edit({ request, params }){
+        try{
+            const user = await User.findOrFail(params.id)
             user.username = request.input('username')
             user.email = request.input('email')
-
-            await user.save()
+            user.is_artist = request.input('is_artist')
+            user.save()
             return user
-
-        } else{
-            return "User not found"
+        } catch(err){
+            return "Algo deu errado"
         }
     }
     async destroy( { params, response } ){

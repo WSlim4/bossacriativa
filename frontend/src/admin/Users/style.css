@@ -1,41 +1,20 @@
-
-.users{
-    display: flex;
-    margin-top: 2vh;
-}
-
-.admin-buttons{
-    height: 60px;
-    width: 60px;
-}
-.admin-buttons:hover{
-    cursor: pointer;
-}
-.user-information{
-    list-style: none;
-}
-
-.user{
+#course{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    border: 1px solid;
-    box-sizing: border-box;
 }
-
-.user p{
-    margin: 0;
+#button-group{
+    text-align: center;
 }
-
-.user strong{
-    margin-bottom: 2vh;
+#button-group{
+    margin-top: 2vh;
+    margin-left: 5vh;
 }
-.button-group{
-    display:flex;
+#button-group button + button{
+    margin-left: 2vh;
 }
-.admin-buttons{
-    margin-left: 10vw;
-    margin-top: 1vh;
+.users{
+    text-align: left;
 }
-.button-group button + button {
-    margin-left: 5px;
+.users h3{
+    text-align: center;
 }

@@ -12,7 +12,7 @@ class LessonSchema extends Schema {
       table.string('course_name')
       table.string('url')
       table.integer('course_id').notNullable().unsigned()
-      table.foreign('course_id').references('id').inTable('courses')
+      table.foreign('course_id').references('id').inTable('courses').onDelete('cascade')
 
       table.timestamps()
     })

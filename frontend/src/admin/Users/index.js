@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import api from '../../services/api'
+import UserModal from '../../components/userModal/userModal'
 import './style.css'
 
 
@@ -24,27 +25,36 @@ export default function Users(){
 
     return (
             <div className="users">
-                <ul className="user-information">
+                <UserModal
+                addUser
+                action="adicionar"
+                className="true"
+                />
+                <h3>Usuários</h3>
+                <ul className="course-info">
                     {users.map(user => 
-                        <li key={user.id} className="user">
+                        <li key={user.id} className="course">
                             <p>
-                                <h4>ID</h4>
+                                <h4>Id</h4>
                                 {user.id}
                             </p>
-
                             <p>
                                 <h4>Nome</h4>
                                 {user.username}
                             </p>
-                            
                             <p>
                                 <h4>E-mail</h4>
                                 {user.email}
-                            </p>
-                            <span className="button-group">
-                                <button className="admin-buttons" type="button">Editar</button>
-                                <button className="admin-buttons" type="button" onClick={() => handleDelete(user.id)}>Deletar</button>
-                            </span>
+                            </p>                      
+                            <div className="course-buttons">
+                                <h4>Ações</h4>
+                                <UserModal
+                                action="editar"
+                                id={user.id}
+
+                                />
+                                <button className="course-btn" type="button" onClick={() => handleDelete(user.id)}>Deletar</button>
+                            </div>
                         </li>
                     )}
                 </ul>

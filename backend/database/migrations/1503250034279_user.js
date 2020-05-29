@@ -11,6 +11,7 @@ class UserSchema extends Schema {
       table.string('email', 254).notNullable().unique()
       table.string('password', 60).notNullable()
       table.boolean('is_admin').default(false)
+      table.boolean('is_artist').default(false).nullable()
       table.string('token')
       table.timestamp('token_created_at')
       table.timestamps()
