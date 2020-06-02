@@ -4,6 +4,7 @@ import './global.css';
 import NavBar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 import Home from './pages/Home/Home';
+import About from './pages/About/About';
 import Player from './components/VideoPlayer/VideoPlayer';
 
   class App extends Component {
@@ -15,6 +16,7 @@ import Player from './components/VideoPlayer/VideoPlayer';
             <NavBar/>
             <Switch>
               <Route exact path="/" component={Home}/>
+              <Route path="/about" component={About}/>
               <Route path="/player" component={Player}/>
             </Switch>
             </div>

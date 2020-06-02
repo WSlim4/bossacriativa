@@ -15,7 +15,7 @@ class NavBar extends Component {
                 </Link>
                 <Nav className="mr-auto">
                 <ul id="nav-mobile" className="right hide-on-med-and-down">
-                    <li><NavLink className="link" to="/">O PROJETO</NavLink></li>
+                    <li><NavLink className="link" to="/about">O PROJETO</NavLink></li>
                     <li><NavLink className="link" to="/">PALESTRAS</NavLink></li>
                     <li><NavLink className="link" to="/">VIDEOAULAS</NavLink></li>
                     <li><NavLink className="link" to="/">MIDIA</NavLink></li>
