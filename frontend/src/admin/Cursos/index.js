@@ -3,6 +3,8 @@ import api from '../../services/api'
 import Modal from '../../components/lessonModal/modal'
 import CourseModal from '../../components/courseModal/courseModal'
 import './style.css'
+import { MdDelete } from 'react-icons/md'
+import { IconContext } from "react-icons";
 
 function Cursos(){
     const [cursos, setCursos] = useState([])
@@ -23,50 +25,35 @@ function Cursos(){
     }
 
     return(
-        <div className="cursos">
-            <CourseModal 
-            addCourse 
-            action="adicionar"
-            />
-            <h3>Cursos</h3>
-            <ul className="course-info">
-                {cursos.map(curso=>
-                    <li key={curso.id} className="course">
-                        <p>     
-                            <h4>Id</h4>
-                            {curso.id}
-                            </p>
-                        <p>
-                            <h4>Nome</h4>
-                            {curso.name}
-                            </p>
-                        <p>
-                            <h4>Categoria</h4>
-                            {curso.type}
-                            </p>
-                        <p>
-                            <h4>Duração</h4>
-                            {curso.duration}
-                            </p>
-
-                        <div className="course-buttons">
-                            <h4>Ações</h4>
-                            <Modal
-                                id={curso.id}
-                                name={curso.name}
-                            />
-                            <button className="course-btn" onClick={() => handleDelete(curso.id)}>Deletar</button>
-                            <CourseModal 
-                            id={curso.id}
-                            action="editar"
-                            />
-                        </div>
-                    </li>
-                    
-                    )}
-            </ul>
-
-        </div>
+        <table id="users">
+                <tr>
+                    <th>ID</th>
+                    <th>Categoria</th>
+                    <th>Nome</th>
+                    <th>Duração</th>
+                    <th>Ações</th>
+                </tr>
+                {cursos.map((curso)=>
+                <tr key={curso.id}>
+                    <td>{curso.id}</td>
+                    <td>{curso.type}</td>
+                    <td>{curso.name}</td>
+                    <td>{curso.duration}</td>
+                    <td>
+                        <Modal
+                        id={curso.id}
+                        />
+                        <CourseModal
+                        action="editar"
+                        id={curso.id}
+                        />
+                        <IconContext.Provider value={{ size:"2em", className: "del" }}>
+                            <MdDelete onClick={()=>handleDelete(curso.id)}/>
+                        </IconContext.Provider>
+                    </td>
+                </tr>
+                )}
+            </table>
     )
 }
 

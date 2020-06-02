@@ -2,14 +2,15 @@
     background-color: azure;
     
     width: 100%;
-    height: 90vh;
+    height: 100vh;
     
     display: flex;
     font-family: 'Chelsea Market', cursive;
+    overflow: auto;
 }
 .admin-section1{
     width: 20%;
-    height: 90vh;
+    height: 100vh;
     
     text-align: center;
     background-color: gray;
@@ -25,16 +26,18 @@
     margin-top: 1vh;
     
     font-size: 1.1em;
-    background-color: sandybrown;
-
+    
+    text-align: left;
     box-sizing: border-box;
 
+    transition: 0.4s;
     padding: 3%;
 }
 
 .options li:hover{
     cursor: pointer;
     font-weight: bold;
+    background-color: gold;
 }
 .admin-section2{
     width: 80%;
@@ -44,53 +47,56 @@
 
 .admin-section2 .panel{
     border-bottom: 1px solid;
-}
-.cursos .course-btn,
-#button-group .course-btn,
-#btn{
-    margin-left: 2vh;
-    margin-top: 2vh;
-    border: 1px dashed;
-}
-.cursos .course-btn:hover,
-#button-group .course-btn:hover,
-#btn:hover{
-    cursor: pointer;
-    background-color: beige;
-}
-#btn{
-    margin-left: 2vh;
-}
-.course-info{
-    list-style: none;
-}
-.course-info{
-    margin-top: 0;
-}
-.course-info li {
     display: flex;
-}
-.course-info li p{
-    margin-left: 6vh;
-    text-align: center;
-}
-.course{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    border-bottom: 1px solid;
+    margin-top: 4vh;
+    justify-content: space-between;
 }
 
-.course-buttons{
-    margin-left: 10vw;
-    margin-top: 3vh;
-    text-align: center;
+.display{
+    margin-top: 0;
+    padding: 0;
 }
+#users {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+#users td, #users th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+#users tr:nth-child(even){background-color: #f2f2f2;}
 
-.course-buttons button,
-#button-group .course-btn{
-    height: 30px;
-    margin-left: 2vh;
+#users th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: gold;
+    color: black;
 }
-.cursos{
-    text-align: left;
+#users tr:hover{
+    background-color: #ddd;
+}
+.del{
+    margin-left: 1vh;
+}
+.del:hover{
+    color: gold;
+    cursor: pointer;
+}
+#logout{
+    width: 10%;
+    background-color: black;
+}
+.adm-icon{
+    width: 100%;
+}
+.adm-icon:hover{
+    cursor: pointer;
+}
+.admin-img{
+    width: 150px;
+    height: 150px;
+    margin-top: 2vh;
+    border-radius: 50%;
 }

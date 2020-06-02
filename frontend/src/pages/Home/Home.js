@@ -3,11 +3,14 @@ import { Row, Col } from 'react-grid-system';
 import '../../global.css';
 import './Home.css';
 import Banner from '../../assets/banner-1.jpg';
+import NavBar from '../../components/Navbar/Navbar'
+import Footer from '../../components/Footer/Footer'
 
 function Home() {
 
   return (
     <div className="home-container">
+      <NavBar/>
       <div className="banner-div">
         <img src={Banner} alt="Logo" className="banner"/>
       </div>
@@ -94,7 +97,7 @@ function Home() {
           </Row>
         </div>
       </div>
-
+    <Footer/>
     </div>
   );
 }

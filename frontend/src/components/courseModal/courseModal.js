@@ -6,8 +6,11 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import square from '../../assets/adminAssets/plus-square.svg'
 import api from '../../services/api'
+import Modal from '../lessonModal/modal'
+import { IoMdAddCircle } from 'react-icons/io'
+import { FaEdit } from 'react-icons/fa'
+import { IconContext } from 'react-icons'
 
 export default function FormDialog(props) {
   const [open, setOpen] = useState(false);
@@ -59,9 +62,13 @@ export default function FormDialog(props) {
 
   return (
     <>
-      <button id="btn" onClick={handleClickOpen}>
-        {props.addCourse ? <img src={square} /> : "Editar curso"}
-        </button>
+        {props.addCourse ? 
+        <IconContext.Provider value={{ size:"2em", className: "del" }}>
+          <IoMdAddCircle onClick={handleClickOpen}/>
+        </IconContext.Provider> : 
+        <IconContext.Provider value={{ size:"2em", className: "del" }}>
+          <FaEdit onClick={handleClickOpen}/>
+        </IconContext.Provider>}
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
         <DialogTitle id="form-dialog-title">Adicionar curso</DialogTitle>
         <DialogContent onSubmit={handleCoursePost}>

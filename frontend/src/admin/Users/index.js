@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react'
 import api from '../../services/api'
 import UserModal from '../../components/userModal/userModal'
 import './style.css'
-
+import { MdDelete } from 'react-icons/md'
+import { IconContext } from "react-icons";
+import Modal from '../../components/userModal/userModal'
 
 export default function Users(){
     const [users, setUsers] = useState([])
@@ -24,40 +26,31 @@ export default function Users(){
     }
 
     return (
-            <div className="users">
-                <UserModal
-                addUser
-                action="adicionar"
-                className="true"
-                />
-                <h3>Usuários</h3>
-                <ul className="course-info">
-                    {users.map(user => 
-                        <li key={user.id} className="course">
-                            <p>
-                                <h4>Id</h4>
-                                {user.id}
-                            </p>
-                            <p>
-                                <h4>Nome</h4>
-                                {user.username}
-                            </p>
-                            <p>
-                                <h4>E-mail</h4>
-                                {user.email}
-                            </p>                      
-                            <div className="course-buttons">
-                                <h4>Ações</h4>
-                                <UserModal
-                                action="editar"
-                                id={user.id}
-
-                                />
-                                <button className="course-btn" type="button" onClick={() => handleDelete(user.id)}>Deletar</button>
-                            </div>
-                        </li>
-                    )}
-                </ul>
-            </div>
+            <table id="users">
+                <tr>
+                    <th>ID</th>
+                    <th>E-mail</th>
+                    <th>Nome</th>
+                    <th>Artista</th>
+                    <th>Ações</th>
+                </tr>
+                {users.map((user)=>
+                <tr key={user.id}>
+                    <td>{user.id}</td>
+                    <td>{user.email}</td>
+                    <td>{user.username}</td>
+                    <td>{user.is_artist.toString()}</td>
+                    <td>
+                        <Modal
+                        action="editar"
+                        id={user.id}
+                        />
+                        <IconContext.Provider value={{ size:"2em", className: "del" }}>
+                            <MdDelete onClick={()=>handleDelete(user.id)}/>
+                        </IconContext.Provider>
+                    </td>
+                </tr>
+                )}
+            </table>
         )
     }

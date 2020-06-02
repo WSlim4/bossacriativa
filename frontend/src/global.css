@@ -9,7 +9,6 @@
 body {
     font: 400 14px 'Barlow', sans-serif;
     -webkit-font-smoothing: antialiased;
-    margin-top: 90px;
     background-image: url("./assets/fundo.jpg");
     background-repeat: repeat-y;
     background-size: cover;

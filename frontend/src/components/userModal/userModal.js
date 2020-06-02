@@ -6,9 +6,10 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import square from '../../assets/adminAssets/plus-square.svg'
 import './userModal.css'
 import api from '../../services/api'
+import { FaUserEdit, FaUserPlus } from 'react-icons/fa'
+import { IconContext } from "react-icons"
 
 export default function FormDialog(props) {
   const [open, setOpen] = useState(false);
@@ -63,14 +64,20 @@ export default function FormDialog(props) {
 
   return (
     <>
-      <button id="btn" onClick={handleClickOpen}>
-        {props.addUser ? <img src={square} /> : "Editar Usuário"}
-        </button>
+        {props.addUser ? 
+          <IconContext.Provider value={{ size:"2em", className: "del" }}>
+              <FaUserPlus onClick={handleClickOpen}/>
+            </IconContext.Provider>
+        : <IconContext.Provider value={{ size:"2em", className: "del" }}>
+              <FaUserEdit onClick={handleClickOpen}/>
+          </IconContext.Provider>
+        }
+        
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
         <DialogTitle id="form-dialog-title">Adicionar usuário</DialogTitle>
         <DialogContent onSubmit={handleUserPost}>
           <DialogContentText>
-            Para criar um usuário, preencha os campos abaixo
+            Para {props.action} um usuário, preencha os campos abaixo
           </DialogContentText>
           
           <TextField

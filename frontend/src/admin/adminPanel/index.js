@@ -1,8 +1,14 @@
 import React, { useState } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
 import Users from '../Users/index'
 import './style.css'
 import Cursos from '../Cursos/index'
+import Modal from '../../components/userModal/userModal'
+import CourseModal from '../../components/courseModal/courseModal'
+import { FiPower } from 'react-icons/fi'
+import { IconContext } from 'react-icons'
+import banner from '../../assets/banner-1.jpg'
+import admin_img from '../../assets/adminAssets/admin.png'
 
 function AdminPanel(){
    const [users, setUser] = useState(false)
@@ -21,31 +27,39 @@ function AdminPanel(){
     function logout (){
         sessionStorage.clear()
         alert('Você foi deslogado')
-        history.push('/restrito/admin')
+        history.push('/admin')
     }
     return(
         <div className="admin-container">
             <section className="admin-section1">
-                <h2>Admin</h2>
+                <img src={admin_img} className="admin-img"/>
                 <ul className="options">
                     <li onClick={onUserClick}>Usuários</li>
                     <li onClick={onCourseClick}>Cursos</li>
                     <li>Vídeo aulas</li>
-                    <li onClick={logout}>Sair</li>
                 </ul>
+                <br/>
+                <Link to="/"><img src={banner} className="adm-icon"/>
+                </Link>
             </section>
             <section className="admin-section2">
                 <header className="panel">
-                    <h1>Bem-vindo</h1>
-                        <p>Seja bem vindo ao sistema de administração do BossaCriativa,
-                        não compartilhe suas credenciais com terceiros.<br/>
-                        Por segurança, as senhas dos usuários estão criptografadas.
-                        </p>
-                        <p>
-                        Selecione as opções ao lado
-                        </p>
+                    {
+                        users ?
+                        <Modal
+                            addUser
+                            action="adicionar"
+                        /> :
+                        <CourseModal 
+                        addCourse
+                        action="adicionar"
+                        />
+                    }
+                    <IconContext.Provider value={{ size:"2em", className: "del" }}>
+                            <FiPower onClick={logout}/>
+                        </IconContext.Provider>
                 </header>
-                    <div className="infos">
+                    <div className="display">
                         {users ? <Users /> : null }
                         {courses ? <Cursos /> : null}
                     </div>
