@@ -1,13 +1,19 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Row, Col } from 'react-grid-system';
 import '../../global.css';
 import './Home.css';
 import Banner from '../../assets/banner-1.jpg';
-import NavBar from '../../components/Navbar/Navbar'
-import Footer from '../../components/Footer/Footer'
+import api from '../../services/api'
+import ReactPlayer from 'react-player'
 
 function Home() {
+  const [lessons, setLesson] = useState([])
+  
+  useEffect(()=>{
+    api.get('/lastLessons').then(res=>setLesson(res.data))
+  }, [])
 
+  console.log(lessons)
   return (
     <div className="home-container">
       <div className="banner-div">
@@ -61,42 +67,20 @@ function Home() {
 
       <div className="video-list-div">
         <div className="title-div">
-          <h2 className="title-home">VIDEOAULAS EM DESTAQUE</h2>
+          <h2 className="title-home">ÚLTIMAS ADICIONADAS</h2>
         </div>
         <div className="video-list">
-          <Row>
-            <Col sm={3}>
-              <div className="video">
-                <h4 className="videoaula">VÍDEO AULA</h4>
-                <h5 className="instrumento">Violão</h5>
-                <h6 className="aula">Composição</h6>
-              </div>
-            </Col>
-            <Col sm={3}>
-              <div className="video">
-                <h4 className="videoaula">VÍDEO AULA</h4>
-                <h5 className="instrumento">Violão</h5>
-                <h6 className="aula">Composição</h6>
-              </div>
-            </Col>
-            <Col sm={3}>
-              <div className="video">
-                <h4 className="videoaula">VÍDEO AULA</h4>
-                <h5 className="instrumento">Violão</h5>
-                <h6 className="aula">Composição</h6>
-              </div>
-            </Col>
-            <Col sm={3}>
-              <div className="video">
-                <h4 className="videoaula">VÍDEO AULA</h4>
-                <h5 className="instrumento">Violão</h5>
-                <h6 className="aula">Composição</h6>
-              </div>
-            </Col>
-          </Row>
+            {lessons.map((lesson)=>
+                  <ReactPlayer 
+                  url={lesson.url}
+                  controls
+                  width='100%'
+                  height='100%'
+                  />
+                )}
+            </div>
         </div>
       </div>
-    </div>
   );
 }
 

@@ -12,7 +12,6 @@
     width: 80%;
     margin-left: 10%;
     min-height: 250px;
-    background-color: black;
     margin-top: 5vh;
 }
 
@@ -42,23 +41,20 @@
     background-repeat: no-repeat;
 }
 
-.video {
-    height: 200px;
-    background-image: url("../../assets/ed.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    text-align: right;
-}
-
 .event-list>*>*, .video-list>*>* {
     padding: 0 !important;
 }
 
-.event-list, .video-list {
+.event-list {
     padding-left: 15px;
     padding-right: 15px;
 }
-
+.video-list{
+    display: grid;
+    height: 210px;
+    grid-gap: 3px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
 .event:hover {
     opacity: 0.7;
     transition: 1s ease-in-out;
