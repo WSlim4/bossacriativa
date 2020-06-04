@@ -13,7 +13,7 @@
 .title-home {
     padding-top: 15px;
     margin-left: 3%;
-    font: 500 20px 'Barlow', sans-serif;
+    font: 700 20px 'Caveat', cursive;
 }
 
 .video-list-div {
@@ -26,7 +26,7 @@
 }
 
 .videoaula {
-    font: 600 22px 'Barlow', sans-serif;
+    font: 600 22px 'Barlow Semi Condensed', sans-serif;
     padding-top: 5%;
     color: darkblue;
     margin-right: 5%;
@@ -34,17 +34,17 @@
 
 .instrumento {
     margin-right: 5%;
-    font: 500 25px 'Barlow', sans-serif;
+    font: 500 25px 'Barlow Semi Condensed', sans-serif;
     margin-top: -3.5%;
 }
 
 .aula {
     margin-right: 5%;
-    font: 500 15px 'Barlow', sans-serif;
+    font: 500 15px 'Barlow Semi Condensed', sans-serif;
     margin-top: 1vh;
 }
 
 .title-div {
     height: 50px;
-    background-color: gold;
+    background-color: #E7C032;
 }

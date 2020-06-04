@@ -1,6 +1,6 @@
 .title-palestras {
     text-align: center;
-    font: 500 32px 'Barlow', sans-serif;
+    font: 500 32px 'Barlow Semi Condensed', sans-serif;
 }
 
 .palestras-div {
@@ -12,7 +12,7 @@
 }
 
 .subtitle-palestras {
-    font: 500 20px 'Barlow', sans-serif;
+    font: 500 20px 'Barlow Semi Condensed', sans-serif;
     text-align: center;
     margin-top: 3vh;
 }
