@@ -53,4 +53,8 @@
 .videoaulas-container ul li:hover{
     background-color: #ddd;
 }
+.btns{
+    width: 50px;
+    margin-top: 2vh;
+}
 
