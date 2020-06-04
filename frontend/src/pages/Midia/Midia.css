@@ -1,0 +1,18 @@
+.title-midia {
+    text-align: center;
+    font: 500 32px 'Barlow', sans-serif;
+}
+
+.midia-div {
+    margin-top: 5vh;
+    background-color: white;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+    margin-bottom: 5vh;
+}
+
+.subtitle-midia {
+    font: 500 20px 'Barlow', sans-serif;
+    text-align: center;
+    margin-top: 3vh;
+}

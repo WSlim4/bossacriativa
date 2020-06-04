@@ -13,7 +13,7 @@ class Footer extends Component {
                     <div className="inst">
                         <p className="footer-title">INSTITUCIONAL</p>
                         <Link className="link" to="/about">Sobre o projeto</Link><br />
-                        <Link className="link" to="/">Realizadores e parceiros</Link><br />
+                        <Link className="link" to="/parceiros">Realizadores e parceiros</Link><br />
                         <Link className="link" to="/imprensa">Assessoria de imprensa</Link>
                     </div>
                     <div className="contato">
