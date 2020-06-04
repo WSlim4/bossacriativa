@@ -4,6 +4,8 @@
 
 .banner-div {
     text-align: center;
+    width: 100%;
+    margin-top: 5vh;
 }
 
 .event-list-div, .video-list-div {
@@ -27,6 +29,10 @@
     padding-top: 15px;
     margin-left: 3%;
     font: 500 20px 'Barlow', sans-serif;
+}
+.event-list-div .title-home,
+.video-list-div .title-home{
+    text-align: center;
 }
 
 .event {

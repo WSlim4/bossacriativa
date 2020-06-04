@@ -3,6 +3,7 @@ import '../../global.css';
 import './Videoaulas.css';
 import { Row, Col } from 'react-grid-system';
 import api from '../../services/api'
+import ReactPlayer from 'react-player'
 
 function VideoAulas(){
       const [lessons, setLessons] = useState([])
@@ -13,26 +14,25 @@ function VideoAulas(){
 
       return (
         <div className="videoaulas-container">
-            <div className="video-list-div">
-                <div className="title-div">
-                <h2 className="title-home">VIDEOAULAS EM DESTAQUE</h2>
-                </div>
-                <div className="video-list">
-                    <Row>
-                        {lessons.map(video=>
-                            <Col sm={3}>
-                               <div className="video">
-                                    <h4 className="videoaula">{video.course_name}</h4>
-                                    <h5 className="instrumento">Violão</h5>
-                                    <h6 className="aula">Composição</h6>
-                               </div>
-                           </Col>
+            <div className="video-contents">
+                <header className="title-home">VIDEO AULAS EM DESTAQUE</header>
+                    <ul>
+                         {lessons.map(video=>
+                            <li key={video.id}>
+                            <p><strong>Título:</strong>{video.title}</p>
+                            <ReactPlayer
+                             url={video.url} 
+                             width='100%' 
+                             height='100%'
+                             controls
+                            />
+                            <strong>Descrição:</strong>
+                            <p>{video.description}</p>
+                        </li>
                         )}
-                    </Row>
-                    
+                    </ul>
                 </div>
             </div>
-        </div>
     
     )
 }
