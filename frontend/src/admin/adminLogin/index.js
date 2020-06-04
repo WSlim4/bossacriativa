@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useHistory, Redirect } from 'react-router-dom'
 import api from '../../services/api'
 import './style.css'
+import { FaUserAlt } from 'react-icons/fa'
+import { RiLockPasswordLine } from 'react-icons/ri'
+import { IconContext } from 'react-icons'
 
 export default function Admin(){
     const [email, setEmail] = useState()
@@ -19,16 +22,19 @@ export default function Admin(){
         try{
             const response = await api.post('/adminSessions', data)
             sessionStorage.setItem('token', response.data.token)
-            history.push('/restrito/admin/adminPanel')
+            history.push('/admin/adminPanel')
         }catch(err){
             alert("Você não tem permissão")
         }
     }
     return(
-        <div className="container">
-            <div className="content">
+        <div className="admin-login">
+            <div className="login-content">
                 <h1>Área restrita para administradores</h1>
                 <form onSubmit={handleLogin}>
+                    <IconContext.Provider value={{size:"1.5em", className:"login-icons"}}>
+                        <FaUserAlt/>
+                    </IconContext.Provider>
                     <input type="text"
                     placeholder="E-mail"
                     name="email"
@@ -36,6 +42,9 @@ export default function Admin(){
                     onChange={e => setEmail(e.target.value)}
                     />
                     <br/>
+                    <IconContext.Provider value={{size:"1.5em", className:"login-icons"}}>
+                        <RiLockPasswordLine/>
+                    </IconContext.Provider>
                     <input type="text"
                     placeholder="Senha"
                     name="password"

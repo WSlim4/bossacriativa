@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { useHistory, Link } from 'react-router-dom'
 import Users from '../Users/index'
 import './style.css'
@@ -7,6 +7,7 @@ import Modal from '../../components/userModal/userModal'
 import CourseModal from '../../components/courseModal/courseModal'
 import { FiPower } from 'react-icons/fi'
 import { IconContext } from 'react-icons'
+import { MdKeyboardArrowRight } from 'react-icons/md'
 import banner from '../../assets/banner-1.jpg'
 import admin_img from '../../assets/adminAssets/admin.png'
 
@@ -27,16 +28,16 @@ function AdminPanel(){
     function logout (){
         sessionStorage.clear()
         alert('Você foi deslogado')
-        history.push('/admin')
+        window.location.reload()
     }
     return(
         <div className="admin-container">
             <section className="admin-section1">
                 <img src={admin_img} className="admin-img"/>
                 <ul className="options">
-                    <li onClick={onUserClick}>Usuários</li>
-                    <li onClick={onCourseClick}>Cursos</li>
-                    <li>Vídeo aulas</li>
+                    <li onClick={onUserClick}>Usuários <MdKeyboardArrowRight size="1.2em"/></li>
+                    <li onClick={onCourseClick}>Cursos <MdKeyboardArrowRight size="1.2em"/></li>
+                    <li>Vídeo aulas <MdKeyboardArrowRight size="1.2em"/></li>
                 </ul>
                 <br/>
                 <Link to="/"><img src={banner} className="adm-icon"/>

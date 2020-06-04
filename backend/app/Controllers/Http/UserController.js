@@ -42,16 +42,12 @@ class UserController {
             return response.status(404).send({ error: { message: "Usuário não encontrado"}})
         }
     }
-    async show ({ auth, params }){
-        const user = await auth.getUser()
-        
-        if(user){
-            if(user.id !== Number(params.id)){
-                return "Você não pode ver outro perfil"
-            }
+    async show ({ auth }){
+        try{
+            const user = await auth.getUser()
             return user
-        } else{
-            return "Você precisa estar logado"
+        } catch(err){
+            return response.status(err.status).send({ error: { message: "Você precisa ser um administrador"}})
         }
     }
         

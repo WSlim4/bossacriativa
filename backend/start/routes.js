@@ -19,7 +19,7 @@ const Route = use('Route')
 Route.post('/users', 'UserController.store')
 Route.put('/user/:id', 'UserController.edit')
 Route.delete('/user/:id', 'UserController.destroy')
-Route.get('/user/:id', 'UserController.show').middleware(['auth'])
+Route.get('/user', 'UserController.show').middleware(['auth'])
 Route.get('/users', 'UserController.index')
 
 Route.post('/profile', 'ProfileController.store').middleware(['auth'])

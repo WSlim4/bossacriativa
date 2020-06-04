@@ -1,14 +1,23 @@
-.container{
-    background-color: azure;
+.admin-login{
     display: flex;
     justify-content: center;
-    margin: 20vh;
-    padding: 2%;
+    height: 50vh;
+    width: 100%;
+    height: 100vh;
+    opacity: 0.8;
+    align-items: center;
 }
-.content{
+.login-content{
     display: inline-block;
     text-align: center;
+    background-color: rgb(133, 144, 155);
+    width: 50%;
+    padding: 3%;
 }
+.login-content h1{
+    margin-bottom: 5vh;
+}
+
 input{
     padding: 10px;
     width: 240px;
@@ -28,12 +37,17 @@ input:focus::placeholder{
     height: 3em;
 
     margin-top: 2vh;
+    margin-left: 5vh;
 
     transition: 0.5s;
-
     border-radius: 8px;
 }
 
 #login-button:hover{
-    background-color: cadetblue;
+    background-color: gold;
+    font-weight: bold;
+}
+
+.login-icons{
+    margin-right: 2vh;
 }

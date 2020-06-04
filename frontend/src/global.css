@@ -12,6 +12,7 @@ body {
     background-image: url("./assets/fundo.jpg");
     background-repeat: repeat-y;
     background-size: cover;
+    overflow-x: hidden;
 }
 
 
