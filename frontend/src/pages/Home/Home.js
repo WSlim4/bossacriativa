@@ -10,7 +10,6 @@ function Home() {
 
   return (
     <div className="home-container">
-      <NavBar/>
       <div className="banner-div">
         <img src={Banner} alt="Logo" className="banner"/>
       </div>
@@ -97,7 +96,6 @@ function Home() {
           </Row>
         </div>
       </div>
-    <Footer/>
     </div>
   );
 }

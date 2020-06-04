@@ -12,13 +12,13 @@ export default function RouteWrapper({
 
     const token = sessionStorage.getItem('token')
         
-    api.get('/user',
+        api.get('/user',
         {
             headers: {
                 'Authorization': `Bearer ${token}`
             }}
         ).then(response=>setAuth(response.data.is_admin))
-            
+           
         if(!signed && isPrivate){
             return <Redirect to="/admin"/>
         }

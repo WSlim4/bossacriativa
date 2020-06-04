@@ -1,0 +1,50 @@
+.video {
+    height: 200px;
+    background-image: url("../../assets/ed.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-align: right;
+}
+
+.video-list>*>* {
+    padding: 0 !important;
+}
+
+.title-home {
+    padding-top: 15px;
+    margin-left: 3%;
+    font: 500 20px 'Barlow', sans-serif;
+}
+
+.video-list-div {
+    width: 80%;
+    margin-left: 10%;
+    min-height: 250px;
+    background-color: black;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+}
+
+.videoaula {
+    font: 600 22px 'Barlow', sans-serif;
+    padding-top: 5%;
+    color: darkblue;
+    margin-right: 5%;
+}
+
+.instrumento {
+    margin-right: 5%;
+    font: 500 25px 'Barlow', sans-serif;
+    margin-top: -3.5%;
+}
+
+.aula {
+    margin-right: 5%;
+    font: 500 15px 'Barlow', sans-serif;
+    margin-top: 1vh;
+}
+
+.title-div {
+    height: 50px;
+    background-color: gold;
+}
