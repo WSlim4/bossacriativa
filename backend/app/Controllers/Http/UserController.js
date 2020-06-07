@@ -1,13 +1,14 @@
 'use strict'
 const User = use('App/Models/User')
+const Database = use('Database')
 
 class UserController {
-    async store({ request, response }){
+    async store({ request }){
         const userData = request.only([
             'username', 
             'password', 
             'email',
-            'is_artist'
+            'role'
         ]) 
         try{
             const user = await User.create(userData)
@@ -23,7 +24,7 @@ class UserController {
             const user = await User.findOrFail(params.id)
             user.username = request.input('username')
             user.email = request.input('email')
-            user.is_artist = request.input('is_artist')
+            user.role= request.input('role')
             user.save()
             return user
         } catch(err){
@@ -51,9 +52,10 @@ class UserController {
         }
     }
         
-    async index (){
-        const users = await User.all()
-        return users
+    async index ({ request }){
+        const { page } = request.all()
+        const users = Database.table('users')
+        return users.paginate( page ? page : 1, 8)
     }
 }
 

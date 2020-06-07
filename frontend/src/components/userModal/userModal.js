@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux'
+import { signUpRequest } from '../../store/modules/auth/actions'
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
@@ -16,24 +18,14 @@ export default function FormDialog(props) {
   const [username, setName] = useState()
   const [email, setEmail] = useState()
   const [password, setPass] = useState()
-  const [is_artist, setArtist] = useState(false)
+  const [role, setRole] = useState()
+
+  const dispatch = useDispatch()
 
   async function handleUserPost(e){
     e.preventDefault()
 
-    const data = {
-      username,
-      email,
-      password,
-      is_artist
-    }
-      try{
-        const response = await api.post('/users', data)
-        console.log(response.data)
-        handleClose()
-      }catch(err){
-        return err
-      }
+    dispatch(signUpRequest(username, email, password, role))
   }
   async function handleUserEdit(e){
     e.preventDefault()
@@ -42,7 +34,7 @@ export default function FormDialog(props) {
       username,
       password,
       email,
-      is_artist
+      role
     }
 
     try{
@@ -118,15 +110,15 @@ export default function FormDialog(props) {
             <input 
             type="radio" 
             name="artist" 
-            value={is_artist}
-            onChange={e => setArtist(true)}
+            value={role}
+            onChange={e => setRole('artista')}
             />
             <label htmlFor="artist">Sim</label>
             <input 
             type="radio" 
             name="artist"
-            value={is_artist}
-            onChange={e => setArtist(false)}
+            value={role}
+            onChange={e => setRole('null')}
             />
             <label htmlFor="artist">Não</label>
           </div>

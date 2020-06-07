@@ -1,5 +1,6 @@
 'use strict'
 const Course = use('App/Models/Course')
+const Database = use('Database')
 
 class CourseController {
     async store({ request }){
@@ -23,9 +24,10 @@ class CourseController {
 
     }
 
-    async index(){
-        const courses = await Course.all()
-        return courses
+    async index({ request }){
+        const { page } = request.all()
+        const courses = Database.table('courses')
+        return await courses.paginate(page ? page: 1, 8)
     }
     async destroy({ params, response }){
         const course = await Course.find(params.id)

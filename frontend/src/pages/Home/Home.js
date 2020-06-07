@@ -13,7 +13,6 @@ function Home() {
     api.get('/lastLessons').then(res=>setLesson(res.data))
   }, [])
 
-  console.log(lessons)
   return (
     <div className="home-container">
       <div className="banner-div">

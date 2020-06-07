@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../../global.css';
 import './Videoaulas.css';
-import { Row, Col } from 'react-grid-system';
+import range from '../../helpers/range'
 import api from '../../services/api'
 import ReactPlayer from 'react-player'
 
@@ -20,28 +20,6 @@ class VideoAulas extends React.Component{
          this.setState({ data: response.data.data })
          this.setState({ pageNumbers: Math.ceil(this.state.total / this.state.perPage)})
      }
-     range(start, stop, step) {
-        if (typeof stop == 'undefined') {
-
-            stop = start;
-            start = 0;
-        }
-    
-        if (typeof step == 'undefined') {
-            step = 1;
-        }
-    
-        if ((step > 0 && start >= stop) || (step < 0 && start <= stop)) {
-            return [];
-        }
-    
-        var result = [];
-        for (var i = start; step > 0 ? i < stop : i > stop; i += step) {
-            result.push(i);
-        }
-    
-        return result;
-    };
     componentDidMount(){
         const { page } = this.props.match.params
         this.loadData(page)
@@ -58,7 +36,7 @@ class VideoAulas extends React.Component{
      }
      
       render(){
-          const pgNmb = this.range(1,this.state.pageNumbers+1)
+          const pgNmb = range(1,this.state.pageNumbers+1)
           const lessons = this.state.data
       return (
         <div className="videoaulas-container">

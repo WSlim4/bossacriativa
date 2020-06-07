@@ -1,18 +1,33 @@
 import React, { useState, useEffect } from 'react'
-import api from '../../services/api'
-import Modal from '../../components/lessonModal/modal'
-import CourseModal from '../../components/courseModal/courseModal'
+import api from '../../../services/api'
+import Modal from '../../../components/lessonModal/modal'
+import CourseModal from '../../../components/courseModal/courseModal'
 import './style.css'
 import { MdDelete } from 'react-icons/md'
 import { IconContext } from "react-icons";
+import range from '../../../helpers/range'
 
-function Cursos(){
+function Cursos(props){
     const [cursos, setCursos] = useState([])
+    const [pages, setPages] = useState()
+    const [page, setPage] = useState(props.page)
+    const pgNumb = range(1, pages+1)
+
 
     useEffect(() => {
-        api.get('/courses').then(res=>setCursos(res.data))
-    }, [cursos])
+        async function fetchData(){
+            const response = await api.get(`/courses?page=${page}`)
+            setCursos(response.data.data)
+            console.log(response.data)
+            setPages(Math.ceil( response.data.total / response.data.perPage ))
+        }
+        fetchData()
+    }, [page])
     
+    function onClick(val){
+        setPage(val)
+    }
+
     async function handleDelete(id){
         try{
             await api.delete(`/course/${id}`)
@@ -25,7 +40,8 @@ function Cursos(){
     }
 
     return(
-        <table id="users">
+        <>
+            <table id="users">
                 <tr>
                     <th>ID</th>
                     <th>Categoria</th>
@@ -54,6 +70,10 @@ function Cursos(){
                 </tr>
                 )}
             </table>
+            {pgNumb.map(val=>
+                        <button value={val} className="btns" onClick={() => onClick(val)} >{val}</button>
+                    )}
+        </>
     )
 }
 

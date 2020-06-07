@@ -26,8 +26,9 @@ class LessonController {
    async index ({ request }){
        let { page } = request.all()
        page = page ? page : 1
-        const lessons = Database.table('lessons')
-        return await lessons.paginate(page ? page : 1, 8)
+       const lessons = Database.table('lessons')
+       
+       return await lessons.paginate(page ? page : 1, 8)
    }
 }
 

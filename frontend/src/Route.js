@@ -1,31 +1,23 @@
 import React, { useState } from 'react'
 import { Route, Redirect } from 'react-router-dom'
 import PropTypes from 'prop-types'
+import history from './services/history'
 import api from './services/api'
+import { store } from './store/index'
 
 export default function RouteWrapper({  
     component: Component,
     isPrivate,
     ...rest
 }){
-    const [signed, setAuth] = useState(false)
-
-    const token = sessionStorage.getItem('token')
-        
-    api.get('/user',
-        {
-            headers: {
-                'Authorization': `Bearer ${token}`
-            }}
-        ).then(response=>setAuth(response.data.is_admin))
-           
-        if(!signed && isPrivate){
-            return <Redirect to="/admin"/>
-        }
-        if(signed && !isPrivate){
-            return <Redirect to="/admin/adminPanel"/>
-        }
+    const role = store.getState().auth.role
     
+    if(role === 'admin' && !isPrivate){
+        return <Redirect to="/admin/adminPanel"/>
+    }
+    if(role !== 'admin' && isPrivate){
+        return <Redirect to="/admin"/>
+    }
     return (
         <Route
             {...rest}

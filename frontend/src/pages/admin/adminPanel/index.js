@@ -1,34 +1,51 @@
-import React, { useState, useContext } from 'react'
-import { useHistory, Link } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+import { connect, useDispatch } from 'react-redux'
+import { Link } from 'react-router-dom'
 import Users from '../Users/index'
-import './style.css'
 import Cursos from '../Cursos/index'
-import Modal from '../../components/userModal/userModal'
-import CourseModal from '../../components/courseModal/courseModal'
+import Lessons from '../VideoAulas/videoaulas'
+import './style.css'
+import Modal from '../../../components/userModal/userModal'
+import CourseModal from '../../../components/courseModal/courseModal'
 import { FiPower } from 'react-icons/fi'
 import { IconContext } from 'react-icons'
 import { MdKeyboardArrowRight } from 'react-icons/md'
-import banner from '../../assets/banner-1.jpg'
-import admin_img from '../../assets/adminAssets/admin.png'
+import banner from '../../../assets/banner-1.jpg'
+import admin_img from '../../../assets/adminAssets/admin.png'
+import { store } from '../../../store'
+import { signOut } from '../../../store/modules/auth/actions'
 
-function AdminPanel(){
+function AdminPanel(props){
    const [users, setUser] = useState(false)
    const [courses, setCourse] = useState(false)
+   const [lessons, setLesson] = useState(false)
+   const [page, setPage] = useState()
+   
+   const profile = store.getState().user.profile
 
-   const history = useHistory()
+   useEffect(()=>{
+       setPage(props.match.params.page ? props.match.params.page : 1)
+   }, [])
+   
+   const dispatch = useDispatch()
 
     function onUserClick(){
         setUser(true)
         setCourse(false)
+        setLesson(false)
     }
     function onCourseClick(){
         setCourse(true)
         setUser(false)
+        setLesson(false)
+    }
+    function onLessonClick(){
+        setCourse(false)
+        setUser(false)
+        setLesson(true)
     }
     function logout (){
-        sessionStorage.clear()
-        alert('Você foi deslogado')
-        window.location.reload()
+        dispatch(signOut())
     }
     return(
         <div className="admin-container">
@@ -37,7 +54,7 @@ function AdminPanel(){
                 <ul className="options">
                     <li onClick={onUserClick}>Usuários <MdKeyboardArrowRight size="1.2em"/></li>
                     <li onClick={onCourseClick}>Cursos <MdKeyboardArrowRight size="1.2em"/></li>
-                    <li>Vídeo aulas <MdKeyboardArrowRight size="1.2em"/></li>
+                    <li onClick={onLessonClick}>Vídeo aulas <MdKeyboardArrowRight size="1.2em"/></li>
                 </ul>
                 <br/>
                 <Link to="/"><img src={banner} className="adm-icon"/>
@@ -45,6 +62,9 @@ function AdminPanel(){
             </section>
             <section className="admin-section2">
                 <header className="panel">
+                    <h3>Bem vindo: {profile.username},
+                        Seu e-mail: {profile.email}
+                    </h3>
                     {
                         users ?
                         <Modal
@@ -61,11 +81,14 @@ function AdminPanel(){
                         </IconContext.Provider>
                 </header>
                     <div className="display">
-                        {users ? <Users /> : null }
-                        {courses ? <Cursos /> : null}
+                        {users ? <Users page={page}/> : null }
+                        {courses ? <Cursos page={page}/> : null}
+                        {lessons ? <Lessons page={page}/> : null}
                     </div>
             </section>
         </div>
     )
 }
-export default AdminPanel
+export default connect(state => ({
+    user: state.user
+}))(AdminPanel)

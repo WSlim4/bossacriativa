@@ -50,7 +50,7 @@ export default function FormDialog(props) {
          <MdNoteAdd onClick={handleClickOpen}/>
       </IconContext.Provider>
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">Id do curso {props.id}</DialogTitle>
+        <DialogTitle id="form-dialog-title">Adicionar aula ao curso com id: {props.id}</DialogTitle>
         <DialogContent onSubmit={handleLessonPost}>
           <DialogContentText>
             Para adicionar uma aula, preencha os campos abaixo

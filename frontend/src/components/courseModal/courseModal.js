@@ -63,12 +63,13 @@ export default function FormDialog(props) {
   return (
     <>
         {props.addCourse ? 
-        <IconContext.Provider value={{ size:"2em", className: "del" }}>
-          <IoMdAddCircle onClick={handleClickOpen}/>
-        </IconContext.Provider> : 
-        <IconContext.Provider value={{ size:"2em", className: "del" }}>
-          <FaEdit onClick={handleClickOpen}/>
-        </IconContext.Provider>}
+          <IconContext.Provider value={{ size:"2em", className: "del" }}>
+            <IoMdAddCircle onClick={handleClickOpen}/>
+          </IconContext.Provider> : 
+          <IconContext.Provider value={{ size:"2em", className: "del" }}>
+            <FaEdit onClick={handleClickOpen}/>
+          </IconContext.Provider>
+        }
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
         <DialogTitle id="form-dialog-title">Adicionar curso</DialogTitle>
         <DialogContent onSubmit={handleCoursePost}>

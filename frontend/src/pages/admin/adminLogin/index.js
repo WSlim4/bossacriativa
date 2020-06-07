@@ -1,32 +1,25 @@
 import React, { useState } from 'react'
-import { useHistory, Redirect } from 'react-router-dom'
-import api from '../../services/api'
+import { connect, useDispatch, useSelector } from 'react-redux'
 import './style.css'
 import { FaUserAlt } from 'react-icons/fa'
 import { RiLockPasswordLine } from 'react-icons/ri'
 import { IconContext } from 'react-icons'
+import { signInRequest } from '../../../store/modules/auth/actions'
 
-export default function Admin(){
+function Admin(){
     const [email, setEmail] = useState()
     const [password, setPass] = useState()
+    
+    const dispatch = useDispatch()
+    const loading = useSelector(state => state.auth.loading)
+    
 
-    const history = useHistory()
-
-    async function handleLogin(e){
+    function handleLogin(e){
         e.preventDefault()
-
-        const data = {
-            email,
-            password
-        }
-        try{
-            const response = await api.post('/adminSessions', data)
-            sessionStorage.setItem('token', response.data.token)
-            history.push('/admin/adminPanel')
-        }catch(err){
-            alert("Você não tem permissão")
-        }
+        dispatch(signInRequest(email,password))
+        
     }
+    
     return(
         <div className="admin-login">
             <div className="login-content">
@@ -53,10 +46,11 @@ export default function Admin(){
                     />
                     <br/>
                     <button type="submit" id="login-button">
-                        Login
+                        {loading ? 'Carregando...' : 'Login'}
                     </button>
                 </form>
             </div>
         </div>
     )
 }
+export default connect()(Admin)

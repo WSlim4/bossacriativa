@@ -1,7 +1,7 @@
 import React from 'react'
-import { BrowserRouter, Switch } from 'react-router-dom'
-import AdminLogin from './admin/adminLogin/index'
-import AdminPanel from './admin/adminPanel/index'
+import { Router, Switch } from 'react-router-dom'
+import AdminLogin from './pages/admin/adminLogin/index'
+import AdminPanel from './pages/admin/adminPanel/index'
 import Home from './pages/Home/Home'
 import Route from './Route'
 import About from './pages/About/About';
@@ -13,18 +13,19 @@ import Midia from './pages/Midia/Midia';
 import Editais from './pages/Editais/Editais';
 import NavBar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
+import history from './services/history'
 
 export default function Routes(){
 
     return (
-        <BrowserRouter>
+        <Router history={history}>
           <div className="App wrapper">
             <div className="content">
             <NavBar/>
             <Switch>
-              <Route exact path="/admin" exact component={AdminLogin}/>
-              <Route exact path="/admin/adminPanel" component={AdminPanel}  isPrivate/>
               <Route exact path="/" component={Home}/>
+              <Route exact path="/admin" exact component={AdminLogin}/>
+              <Route exact path="/admin/adminPanel/:page?" exact component={AdminPanel} isPrivate/>
               <Route path="/about" component={About}/>
               <Route path="/editais" component={Editais}/>
               <Route path="/midia" component={Midia}/>
@@ -36,6 +37,6 @@ export default function Routes(){
             </div>
             <Footer/>
           </div>
-        </BrowserRouter>
+        </Router>
     )
 }
