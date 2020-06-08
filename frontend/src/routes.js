@@ -30,7 +30,7 @@ export default function Routes(){
               <Route path="/midia" component={Midia}/>
               <Route path="/palestras" component={Palestras}/>
               <Route path="/parceiros" component={Parceiros}/>
-              <Route path="/videoaulas" component={Videoaulas}/>
+              <Route path="/videoaulas/:page?" component={Videoaulas}/>
               <Route path="/imprensa" component={Imprensa}/>
             </Switch>
             </div>

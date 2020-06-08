@@ -34,7 +34,8 @@ Route.get('/courses', 'CourseController.index')
 Route.delete('/course/:id', 'CourseController.destroy')
 
 Route.post('/lessons/:id', 'LessonController.store')
-Route.get('/lessons/:id', 'LessonController.index')
+Route.get('/lastLessons', 'LessonController.show')
+Route.get('/lessons', 'LessonController.index')
 
 Route.post('/forgotPassword', 'ForgotPasswordController.store')
 Route.put('/resetPassword', 'ForgotPasswordController.update')

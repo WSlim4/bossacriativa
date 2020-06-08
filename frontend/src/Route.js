@@ -12,7 +12,7 @@ export default function RouteWrapper({
 
     const token = sessionStorage.getItem('token')
         
-        api.get('/user',
+    api.get('/user',
         {
             headers: {
                 'Authorization': `Bearer ${token}`

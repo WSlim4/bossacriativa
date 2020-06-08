@@ -17,11 +17,17 @@ class LessonController {
             return "Course not found"
         }
    }
-   async index({ request, params }){
+   async show(){
+       const lessons = await Database.table('lessons')
+                        .orderBy('id', 'desc')
+                        .limit(4)
+        return lessons
+   }
+   async index ({ request }){
        let { page } = request.all()
        page = page ? page : 1
-        const course = await Course.find(params.id)
-        return await course.lessons().paginate(page ? page : 1, 4)
+        const lessons = Database.table('lessons')
+        return await lessons.paginate(page ? page : 1, 8)
    }
 }
 
