@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useHistory, Redirect } from 'react-router-dom'
 import api from '../../services/api'
 import './style.css'
+import '../../global.css';
 import { FaUserAlt } from 'react-icons/fa'
 import { RiLockPasswordLine } from 'react-icons/ri'
 import { IconContext } from 'react-icons'
@@ -30,7 +31,7 @@ export default function Admin(){
     return(
         <div className="admin-login">
             <div className="login-content">
-                <h1>Área restrita para administradores</h1>
+                <h1 className ="title-login">Login</h1>
                 <form onSubmit={handleLogin}>
                     <IconContext.Provider value={{size:"1.5em", className:"login-icons"}}>
                         <FaUserAlt/>
@@ -53,7 +54,7 @@ export default function Admin(){
                     />
                     <br/>
                     <button type="submit" id="login-button">
-                        Login
+                        Entrar
                     </button>
                 </form>
             </div>

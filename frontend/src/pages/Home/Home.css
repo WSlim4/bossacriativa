@@ -29,10 +29,6 @@
     margin-left: 3%;
     font: 700 20px 'Caveat', cursive;
 }
-.event-list-div .title-home,
-.video-list-div .title-home{
-    text-align: center;
-}
 
 .event {
     height: 200px;

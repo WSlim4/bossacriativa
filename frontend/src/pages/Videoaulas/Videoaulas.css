@@ -7,14 +7,17 @@
 .videoaulas-container{
     display: flex;
     justify-content: center;
-    text-align: center;
     margin-bottom: 10vh;
-    width: 100%;
+    width: 80%;
+    margin-left: 10%;
+    min-height: 250px;
+    margin-top: 5vh;
 }
 
 .title-home {
     padding-top: 15px;
-    margin-left: 3%;
+    padding-bottom: 15px;
+    padding-left: 3%;
     font: 700 20px 'Caveat', cursive;
 
 }
@@ -24,7 +27,7 @@
     padding: 16px;
 }
 .videoaulas-container header{
-    background-color: gold;
+    background-color: #E7C032;
 }
 .videoaulas-container ul{
     display: grid;
