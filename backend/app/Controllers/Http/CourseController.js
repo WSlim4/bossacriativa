@@ -3,10 +3,14 @@ const Course = use('App/Models/Course')
 const Database = use('Database')
 
 class CourseController {
-    async store({ request }){
-        const data = request.all()
-        const course = Course.create(data)
-        return course
+    async store({ request, auth, response }){
+        try{
+            const user = auth.getUser()
+            const data = request.all()
+            const course = Course.create(data)
+        }catch(err){
+            return response.status(err.status).send()
+        }
     }
     async edit({ request, params, response }){
         const { type, name, duration } = request.all()

@@ -40,9 +40,9 @@ function AdminPanel(props){
         setLesson(false)
     }
     function onLessonClick(){
+        setLesson(true)
         setCourse(false)
         setUser(false)
-        setLesson(true)
     }
     function logout (){
         dispatch(signOut())

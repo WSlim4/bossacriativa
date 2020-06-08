@@ -40,4 +40,12 @@ Route.get('/lessons', 'LessonController.index')
 Route.post('/forgotPassword', 'ForgotPasswordController.store')
 Route.put('/resetPassword', 'ForgotPasswordController.update')
 
+Route.post('/events', 'EventController.store')
+Route.get('/events', 'EventController.index')
+Route.put('/event/:id', 'EventController.edit')
+Route.delete('/event/:id', 'EventController.destroy')
+
+
+
+
 
