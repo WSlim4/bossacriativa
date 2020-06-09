@@ -17,7 +17,6 @@ function Admin(){
     function handleLogin(e){
         e.preventDefault()
         dispatch(signInRequest(email,password))
-        
     }
     
     return(

@@ -18,7 +18,7 @@ class UserController {
         }
         
     }
-    
+
     async edit({ request, params }){
         try{
             const user = await User.findOrFail(params.id)
@@ -56,6 +56,19 @@ class UserController {
         const { page } = request.all()
         const users = Database.table('users')
         return users.paginate( page ? page : 1, 8)
+    }
+    async storeUser({ request }){
+        const userData = request.only([
+            'username', 
+            'password', 
+            'email'
+        ]) 
+        try{
+            const user = await User.create(userData)
+            return user
+        } catch(err){
+            return "Não foi possível criar usuário"
+        }
     }
 }
 

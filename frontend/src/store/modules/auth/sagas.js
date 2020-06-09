@@ -7,24 +7,22 @@ import { toast } from 'react-toastify'
 export function* signIn({ payload }){
     try{
         const { email, password } = payload;
-
         const response = yield call(api.post, '/sessions', {
-            email,
-            password
+        email,
+        password
         })
-
         const { token, user } = response.data
 
         if(user.role !== 'admin'){
             toast.error('Usuário não é admin')
             return
-        }
+        } else{
+            api.defaults.headers.Authorization = `Bearer ${token}`
         
-        api.defaults.headers.Authorization = `Bearer ${token}`
-        
-        yield put(signInSuccess(token, user))
-        history.push('/admin/adminPanel')
-        
+            yield put(signInSuccess(token, user))
+            history.push('/admin/adminPanel')
+        }    
+
     } catch(err){
         toast.error('Falha na autenticação')
         yield put(signFailure())
@@ -55,16 +53,17 @@ export function setToken({ payload }){
     const { token } = payload.auth.token
 
     if(token){
-        api.defaults.headers.Authorization = `Bearer ${token}`
+        return api.defaults.headers.Authorization = `Bearer ${token}`
     }
 }
 export function signOut(){
+    localStorage.clear()
     history.push('/')
 }
 
 export default all([
+    takeLatest('@auth/SIGN_IN_REQUEST', signIn),
     takeLatest('persist/REHYDRATE', setToken),
     takeLatest('@auth/SIGN_OUT', signOut),
-    takeLatest('@auth/SIGN_IN_REQUEST', signIn),
     takeLatest('@auth/SIGN_UP_REQUEST', signUp)
 ])

@@ -3,19 +3,21 @@ const Course = use('App/Models/Course')
 const Database = use('Database')
 
 class CourseController {
-    async store({ request, auth, response }){
-        try{
-            const user = auth.getUser()
-            const data = request.all()
-            const course = Course.create(data)
-        }catch(err){
-            return response.status(err.status).send()
-        }
+    async store({ request, auth }){
+        const user = await auth.getUser()
+        
+        const data = request.all()
+        const course = Course.create(data)
+        return course
     }
-    async edit({ request, params, response }){
+    async edit({ request, params, response, auth }){
         const { type, name, duration } = request.all()
-
+        const user = auth.getUser()
+        
         try{
+            if(user.role != "admin"){
+                throw "Error"
+            }
             let course = await Course.findOrFail(params.id)
             course.type = type
             course.name = name
@@ -23,7 +25,7 @@ class CourseController {
             course.save()
             return course
         } catch(err){
-            return response.status(err.status).send({ error: { message: "Curso não encontrado"}})
+            return response.err
         }
 
     }

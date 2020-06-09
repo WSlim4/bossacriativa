@@ -1,37 +1,29 @@
 'use strict'
 
-/*
-|--------------------------------------------------------------------------
-| Routes
-|--------------------------------------------------------------------------
-|
-| Http routes are entry points to your web application. You can create
-| routes for different URLs and bind Controller actions to them.
-|
-| A complete guide on routing is available here.
-| http://adonisjs.com/docs/4.1/routing
-|
-*/
-
-/** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route')
 
-Route.post('/users', 'UserController.store')
-Route.put('/user/:id', 'UserController.edit')
-Route.delete('/user/:id', 'UserController.destroy')
-Route.get('/user', 'UserController.show').middleware(['auth'])
-Route.get('/users', 'UserController.index')
+Route.group(()=>{
+    Route.post('/profile', 'ProfileController.store')
+    Route.get('/logout', 'SessionController.destroy')
+}).middleware(['auth'])
 
-Route.post('/profile', 'ProfileController.store').middleware(['auth'])
+Route.group(()=>{
+    Route.post('/users', 'UserController.store')
+    Route.get('/users', 'UserController.index')
+    Route.put('/user/:id', 'UserController.edit')
+    Route.delete('/user/:id', 'UserController.destroy')
 
-Route.post('/adminSessions', 'AdminSessionController.store')
+    Route.post('/courses', 'CourseController.store')
+    Route.put('/course/:id', 'CourseController.edit')
+    Route.delete('/course/:id', 'CourseController.destroy')
+    Route.get('/courses', 'CourseController.index')
+    
+    Route.post('/events', 'EventController.store')
+    Route.put('/event/:id', 'EventController.edit')
+    Route.delete('/event/:id', 'EventController.destroy')
+}).middleware(['admin'])
+
 Route.post('/sessions', 'SessionController.store')
-Route.get('/logout', 'SessionController.destroy').middleware(['auth'])
-
-Route.post('/courses', 'CourseController.store')
-Route.put('/course/:id', 'CourseController.edit')
-Route.get('/courses', 'CourseController.index')
-Route.delete('/course/:id', 'CourseController.destroy')
 
 Route.post('/lessons/:id', 'LessonController.store')
 Route.get('/lastLessons', 'LessonController.show')
@@ -40,10 +32,10 @@ Route.get('/lessons', 'LessonController.index')
 Route.post('/forgotPassword', 'ForgotPasswordController.store')
 Route.put('/resetPassword', 'ForgotPasswordController.update')
 
-Route.post('/events', 'EventController.store')
 Route.get('/events', 'EventController.index')
-Route.put('/event/:id', 'EventController.edit')
-Route.delete('/event/:id', 'EventController.destroy')
+
+Route.post('/setUser', 'UserController.storeUser')
+
 
 
 

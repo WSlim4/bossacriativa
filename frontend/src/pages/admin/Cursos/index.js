@@ -18,7 +18,6 @@ function Cursos(props){
         async function fetchData(){
             const response = await api.get(`/courses?page=${page}`)
             setCursos(response.data.data)
-            console.log(response.data)
             setPages(Math.ceil( response.data.total / response.data.perPage ))
         }
         fetchData()

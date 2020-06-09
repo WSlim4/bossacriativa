@@ -9,12 +9,12 @@ import { store, persistor } from './store/index'
 
 function App() {
   return (
-    <PersistGate persistor={ persistor }>
-      <Provider store={store}>
+    <Provider store={store}>
+      <PersistGate persistor={persistor}>
         <Routes />
         <ToastContainer autoClose={3000}/>
-      </Provider>
-    </PersistGate>
+      </PersistGate>
+    </Provider>
   );
 }
 export default App;
