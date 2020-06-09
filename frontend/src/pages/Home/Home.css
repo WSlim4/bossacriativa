@@ -25,7 +25,7 @@
 }
 
 .title-home {
-    padding-top: 15px;
+    padding-top: 10px;
     margin-left: 3%;
     font: 500 20px 'Barlow', sans-serif;
 }
@@ -36,7 +36,6 @@
 
 .event {
     height: 200px;
-    background-image: url("../../assets/themaine.jpg");
     background-size: cover;
     background-repeat: no-repeat;
 }

@@ -45,15 +45,12 @@ class VideoAulas extends React.Component{
                     <ul>
                          {lessons.map(video=>
                             <li key={video.id}>
-                            <p><strong>Título:</strong>{video.title}</p>
                             <ReactPlayer
                              url={video.url} 
                              width='100%' 
                              height='100%'
                              controls
                             />
-                            <strong>Descrição:</strong>
-                            <p>{video.description}</p>
                         </li>
                         )}
                     </ul>

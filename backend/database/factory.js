@@ -1,21 +1,39 @@
 'use strict'
 
-/*
-|--------------------------------------------------------------------------
-| Factory
-|--------------------------------------------------------------------------
-|
-| Factories are used to define blueprints for database tables or Lucid
-| models. Later you can use these blueprints to seed your database
-| with dummy data.
-|
-*/
+const Factory = use('Factory')
 
-/** @type {import('@adonisjs/lucid/src/Factory')} */
-// const Factory = use('Factory')
+    Factory.blueprint('App/Models/User', () => {
+        return {
+            username: 'bossacriativa',
+            email: 'criativabossa@gmail.com',
+            password: 'CRIAtiva20#',
+            role: 'admin'
+        }
+    })
 
-// Factory.blueprint('App/Models/User', (faker) => {
-//   return {
-//     username: faker.username()
-//   }
-// })
+    Factory.blueprint('App/Models/Course', () => {
+        return {
+            type: 'Cordas',
+            name: 'Curso de violão',
+            duration: '12:00'
+        }
+    
+    })
+    Factory.blueprint('App/Models/Lesson', () => {
+        return {
+            title: 'Aula de introdução',
+            description: 'Aula introdutória do curso de violão',
+            course_name: 'Curso de violão',
+            course_id: 1,
+            url: 'https://www.youtube.com/watch?v=9kcK778qbcM'
+        }
+    })
+    Factory.blueprint('App/Models/Event', () => {
+        return {
+            title: 'Djonga ao vivo',
+            artist: 'Djonga',
+            address: 'Festival Cena 2k19',
+            url: 'www.youtube.com/watch?v=q2RBdzw0sN8'
+        }
+    })
+

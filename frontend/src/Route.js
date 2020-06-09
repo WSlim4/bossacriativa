@@ -10,11 +10,8 @@ export default function RouteWrapper({
 }){
     const role = store.getState().auth.role
     
-    if(role === 'admin' && !isPrivate){
-        return <Redirect to="/admin/adminPanel"/>
-    }
     if(role !== 'admin' && isPrivate){
-        return <Redirect to="/admin"/>
+        return <Redirect to="/"/>
     }
     return (
         <Route

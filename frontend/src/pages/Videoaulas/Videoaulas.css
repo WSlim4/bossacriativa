@@ -8,7 +8,6 @@
     display: flex;
     justify-content: center;
     text-align: center;
-    margin-bottom: 10vh;
     width: 100%;
 }
 .videoaulas-container .video-contents{
@@ -23,7 +22,7 @@
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-gap: 20px;
 
-    margin-top: 2vh;
+    margin-top: 1vh;
     list-style: none;
 }
 .videoaulas-container ul li{
@@ -34,6 +33,7 @@
     border: 1px solid;
     border-radius: 8px;
 
+    height: 200px;
     position: relative;
 }
 .videoaulas-container ul li p:nth-child(1){

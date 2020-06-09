@@ -5,6 +5,8 @@ import { FaUserAlt } from 'react-icons/fa'
 import { RiLockPasswordLine } from 'react-icons/ri'
 import { IconContext } from 'react-icons'
 import { signInRequest } from '../../../store/modules/auth/actions'
+import { store } from '../../../store/index'
+import { Redirect } from 'react-router-dom'
 
 function Admin(){
     const [email, setEmail] = useState()
@@ -12,7 +14,8 @@ function Admin(){
     
     const dispatch = useDispatch()
     const loading = useSelector(state => state.auth.loading)
-    
+
+    const role = store.getState().auth.role
 
     function handleLogin(e){
         e.preventDefault()
@@ -20,6 +23,8 @@ function Admin(){
     }
     
     return(
+        <>
+        {role === 'admin' ? <Redirect to="/admin/adminPanel"/> : 
         <div className="admin-login">
             <div className="login-content">
                 <h1>Área restrita para administradores</h1>
@@ -50,6 +55,9 @@ function Admin(){
                 </form>
             </div>
         </div>
+        }
+        
+    </>
     )
 }
 export default connect()(Admin)
