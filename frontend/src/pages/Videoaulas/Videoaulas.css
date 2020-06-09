@@ -7,15 +7,26 @@
 .videoaulas-container{
     display: flex;
     justify-content: center;
+
     text-align: center;
     width: 100%;
+
 }
+
+.title-home {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 3%;
+    font: 700 20px 'Caveat', cursive;
+    margin-left: 0 !important;
+}
+
 .videoaulas-container .video-contents{
     width: 100%;
     padding: 16px;
 }
 .videoaulas-container header{
-    background-color: gold;
+    background-color: #E7C032;
 }
 .videoaulas-container ul{
     display: grid;
@@ -32,10 +43,33 @@
     text-align: center;
     border: 1px solid;
     border-radius: 8px;
-
-    height: 200px;
-    position: relative;
 }
+
+.videoaula {
+    font: 600 22px 'Barlow Semi Condensed', sans-serif;
+    padding-top: 5%;
+    color: darkblue;
+    margin-right: 5%;
+}
+
+.instrumento {
+    margin-right: 5%;
+    font: 500 25px 'Barlow Semi Condensed', sans-serif;
+    margin-top: -3.5%;
+}
+
+.aula {
+    margin-right: 5%;
+    font: 500 15px 'Barlow Semi Condensed', sans-serif;
+    margin-top: 1vh;
+}
+
+
+.title-div {
+    height: 50px;
+    background-color: #E7C032;
+}
+
 .videoaulas-container ul li p:nth-child(1){
     margin-bottom: 2vh;
 }
@@ -46,10 +80,6 @@
     color: #41414d;
 }
 
-.title-home {
-    font: 500 20px 'Barlow', sans-serif;
-    margin-left: 0 !important;
-}
 .videoaulas-container ul li:hover{
     background-color: #ddd;
 }
@@ -58,3 +88,9 @@
     margin-top: 3vh;
 }
 
+@media only screen and (max-width: 700px){
+    .videoaulas-container ul{
+        grid-template-columns: 1fr;
+        grid-gap: 10px;
+    }
+}

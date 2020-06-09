@@ -45,13 +45,14 @@ class VideoAulas extends React.Component{
                     <ul>
                          {lessons.map(video=>
                             <li key={video.id}>
+                            <p>{video.title}</p>
                             <ReactPlayer
                              url={video.url} 
                              width='100%' 
                              height='100%'
                              controls
                             />
-                        </li>
+                            </li>
                         )}
                     </ul>
                     {pgNmb.map(val=>

@@ -21,17 +21,13 @@
 
 .title-div {
     height: 50px;
-    background-color: gold;
+    background-color: #E7C032;
 }
 
 .title-home {
     padding-top: 10px;
-    margin-left: 3%;
-    font: 500 20px 'Barlow', sans-serif;
-}
-.event-list-div .title-home,
-.video-list-div .title-home{
     text-align: center;
+    font: 700 20px 'Caveat', cursive;
 }
 
 .event {
@@ -59,34 +55,9 @@
     transition: 1s ease-in-out;
   }
 
-.artist {
-    font: 400 25px 'Barlow', sans-serif;
-    visibility: hidden;
-    margin-left: 5%;
-    padding-top: 2%;
-}
-
-.data, .local {
-    font: 200 15px 'Barlow', sans-serif;
-    visibility: hidden;
-}
-
-.videoaula {
-    font: 600 22px 'Barlow', sans-serif;
-    padding-top: 5%;
-    color: darkblue;
-    margin-right: 5%;
-}
-
-.instrumento {
-    margin-right: 5%;
-    font: 500 25px 'Barlow', sans-serif;
-    margin-top: -3.5%;
-}
-
 .aula {
     margin-right: 5%;
-    font: 500 15px 'Barlow', sans-serif;
+    font: 500 15px 'Barlow Semi Condensed', sans-serif;
     margin-top: 1vh;
 }
 
@@ -99,11 +70,19 @@
 .event:hover .artist {
     visibility: visible !important;
     transition: 1s ease-in-out;
-    color: gold;
+    color: #E7C032;
 }
 
 .infos {
     text-align: right;
     margin-right: 5%;
     padding-top: 120px;
+}
+@media only screen and (max-width: 670px){
+    .video-list{
+        display: inline-block;
+    }
+    .video-list div{
+        margin-top: 2vh;
+    }
 }

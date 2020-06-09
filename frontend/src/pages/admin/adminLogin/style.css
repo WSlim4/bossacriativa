@@ -6,21 +6,27 @@
     height: 100vh;
     opacity: 0.8;
     align-items: center;
+    font: 'Barlow Semi Condensed', 'sans-serif';
 }
 .login-content{
     display: inline-block;
     text-align: center;
     background-color: rgb(133, 144, 155);
-    width: 50%;
+    min-width: 50%;
     padding: 3%;
 }
 .login-content h1{
     margin-bottom: 5vh;
 }
 
+.title-login {
+    text-align: center;
+    font: 500 32px 'Barlow Semi Condensed', sans-serif;
+}
+
 input{
     padding: 10px;
-    width: 240px;
+    width: 220px;
     
     margin-top: 2vh;
     letter-spacing: 0.1em;
@@ -44,7 +50,7 @@ input:focus::placeholder{
 }
 
 #login-button:hover{
-    background-color: gold;
+    background-color: #E7C032;
     font-weight: bold;
 }
 

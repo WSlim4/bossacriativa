@@ -40,7 +40,7 @@ function Home() {
       </div>
       <div className="video-list-div">
         <div className="title-div">
-          <h2 className="title-home">ÚLTIMAS ADICIONADAS</h2>
+          <h2 className="title-home">ÚLTIMAS AULAS ADICIONADAS</h2>
         </div>
         <div className="video-list">
             {lessons.map((lesson)=>
