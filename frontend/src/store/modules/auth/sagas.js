@@ -1,4 +1,4 @@
-import { takeLatest, call, put, all } from 'redux-saga/effects'
+import { takeLatest, call, put, all, take } from 'redux-saga/effects'
 import { signInSuccess, signFailure } from './actions'
 import history from '../../../services/history'
 import api from '../../../services/api'
@@ -7,21 +7,21 @@ import { toast } from 'react-toastify'
 export function* signIn({ payload }){
     try{
         const { email, password } = payload;
-        const response = yield call(api.post, '/sessions', {
-        email,
-        password
+        const response = yield call(api.post,'/sessions', {
+            email,
+            password
         })
+        
         const { token, user } = response.data
-
+        
         if(user.role !== 'admin'){
             toast.error('Usuário não é admin')
             return
-        } else{
-            api.defaults.headers.Authorization = `Bearer ${token}`
+        }
+        api.defaults.headers.Authorization = `Bearer ${token}`
         
-            yield put(signInSuccess(token, user))
-            history.push('/admin/adminPanel')
-        }    
+        yield put(signInSuccess(token, user))
+        history.push('/admin/adminPanel') 
 
     } catch(err){
         toast.error('Falha na autenticação')
@@ -56,9 +56,8 @@ export function setToken({ payload }){
         return api.defaults.headers.Authorization = `Bearer ${token}`
     }
 }
-export function signOut(){
-    localStorage.clear()
-    history.push('/')
+export function* signOut(){
+    history.push('/admin')
 }
 
 export default all([

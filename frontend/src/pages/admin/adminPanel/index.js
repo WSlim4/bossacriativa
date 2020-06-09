@@ -14,36 +14,41 @@ import banner from '../../../assets/banner-1.jpg'
 import admin_img from '../../../assets/adminAssets/admin.png'
 import { store } from '../../../store'
 import { signOut } from '../../../store/modules/auth/actions'
+import Events from '../Eventos/Eventos'
+import EventModal from '../../../components/eventModal/Modal'
 
 function AdminPanel(props){
-   const [users, setUser] = useState(false)
-   const [courses, setCourse] = useState(false)
-   const [lessons, setLesson] = useState(false)
    const [page, setPage] = useState()
-   
+   const [display, setDisplay] = useState('')
    const profile = store.getState().user.profile
 
    useEffect(()=>{
        setPage(props.match.params.page ? props.match.params.page : 1)
    }, [])
    
+   function checkDisplay(){
+       if(display === "users"){
+           return <Modal 
+                    addUser
+                    action="adicionar"
+                    />
+       }else if(display==="courses"){
+           return <CourseModal
+                    addCourse
+                    action="adicionar"
+                   />
+       }else if(display==="events"){
+            return <EventModal
+                    addEvent
+                    action="adicionar"
+                    />
+       }else{
+           return null
+       }
+   }
+
    const dispatch = useDispatch()
 
-    function onUserClick(){
-        setUser(true)
-        setCourse(false)
-        setLesson(false)
-    }
-    function onCourseClick(){
-        setCourse(true)
-        setUser(false)
-        setLesson(false)
-    }
-    function onLessonClick(){
-        setLesson(true)
-        setCourse(false)
-        setUser(false)
-    }
     function logout (){
         dispatch(signOut())
     }
@@ -52,9 +57,10 @@ function AdminPanel(props){
             <section className="admin-section1">
                 <img src={admin_img} className="admin-img"/>
                 <ul className="options">
-                    <li onClick={onUserClick}>Usuários <MdKeyboardArrowRight size="1.2em"/></li>
-                    <li onClick={onCourseClick}>Cursos <MdKeyboardArrowRight size="1.2em"/></li>
-                    <li onClick={onLessonClick}>Vídeo aulas <MdKeyboardArrowRight size="1.2em"/></li>
+                    <li onClick={()=>setDisplay('users')}>Usuários <MdKeyboardArrowRight size="1.2em"/></li>
+                    <li onClick={()=>setDisplay('courses')}>Cursos <MdKeyboardArrowRight size="1.2em"/></li>
+                    <li onClick={()=>setDisplay('lessons')}>Vídeo aulas <MdKeyboardArrowRight size="1.2em"/></li>
+                    <li onClick={()=>setDisplay('events')}>Eventos <MdKeyboardArrowRight size="1.2em"/></li>
                 </ul>
                 <br/>
                 <Link to="/"><img src={banner} className="adm-icon"/>
@@ -65,25 +71,16 @@ function AdminPanel(props){
                     <h3>Bem vindo: {profile.username},
                         Seu e-mail: {profile.email}
                     </h3>
-                    {
-                        users ?
-                        <Modal
-                            addUser
-                            action="adicionar"
-                        /> :
-                        <CourseModal 
-                        addCourse
-                        action="adicionar"
-                        />
-                    }
+                    {checkDisplay()}
                     <IconContext.Provider value={{ size:"2em", className: "del" }}>
                             <FiPower onClick={logout}/>
                         </IconContext.Provider>
                 </header>
                     <div className="display">
-                        {users ? <Users page={page}/> : null }
-                        {courses ? <Cursos page={page}/> : null}
-                        {lessons ? <Lessons page={page}/> : null}
+                        {display === "users" ? <Users page={page}/> : null }
+                        {display === "courses" ? <Cursos page={page}/> : null}
+                        {display === "lessons" ? <Lessons page={page}/> : null}
+                        {display === "events" ? <Events page={page}/>: null}
                     </div>
             </section>
         </div>

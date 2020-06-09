@@ -66,7 +66,7 @@ export default function FormDialog(props) {
         }
         
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">Adicionar usuário</DialogTitle>
+        <DialogTitle id="form-dialog-title">Usuário</DialogTitle>
         <DialogContent onSubmit={handleUserPost}>
           <DialogContentText>
             Para {props.action} um usuário, preencha os campos abaixo

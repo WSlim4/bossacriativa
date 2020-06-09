@@ -7,45 +7,48 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import api from '../../services/api'
-import Modal from '../lessonModal/modal'
-import { IoMdAddCircle } from 'react-icons/io'
+import { RiSlideshow3Line } from 'react-icons/ri'
 import { FaEdit } from 'react-icons/fa'
 import { IconContext } from 'react-icons'
 
 export default function FormDialog(props) {
   const [open, setOpen] = useState(false);
-  const [type, setType] = useState()
-  const [name, setName] = useState()
-  const [duration, setDuration] = useState()
+  const [title, setTitle] = useState()
+  const [artist, setArtist] = useState()
+  const [address, setAddress] = useState()
+  const [url, setUrl] = useState()
 
-  async function handleCoursePost(e){
+
+  async function handleEventPost(e){
     e.preventDefault()
 
     const data = {
-      type,
-      name,
-      duration
+        title,
+        artist,
+        address,
+        url
     }
       try{
-        await api.post('/courses', data)
-        alert("Curso adicionado")
+        await api.post('/events', data)
+        alert("Evento adicionado")
         handleClose()
       }catch(err){
-        alert("Erro ao adicionar curso")
+        alert("Erro ao adicionar evento")
       }
   }
-  async function handleCourseEdit(e){
+  async function handleEventEdit(e){
     e.preventDefault()
 
     const data = {
-      type,
-      name,
-      duration
+        title,
+        artist,
+        address,
+        url
     }
 
     try{
-      await api.put(`/course/${props.id}`, data)
-      alert("Curso editado com sucesso")
+      await api.put(`/event/${props.id}`, data)
+      alert("Evento editado com sucesso")
       handleClose()
     } catch(err){
       return alert("Algo deu errado")
@@ -62,57 +65,67 @@ export default function FormDialog(props) {
 
   return (
     <>
-        {props.addCourse ? 
+        {props.addEvent ? 
           <IconContext.Provider value={{ size:"2em", className: "del" }}>
-            <IoMdAddCircle onClick={handleClickOpen}/>
+            <RiSlideshow3Line onClick={handleClickOpen}/>
           </IconContext.Provider> : 
           <IconContext.Provider value={{ size:"2em", className: "del" }}>
             <FaEdit onClick={handleClickOpen}/>
           </IconContext.Provider>
         }
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">Curso</DialogTitle>
-        <DialogContent onSubmit={handleCoursePost}>
+    <DialogTitle id="form-dialog-title">Evento</DialogTitle>
+        <DialogContent onSubmit={handleEventPost}>
           <DialogContentText>
-            Para {props.action} um curso, preencha os campos abaixo
+            Para {props.action} um evento, preencha os campos abaixo
           </DialogContentText>
           <TextField
             autoFocus
             margin="dense"
-            id="category"
-            label="Categoria"
+            id="title"
+            label="Título"
             type="text"
             fullWidth
-            value={type}
-            onChange={e => setType(e.target.value) }
+            value={title}
+            onChange={e => setTitle(e.target.value) }
           />
           <TextField
             autoFocus
             margin="dense"
-            id="name"
-            label="Nome"
+            id="artist"
+            label="Artista"
             type="text"
             fullWidth
-            value={name}
-            onChange={e => setName(e.target.value) }
+            value={artist}
+            onChange={e => setArtist(e.target.value) }
           />
           <TextField
             autoFocus
             margin="dense"
-            id="duration"
-            label="Duração em horas"
+            id="address"
+            label="Local"
             type="text"
             fullWidth
-            value={duration}
-            onChange={e => setDuration(e.target.value) }
+            value={address}
+            onChange={e => setAddress(e.target.value) }
+          />
+          <TextField
+            autoFocus
+            margin="dense"
+            id="url"
+            label="Url"
+            type="text"
+            fullWidth
+            value={url}
+            onChange={e => setUrl(e.target.value) }
           />
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">
             Cancelar
           </Button>
-          <Button onClick={props.action == "adicionar" ? handleCoursePost : handleCourseEdit} color="primary" type="submit">
-            Cadastrar
+          <Button onClick={props.action == "adicionar" ? handleEventPost : handleEventEdit} color="primary" type="submit">
+            Cadastrar/Editar
           </Button>
         </DialogActions>
       </Dialog>

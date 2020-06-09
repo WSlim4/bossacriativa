@@ -9,7 +9,7 @@ class EventSchema extends Schema {
       table.increments()
       table.string('title')
       table.string('artist')
-      table.string('description')
+      table.string('address')
       table.string('url')
       table.timestamps()
     })
