@@ -20,10 +20,16 @@ function Admin(){
         e.preventDefault()
         dispatch(signInRequest(email,password))
     }
-    
+    function checkRole(){
+        if(role === 'admin'){
+            return <Redirect to="/login/adminPanel"/>
+        } else if(role==='artista'){
+            return <Redirect to="/login/artistPanel"/>
+        }
+    }
     return(
         <>
-        {role === 'admin' ? <Redirect to="/login/adminPanel"/> : 
+        { checkRole() } 
         <div className="admin-login">
             <div className="login-content">
                 <h1 className ="title-login">Faça login</h1>
@@ -54,7 +60,6 @@ function Admin(){
                 </form>
             </div>
         </div>
-        }
         
     </>
     )
