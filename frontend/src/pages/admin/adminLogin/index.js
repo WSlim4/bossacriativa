@@ -24,10 +24,10 @@ function Admin(){
     
     return(
         <>
-        {role === 'admin' ? <Redirect to="/admin/adminPanel"/> : 
+        {role === 'admin' ? <Redirect to="/login/adminPanel"/> : 
         <div className="admin-login">
             <div className="login-content">
-                <h1 className ="title-login">Login</h1>
+                <h1 className ="title-login">Faça login</h1>
                 <form onSubmit={handleLogin}>
                     <IconContext.Provider value={{size:"1.5em", className:"login-icons"}}>
                         <FaUserAlt/>
