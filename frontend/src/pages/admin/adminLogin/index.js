@@ -42,7 +42,7 @@ function Admin(){
                     <IconContext.Provider value={{size:"1.5em", className:"login-icons"}}>
                         <RiLockPasswordLine/>
                     </IconContext.Provider>
-                    <input type="text"
+                    <input type="password"
                     placeholder="Senha"
                     name="password"
                     value={password}
