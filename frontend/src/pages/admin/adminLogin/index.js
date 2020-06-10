@@ -10,8 +10,7 @@ import { Redirect } from 'react-router-dom'
 
 function Admin(){
     const [email, setEmail] = useState()
-    const [password, setPass] = useState()
-    
+    const [password, setPass] = useState()  
     const dispatch = useDispatch()
     const loading = useSelector(state => state.auth.loading)
 
