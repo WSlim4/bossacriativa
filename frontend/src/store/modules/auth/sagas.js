@@ -24,6 +24,7 @@ export function* signIn({ payload }){
             history.push('/login/artistPanel') 
         } else{
             toast.error('Sem permissões')
+            yield put(signFailure())
         }
 
     } catch(err){
