@@ -41,9 +41,9 @@ export default function Events(props){
             <table id="users">
                 <tr>
                     <th>Título</th>
+                    <th>Url</th>
                     <th>Artista</th>
                     <th>Local</th>
-                    <th>Url</th>
                     <th>Ações</th>
                 </tr>
                 {events.map((event)=>

@@ -55,7 +55,10 @@ function AdminPanel(props){
     return(
         <div className="admin-container">
             <section className="admin-section1">
-                <img src={admin_img} className="admin-img"/>
+                <div>
+                    <Link to="/"><img src={banner} className="adm-icon"/>
+                    </Link>
+                </div>
                 <ul className="options">
                     <li onClick={()=>setDisplay('users')}>Usuários <MdKeyboardArrowRight size="1.2em"/></li>
                     <li onClick={()=>setDisplay('courses')}>Cursos <MdKeyboardArrowRight size="1.2em"/></li>
@@ -63,14 +66,10 @@ function AdminPanel(props){
                     <li onClick={()=>setDisplay('events')}>Eventos <MdKeyboardArrowRight size="1.2em"/></li>
                 </ul>
                 <br/>
-                <Link to="/"><img src={banner} className="adm-icon"/>
-                </Link>
             </section>
             <section className="admin-section2">
                 <header className="panel">
-                    <h3>Bem vindo: {profile.username},
-                        Seu e-mail: {profile.email}
-                    </h3>
+                    <h3>Bem vindo ao mini sistema de administração</h3>
                     {checkDisplay()}
                     <IconContext.Provider value={{ size:"2em", className: "del" }}>
                             <FiPower onClick={logout}/>

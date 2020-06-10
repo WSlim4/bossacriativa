@@ -21,7 +21,7 @@ export function* signIn({ payload }){
         api.defaults.headers.Authorization = `Bearer ${token}`
         
         yield put(signInSuccess(token, user))
-        history.push('/admin/adminPanel') 
+        history.push('/login/adminPanel') 
 
     } catch(err){
         toast.error('Falha na autenticação')
@@ -57,7 +57,7 @@ export function setToken({ payload }){
     }
 }
 export function* signOut(){
-    history.push('/admin')
+    history.push('/')
 }
 
 export default all([

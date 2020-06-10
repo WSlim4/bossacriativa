@@ -24,8 +24,8 @@ export default function Routes(){
             <NavBar/>
             <Switch>
               <Route exact path="/" component={Home}/>
-              <Route exact path="/admin" exact component={AdminLogin}/>
-              <Route exact path="/admin/adminPanel/:page?" exact component={AdminPanel} isPrivate/>
+              <Route exact path="/login" exact component={AdminLogin}/>
+              <Route exact path="/login/adminPanel/:page?" exact component={AdminPanel} isPrivate/>
               <Route path="/about" component={About}/>
               <Route path="/editais" component={Editais}/>
               <Route path="/midia" component={Midia}/>

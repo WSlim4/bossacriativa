@@ -5,7 +5,7 @@
     height: 100vh;
     
     display: flex;
-    font-family: 'Chelsea Market', cursive;
+    font-family: 'Roboto';
     overflow: auto;
 }
 .admin-section1{
@@ -18,7 +18,6 @@
 .options{
     list-style: none;
 
-    margin-top: 10vh;
     padding: 0;
 }
 .options li{
@@ -95,10 +94,4 @@
 }
 .adm-icon:hover{
     cursor: pointer;
-}
-.admin-img{
-    width: 150px;
-    height: 150px;
-    margin-top: 2vh;
-    border-radius: 50%;
 }
