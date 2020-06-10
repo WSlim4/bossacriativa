@@ -14,14 +14,17 @@ export function* signIn({ payload }){
         
         const { token, user } = response.data
         
-        if(user.role !== 'admin'){
-            toast.error('Usuário não é admin')
-            return
-        }
         api.defaults.headers.Authorization = `Bearer ${token}`
         
-        yield put(signInSuccess(token, user))
-        history.push('/login/adminPanel') 
+        if(user.role === 'admin'){
+            yield put(signInSuccess(token, user))
+            history.push('/login/adminPanel') 
+        }else if(user.role === 'artista'){
+            yield put(signInSuccess(token, user))
+            history.push('/login/artistPanel') 
+        } else{
+            toast.error('Sem permissões')
+        }
 
     } catch(err){
         toast.error('Falha na autenticação')
@@ -57,7 +60,7 @@ export function setToken({ payload }){
     }
 }
 export function* signOut(){
-    history.push('/')
+    history.push('/login')
 }
 
 export default all([

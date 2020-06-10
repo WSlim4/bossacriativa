@@ -2,6 +2,7 @@ import React from 'react'
 import { Router, Switch } from 'react-router-dom'
 import AdminLogin from './pages/admin/adminLogin/index'
 import AdminPanel from './pages/admin/adminPanel/index'
+import ArtistPanel from './pages/Artista/Artista'
 import Home from './pages/Home/Home'
 import Route from './Route'
 import About from './pages/About/About';
@@ -26,6 +27,7 @@ export default function Routes(){
               <Route exact path="/" component={Home}/>
               <Route exact path="/login" exact component={AdminLogin}/>
               <Route exact path="/login/adminPanel/:page?" exact component={AdminPanel} isPrivate/>
+              <Route exact path="/login/artistPanel/:page?" exact component={ArtistPanel}/>
               <Route path="/about" component={About}/>
               <Route path="/editais" component={Editais}/>
               <Route path="/midia" component={Midia}/>
