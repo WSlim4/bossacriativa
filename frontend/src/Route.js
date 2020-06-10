@@ -12,6 +12,8 @@ export default function RouteWrapper({
     
     if(role !== 'admin' && isPrivate){
         return <Redirect to="/"/>
+    }else if(role !== 'artista' && isPrivate){
+        return <Redirect to="/"/>
     }
     return (
         <Route
