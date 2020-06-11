@@ -33,9 +33,10 @@ body,
     width: 100%;
     text-align: left;
     height: 120px;
-    display: inline-flex;
+    display: flex;
     padding: 0;
     margin: 0;
+    font-weight: bold;
 }
 
 .apoio {
@@ -62,16 +63,17 @@ body,
 .link {
   text-decoration: inherit;
   color: black;
-  font: 400 15px 'Barlow Semi Condensed', sans-serif !important;
+  font: 400 1.3em 'Barlow Semi Condensed', sans-serif !important;
 }
 
 .footer-text {
-  font: 400 15px 'Barlow Semi Condensed', sans-serif !important;
+  font: 400 1.3em 'Barlow Semi Condensed', sans-serif !important;
 }
 
 .footer-title {
   margin-bottom: 2vh;
   margin-top: 1vh;
+  font-weight: bold;
 }
 
 .contato {
@@ -81,6 +83,7 @@ body,
 
 .inst {
   position: absolute;
+  margin-right: 8vh;
   right: 275px;
 }
 
@@ -92,6 +95,11 @@ body,
 
   .inst {
     padding-right: 5vw;
+  }
+}
+@media only screen and (min-width: 286){
+  .grey .contato{
+    display: none;
   }
 }
 

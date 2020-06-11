@@ -27,6 +27,24 @@ function Home() {
         <div className="title-div">
           <h2 className="title-home">EVENTOS</h2>
         </div>
+        <div className="event-list">
+        <Row>
+            <Col sm={3}>
+              <div className="event">
+                <h4 className="artist">The Maine</h4>
+                <div className="infos">
+                  <h5 className="data">07/07/2020</h5>
+                  <h5 className="local">CIRCO VOADOR</h5>
+                </div>
+              </div>
+            </Col>
+          </Row>
+      </div>
+      </div>
+      <div className="event-list-div">
+        <div className="title-div">
+          <h2 className="title-home">SHOWS</h2>
+        </div>
         <div className="video-list">
             {events.map((event)=>
                   <ReactPlayer 
@@ -40,7 +58,7 @@ function Home() {
       </div>
       <div className="video-list-div">
         <div className="title-div">
-          <h2 className="title-home">ÚLTIMAS AULAS ADICIONADAS</h2>
+          <h2 className="title-home">ÚLTIMAS AULAS</h2>
         </div>
         <div className="video-list">
             {lessons.map((lesson)=>

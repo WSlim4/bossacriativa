@@ -41,3 +41,6 @@ input, button, textarea {
     display: block;
     text-align: center;
 }
+.link{
+    font-weight: bold;
+}

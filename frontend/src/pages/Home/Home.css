@@ -7,6 +7,10 @@
     width: 100%;
     margin-top: 5vh;
 }
+.data, .local {
+    font: 200 15px 'Barlow Semi Condensed', sans-serif;
+    visibility: hidden;
+}
 
 .event-list-div, .video-list-div {
     width: 80%;
@@ -26,14 +30,31 @@
 
 .title-home {
     padding-top: 10px;
-    text-align: center;
+    text-align: left;
     font: 700 20px 'Caveat', cursive;
 }
 
 .event {
     height: 200px;
+    background-image: url("../../assets/themaine.jpg");
     background-size: cover;
     background-repeat: no-repeat;
+}
+.artist {
+    font: 400 25px 'Barlow Semi Condensed', sans-serif;
+    visibility: hidden;
+    margin-left: 5%;
+    padding-top: 2%;
+}
+.infos {
+    text-align: right;
+    margin-right: 5%;
+    padding-top: 120px;
+}
+
+.event:hover {
+    opacity: 0.7;
+    transition: 1s ease-in-out;
 }
 
 .event-list>*>*, .video-list>*>* {
