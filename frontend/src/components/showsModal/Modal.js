@@ -7,47 +7,45 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import api from '../../services/api'
+import { RiSlideshow3Line } from 'react-icons/ri'
 import { FaEdit } from 'react-icons/fa'
 import { IconContext } from 'react-icons'
-import { BsPlusSquareFill } from 'react-icons/bs'
 
 export default function FormDialog(props) {
   const [open, setOpen] = useState(false);
-  const [data, setData] = useState()
+  const [title, setTitle] = useState()
   const [artist, setArtist] = useState()
-  const [address, setAddress] = useState()
-  const [img, setImg] = useState()
+  const [url, setUrl] = useState()
 
-  async function handleEventPost(e){
+
+  async function handleShowPost(e){
     e.preventDefault()
 
-    const eventData = {
-        data,
+    const data = {
+        title,
         artist,
-        address,
-        img
+        url
     }
       try{
-        await api.post('/events', eventData)
-        alert("Evento adicionado")
+        await api.post('/shows', data)
+        alert("Show adicionado")
         handleClose()
       }catch(err){
-        alert("Erro ao adicionar evento")
+        alert("Erro ao adicionar show")
       }
   }
-  async function handleEventEdit(e){
+  async function handleShowEdit(e){
     e.preventDefault()
 
-    const eventData = {
-        data,
+    const data = {
+        title,
         artist,
-        address,
-        img
+        url
     }
 
     try{
-      await api.put(`/event/${props.id}`, eventData)
-      alert("Evento editado com sucesso")
+      await api.put(`/show/${props.id}`, data)
+      alert("Show editado com sucesso")
       handleClose()
     } catch(err){
       return alert("Algo deu errado")
@@ -64,29 +62,29 @@ export default function FormDialog(props) {
 
   return (
     <>
-        {props.addEvent ? 
+        {props.addShow ? 
           <IconContext.Provider value={{ size:"2em", className: "del" }}>
-            <BsPlusSquareFill onClick={handleClickOpen}/>
+            <RiSlideshow3Line onClick={handleClickOpen}/>
           </IconContext.Provider> : 
           <IconContext.Provider value={{ size:"2em", className: "del" }}>
             <FaEdit onClick={handleClickOpen}/>
           </IconContext.Provider>
         }
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-    <DialogTitle id="form-dialog-title">Evento</DialogTitle>
-        <DialogContent onSubmit={handleEventPost}>
+    <DialogTitle id="form-dialog-title">Show</DialogTitle>
+        <DialogContent onSubmit={handleShowPost}>
           <DialogContentText>
-            Para {props.action} um evento, preencha os campos abaixo
+            Para {props.action} um show, preencha os campos abaixo
           </DialogContentText>
           <TextField
             autoFocus
             margin="dense"
-            id="data"
-            label="Data no formato dd/mm/aaaa"
+            id="title"
+            label="Título"
             type="text"
             fullWidth
-            value={data}
-            onChange={e => setData(e.target.value) }
+            value={title}
+            onChange={e => setTitle(e.target.value) }
           />
           <TextField
             autoFocus
@@ -101,29 +99,19 @@ export default function FormDialog(props) {
           <TextField
             autoFocus
             margin="dense"
-            id="local"
-            label="Local"
+            id="url"
+            label="Url"
             type="text"
             fullWidth
-            value={address}
-            onChange={e => setAddress(e.target.value) }
-          />
-          <TextField
-            autoFocus
-            margin="dense"
-            id="img"
-            label="Foto"
-            type="text"
-            fullWidth
-            value={img}
-            onChange={e => setImg(e.target.value) }
+            value={url}
+            onChange={e => setUrl(e.target.value) }
           />
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">
             Cancelar
           </Button>
-          <Button onClick={props.action == "adicionar" ? handleEventPost : handleEventEdit} color="primary" type="submit">
+          <Button onClick={props.action == "adicionar" ? handleShowPost : handleShowEdit} color="primary" type="submit">
             Cadastrar/Editar
           </Button>
         </DialogActions>

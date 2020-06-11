@@ -18,6 +18,7 @@ class NavBar extends Component {
                     <li><NavLink className="link" to="/login">LOGIN</NavLink></li>
                     <li><NavLink className="link" to="/about">O PROJETO</NavLink></li>
                     <li><NavLink className="link" to="/palestras">PALESTRAS</NavLink></li>
+                    <li><NavLink className="link" to="/shows">SHOWS</NavLink></li>
                     <li><NavLink className="link" to="/videoaulas">VIDEOAULAS</NavLink></li>
                     <li><NavLink className="link" to="/midia">MIDIA</NavLink></li>
                     <li><NavLink className="link" to="/imprensa">IMPRENSA</NavLink></li> 

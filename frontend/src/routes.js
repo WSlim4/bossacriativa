@@ -6,6 +6,7 @@ import ArtistPanel from './pages/Artista/Artista'
 import Home from './pages/Home/Home'
 import Route from './Route'
 import About from './pages/About/About';
+import Shows from './pages/Shows/Shows'
 import Imprensa from './pages/Imprensa/Imprensa';
 import Videoaulas from './pages/Videoaulas/Videoaulas';
 import Parceiros from './pages/Parceiros/Parceiros';
@@ -35,6 +36,7 @@ export default function Routes(){
               <Route path="/parceiros" component={Parceiros}/>
               <Route path="/videoaulas/:page?" component={Videoaulas}/>
               <Route path="/imprensa" component={Imprensa}/>
+              <Route path="/shows" component={Shows}/>
             </Switch>
             </div>
             <Footer/>

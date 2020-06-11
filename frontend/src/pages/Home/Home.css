@@ -1,6 +1,9 @@
 .banner {
     width: 80%;
 }
+.home-container{
+    display: inline-block;
+}
 
 .banner-div {
     text-align: center;
@@ -36,8 +39,8 @@
 
 .event {
     height: 200px;
-    background-image: url("../../assets/themaine.jpg");
     background-size: cover;
+    /*background-image: url("../../assets/themaine.jpg");*/
     background-repeat: no-repeat;
 }
 .artist {
@@ -62,8 +65,9 @@
 }
 
 .event-list {
-    padding-left: 15px;
-    padding-right: 15px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 3px;
 }
 .video-list{
     display: grid;
@@ -71,17 +75,15 @@
     grid-gap: 3px;
     grid-template-columns: 1fr 1fr 1fr 1fr;
 }
-.event:hover {
+.video-list{
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.event:hover{
     opacity: 0.7;
     transition: 1s ease-in-out;
-  }
-
-.aula {
-    margin-right: 5%;
-    font: 500 15px 'Barlow Semi Condensed', sans-serif;
-    margin-top: 1vh;
 }
-
 .event:hover .data, .event:hover .local {
     visibility: visible !important;
     transition: 0.7s ease-in-out;
@@ -99,11 +101,25 @@
     margin-right: 5%;
     padding-top: 120px;
 }
-@media only screen and (max-width: 670px){
+@media only screen and (max-width: 950px){
     .video-list{
-        display: inline-block;
+        grid-template-columns: 1fr 1fr;
+        margin-bottom: 35vh;
+    }
+    .event-list{
+        grid-template-columns: 1fr 1fr;
+        margin-top: 2vh;
     }
     .video-list div{
         margin-top: 2vh;
+    }
+}
+@media only screen and (max-width: 557px){
+    .video-list{
+        grid-template-columns: 1fr;
+        margin-bottom: 86vh;
+    }
+    .event-list{
+        grid-template-columns: 1fr;
     }
 }

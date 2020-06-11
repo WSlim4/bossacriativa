@@ -14,8 +14,10 @@ import banner from '../../../assets/banner-1.jpg'
 import admin_img from '../../../assets/adminAssets/admin.png'
 import { store } from '../../../store'
 import { signOut } from '../../../store/modules/auth/actions'
-import Events from '../Eventos/Eventos'
-import EventModal from '../../../components/eventModal/Modal'
+import Shows from '../Shows/Shows'
+import Events from '../Eventos/Events'
+import ShowsModal from '../../../components/showsModal/Modal'
+import EventsModal from '../../../components/eventModal/Modal'
 
 function AdminPanel(props){
    const [page, setPage] = useState()
@@ -37,12 +39,19 @@ function AdminPanel(props){
                     addCourse
                     action="adicionar"
                    />
-       }else if(display==="events"){
-            return <EventModal
+       }else if(display==="shows"){
+            return <ShowsModal
+                    addShow
+                    action="adicionar"
+                    />
+       }
+       else if(display==="events"){
+            return <EventsModal
                     addEvent
                     action="adicionar"
                     />
-       }else{
+        }
+       else{
            return null
        }
    }
@@ -63,13 +72,14 @@ function AdminPanel(props){
                     <li onClick={()=>setDisplay('users')}>Usuários <MdKeyboardArrowRight size="1.2em"/></li>
                     <li onClick={()=>setDisplay('courses')}>Cursos <MdKeyboardArrowRight size="1.2em"/></li>
                     <li onClick={()=>setDisplay('lessons')}>Vídeo aulas <MdKeyboardArrowRight size="1.2em"/></li>
+                    <li onClick={()=>setDisplay('shows')}>Shows <MdKeyboardArrowRight size="1.2em"/></li>
                     <li onClick={()=>setDisplay('events')}>Eventos <MdKeyboardArrowRight size="1.2em"/></li>
                 </ul>
                 <br/>
             </section>
             <section className="admin-section2">
                 <header className="panel">
-                    <h3>Bem vindo ao mini sistema de administração</h3>
+                    <h3>Bem vindo a versão beta do mini sistema de administração</h3>
                     {checkDisplay()}
                     <IconContext.Provider value={{ size:"2em", className: "del" }}>
                             <FiPower onClick={logout}/>
@@ -79,6 +89,7 @@ function AdminPanel(props){
                         {display === "users" ? <Users page={page}/> : null }
                         {display === "courses" ? <Cursos page={page}/> : null}
                         {display === "lessons" ? <Lessons page={page}/> : null}
+                        {display === "shows" ? <Shows page={page}/>: null}
                         {display === "events" ? <Events page={page}/>: null}
                     </div>
             </section>

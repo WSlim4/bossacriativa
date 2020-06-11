@@ -6,21 +6,21 @@ class EventController {
     
     async store({ request }){
         const eventData = request.only([
-            'title',
             'artist',
+            'data',
             'address',
-            'url'
+            'img'
         ])
         const event = await Event.create(eventData)
         
         return event
     }
     async edit({ request, params }){
-        const { name, title, address, url, artist } = request.all()
+        const { data, address, img, artist } = request.all()
         const event = await Event.findOrFail(params.id)
-            event.title = title,
             event.address = address,
-            event.url = url,
+            event.data = data,
+            event.img = img,
             event.artist = artist
             event.save()
         

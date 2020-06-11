@@ -44,3 +44,10 @@ input, button, textarea {
 .link{
     font-weight: bold;
 }
+.main-title {
+    padding-top: 10px;
+    height: 40px;
+    text-align: center;
+    font: 700 20px 'Caveat', cursive;
+    background-color: #E7C032;
+}

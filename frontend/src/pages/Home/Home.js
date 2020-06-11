@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Row, Col } from 'react-grid-system';
 import '../../global.css';
 import './Home.css';
 import Banner from '../../assets/banner-1.jpg';
@@ -9,12 +8,12 @@ import maine from '../../assets/themaine.jpg'
 
 function Home() {
   const [lessons, setLesson] = useState([])
+  const [shows, setShows] = useState([])
   const [events, setEvents] = useState([])
 
   useEffect(()=>{
     api.get('/lastLessons').then(res=>setLesson(res.data))
-  }, [])
-  useEffect(()=>{
+    api.get('/lastShows').then(res=>setShows(res.data))
     api.get('/lastEvents').then(res=>setEvents(res.data))
   }, [])
 
@@ -28,27 +27,25 @@ function Home() {
           <h2 className="title-home">EVENTOS</h2>
         </div>
         <div className="event-list">
-        <Row>
-            <Col sm={3}>
-              <div className="event">
-                <h4 className="artist">The Maine</h4>
-                <div className="infos">
-                  <h5 className="data">07/07/2020</h5>
-                  <h5 className="local">CIRCO VOADOR</h5>
+                {events.map((evento)=>
+                 <div className="event" style={{backgroundImage: `url(${evento.img})`}}>
+                  <h4 className="artist">{evento.artist}</h4>
+                  <div className="infos">
+                    <h5 className="data">{evento.data}</h5>
+                    <h5 className="local">{evento.address}</h5>
+                  </div>
                 </div>
-              </div>
-            </Col>
-          </Row>
-      </div>
-      </div>
+                )}
+          </div>
+        </div> 
       <div className="event-list-div">
         <div className="title-div">
           <h2 className="title-home">SHOWS</h2>
         </div>
         <div className="video-list">
-            {events.map((event)=>
+            {shows.map((show)=>
                   <ReactPlayer 
-                      url={event.url}
+                      url={show.url}
                       controls
                       width='100%'
                       height='100%'

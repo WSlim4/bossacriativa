@@ -17,6 +17,12 @@ Route.put('/course/:id', 'CourseController.edit')
 Route.delete('/course/:id', 'CourseController.destroy')
 Route.get('/courses', 'CourseController.index')
     
+Route.post('/shows', 'ShowController.store')
+Route.put('/show/:id', 'ShowController.edit')
+Route.delete('/show/:id', 'ShowController.destroy')
+Route.get('/shows', 'ShowController.index')
+Route.get('/lastShows', 'ShowController.show')
+
 Route.post('/events', 'EventController.store')
 Route.put('/event/:id', 'EventController.edit')
 Route.delete('/event/:id', 'EventController.destroy')
