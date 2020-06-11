@@ -13,7 +13,7 @@ class NavBar extends Component {
                 <Link to="/" className="logo">
                     <img src={logonav} alt="Logo" className="brand-logo"/>
                 </Link>
-                <Nav className="mr-auto">
+                <Nav>
                 <ul id="nav-mobile" className="right hide-on-med-and-down">
                     <li><NavLink className="link" to="/login">LOGIN</NavLink></li>
                     <li><NavLink className="link" to="/about">O PROJETO</NavLink></li>
@@ -22,8 +22,13 @@ class NavBar extends Component {
                     <li><NavLink className="link" to="/videoaulas">VIDEOAULAS</NavLink></li>
                     <li><NavLink className="link" to="/midia">MIDIA</NavLink></li>
                     <li><NavLink className="link" to="/imprensa">IMPRENSA</NavLink></li> 
-                    <li><NavLink className="link" to="/editais">EDITAIS</NavLink></li>    
+                    <li><NavLink className="link" to="/editais">EDITAIS</NavLink></li>
                 </ul>
+                <div className="menu-toggle">
+                    <div className="one"></div>
+                    <div className="two"></div>
+                    <div className="three"></div>
+                </div> 
                 </Nav>
             </Navbar>
             </>
