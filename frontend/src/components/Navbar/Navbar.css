@@ -23,7 +23,7 @@
     height: 90px;
 }
 
-.link {
+.link, #correctFont {
     height: 90px;
     text-decoration: inherit;
     font-family: 'Barlow Semi Condensed', sans-serif;
@@ -42,6 +42,14 @@
     margin-right: 2vh;
     margin-top: 1vh;
     margin-bottom: 1vh;
+}
+
+.menuItem {
+    margin-left: 20vw;
+}
+
+#largeMenuItem {
+    margin-top: 7vh;
 }
 
 @media only screen and (max-width: 961px) {
