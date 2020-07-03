@@ -51,6 +51,9 @@ h6{
 button {
     cursor: pointer;
 }
+.quero:hover{
+    cursor: pointer;
+}
 
 input, button, textarea {
     font: 400 18px 'Barlow Semi Condensed', sans-serif;

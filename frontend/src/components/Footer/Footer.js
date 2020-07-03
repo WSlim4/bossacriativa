@@ -9,7 +9,7 @@ import Bonif from '../../assets/bonif.png';
 import facebook from '../../assets/redesAssets/facebook.svg'
 import instagram from '../../assets/redesAssets/instagram.svg'
 import youtube from '../../assets/redesAssets/youtube.svg'
-
+import chancelaria from '../../assets/chancelaria.png'
 class Footer extends Component {
     render() {
         return (
@@ -45,18 +45,9 @@ class Footer extends Component {
                     <h6 className="copyright left" style={{backgroundColor: 'transparent'}}>
                         © 2020 Copyright Bossa Criativa: Arte de toda gente - todos os direitos reservados<br/></h6>
                     <div className='apoio'>
-                        <a className="footer-img" href="https://www.funarte.gov.br/" target="_blank">
-                            <img src={Funarte} alt="Logo Funarte" className="logo"/>
-                        </a>
-                        <a className="footer-img" href="https://ufrj.br/" target="_blank">
-                            <img src={UFRJ} alt="Logo UFRJ" className="logo"/>
-                        </a>
-                        <a  className="footer-img" href="http://www.musica.ufrj.br/">
-                            <img src={EscMus} alt="Logo Escola de Música" className='brand-logo logo'></img>
-                        </a>
-                        <a className="footer-img" href="http://www.fujb.ufrj.br/">
-                            <img src={Bonif} alt="Logo Fundação José Bonifácio" className="logo"></img>
-                        </a>
+                        <div className="footer-img" href="https://ufrj.br/" target="_blank">
+                            <img src={chancelaria} alt="Logo UFRJ" className="logo"/>
+                        </div>
                     </div>
                 </div>
             </div>

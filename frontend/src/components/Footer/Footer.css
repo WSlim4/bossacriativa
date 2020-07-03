@@ -9,7 +9,7 @@ body,
   flex-flow: column nowrap;
 }
 .footer-img{
-  width: 130px;
+  width: 700px;
 }
 .footer-img img{
   width: 100%;
@@ -65,10 +65,12 @@ body,
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  flex-direction: row-reverse;
   right: 5vh;
   position: absolute;
   margin-top: 15px;
+}
+.footer-img{
+  margin-right: 2vh;
 }
 
 /* .ufrj-logo {
