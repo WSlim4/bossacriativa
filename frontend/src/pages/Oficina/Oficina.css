@@ -1,0 +1,94 @@
+.main-title{
+    background-color: #E7C032;
+    font-family: 'Amatic SC', 'cursive';
+    font-weight: bold;
+    padding: 0.25em;
+    margin-top: 5vh;
+}
+
+.breadcrumb {
+    margin-top: 5vh;
+    background-color: inherit !important;
+}
+
+.fontspan {
+    font: 400 1.3em 'Barlow Semi Condensed', sans-serif !important;
+}
+
+.colorspan {
+    background-color: #E7C032 !important;
+    padding: 0.25em;
+    left: 0;
+    margin-left: -1vw;
+}
+
+.video-container{
+    background-color: black !important;
+    width: 100%;
+    margin-bottom: 2vh;
+}
+
+
+@media only screen and (max-width: 400px) {
+
+    .fontspan {
+      font-size: 0.8em !important;
+    }
+  
+  }
+
+.oficinas-content{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 11px;
+}
+.oficinas-content div{
+    font-size: 0.75em;
+}
+
+.oficina-name {
+    color: black;
+    font: 400 1.3em 'Barlow Semi Condensed', sans-serif !important;
+}
+
+.oficina-title {
+    color: white;
+    background-color: black;
+    font: 400 2em 'Barlow Semi Condensed', sans-serif !important;
+    padding: 0.25em;
+    padding-left: 0.5em;
+}
+
+.top-container>* {
+    padding: 0 !important;
+}
+
+.top-div {
+    min-height: 100vh;
+    background-color: #E7C032;
+    margin-bottom: 5vh;
+    margin-top: 5vh;
+}
+
+.desc {
+    padding: 1em;
+    font: 400 1em 'Barlow Semi Condensed', sans-serif !important;
+}
+
+.quero {
+    font: 500 1.3em 'Barlow Semi Condensed', sans-serif !important;
+    text-align: center;
+    background-color: #E7C032;
+    padding: 0.25em;
+}
+
+@media only screen and (max-width:773px){
+    .oficinas-content{
+        grid-template-columns: 1fr 1fr;
+    }
+}
+@media only screen and (max-width:389px){
+    .oficinas-content{
+        grid-template-columns: 1fr;
+    }
+}

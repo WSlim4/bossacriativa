@@ -1,0 +1,43 @@
+.title-midia {
+    text-align: center;
+    font: 500 32px 'Barlow Semi Condensed', sans-serif;
+}
+
+.midia-div {
+    margin-top: 5vh;
+    background-color: white;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+    margin-bottom: 5vh;
+}
+
+.subtitle-midia {
+    font: 500 20px 'Barlow Semi Condensed', sans-serif;
+    text-align: center;
+    margin-top: 3vh;
+}
+.midia-container{
+    /* height: 60vh; */
+}
+
+.gallery-list {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+.gallery-list-item {
+}
+
+.gallery-photo{
+    height: 15vh;
+    margin: 0.25em;
+}
+
+.gallery_full_scale_photo {
+    width: 80vw;
+}
+
+.gallery_full_scale_photo:hover,  .gallery-photo:hover {
+    filter: opacity(50%);
+}

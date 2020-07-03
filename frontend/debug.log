@@ -1,0 +1,5 @@
+[0626/144833.699:ERROR:process_info.cc(359)] UncheckedAllocate
+[0626/144834.773:ERROR:filesystem_win.cc(148)] DeleteFile C:\Users\Wesley Lima\AppData\Local\Google\Chrome\User Data\Crashpad\reports\75f1285d-8cf1-4a4f-9749-5f5f5f025434.dmp: O arquivo já está sendo usado por outro processo. (0x20)
+[0626/144836.531:ERROR:process_info.cc(359)] UncheckedAllocate
+[0702/221352.976:ERROR:process_reader_win.cc(123)] NtOpenThread: {Acesso Negado} Um processo solicitou acesso a um objeto, mas o direito de acesso não lhe foi concedido. (0xc0000022)
+[0702/221353.070:ERROR:exception_snapshot_win.cc(98)] thread ID 9764 not found in process

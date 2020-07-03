@@ -1,0 +1,22 @@
+.title-palestras {
+    text-align: center;
+    font: 500 32px 'Barlow Semi Condensed', sans-serif;
+}
+
+.palestras-div {
+    margin-top: 5vh;
+    background-color: white;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+    margin-bottom: 5vh;
+}
+
+.subtitle-palestras {
+    font: 500 20px 'Barlow Semi Condensed', sans-serif;
+    text-align: center;
+    margin-top: 3vh;
+}
+
+.palestras-container{
+    height: 60vh;
+}

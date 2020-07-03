@@ -1,0 +1,97 @@
+.admin-container{
+    background-color: azure;
+    
+    width: 100%;
+    height: 100vh;
+    
+    display: flex;
+    font-family: 'Roboto';
+    overflow: auto;
+}
+.admin-section1{
+    width: 20%;
+    height: 100vh;
+    
+    text-align: center;
+    background-color: gray;
+}
+.options{
+    list-style: none;
+
+    padding: 0;
+}
+.options li{
+    width: 100%;
+    margin-top: 1vh;
+    
+    font-size: 1.1em;
+    
+    text-align: left;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+
+    transition: 0.4s;
+    padding: 3%;
+}
+
+.options li:hover{
+    cursor: pointer;
+    font-weight: bold;
+    background-color: gold;
+}
+.admin-section2{
+    width: 80%;
+    text-align: center;
+    overflow: auto;
+}
+
+.admin-section2 .panel{
+    border-bottom: 1px solid;
+    display: flex;
+    margin-top: 4vh;
+    justify-content: space-between;
+}
+
+.display{
+    margin-top: 0;
+    padding: 0;
+}
+#users {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+#users td, #users th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+#users tr:nth-child(even){background-color: #f2f2f2;}
+
+#users th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: gold;
+    color: black;
+}
+#users tr:hover{
+    background-color: #ddd;
+}
+.del{
+    margin-left: 1vh;
+}
+.del:hover{
+    color: gold;
+    cursor: pointer;
+}
+#logout{
+    width: 10%;
+    background-color: black;
+}
+.adm-icon{
+    width: 100%;
+}
+.adm-icon:hover{
+    cursor: pointer;
+}

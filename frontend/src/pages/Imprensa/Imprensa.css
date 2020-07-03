@@ -1,0 +1,80 @@
+.title-imprensa {
+    text-align: center;
+    font: 500 32px 'Barlow Semi Condensed', sans-serif;
+}
+
+.imprensa-div {
+    margin-top: 5vh;
+    background-color: white;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+    margin-bottom: 5vh;
+    padding: 1em;
+}
+
+.subtitle-imprensa {
+    font: 500 20px 'Barlow Semi Condensed', sans-serif;
+    text-align: center;
+    margin-top: 3vh;
+}
+
+.textos{
+    padding: 16px;
+}
+
+.textos strong{
+    text-decoration: underline;
+    color: blue;
+}
+.imprensa-links{
+    margin-top: 10vh;
+    padding: 10px;
+}
+.imprensa-links a{
+    font-size: 0.9em;
+}
+
+.contato-imprensa{
+    margin-bottom: 10vh;
+}
+
+.imprensa-container {
+    margin: 2em 0;
+}
+
+.imprensa-title{
+    background-color: #E7C032;
+    font-family: 'Amatic SC', 'cursive';
+    font-weight: bold;
+    padding: 0.25em;
+}
+
+.imprensa-container h3{
+    font-weight: bold;
+}
+
+.imprensa-container h3, .imprensa-container p {
+    font: 'Barlow Semi Condensed', sans-serif;
+}
+
+.imprensa-download-div {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.imprensa-download-img {
+    width: 15vw;
+    height: 20vh;
+}
+
+.imprensa-downloads-div {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+
+.imprensa-materias-div {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+}
