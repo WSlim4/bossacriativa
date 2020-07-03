@@ -1,15 +1,11 @@
 import React, { Component } from 'react';
-import '../../global.css';
 import './Footer.css';
-import Funarte from '../../assets/funarte.svg';
-import UFRJ from '../../assets/ufrj.png';
 import {Link} from 'react-router-dom';
-import EscMus from '../../assets/escmus.png';
-import Bonif from '../../assets/bonif.png';
 import facebook from '../../assets/redesAssets/facebook.svg'
 import instagram from '../../assets/redesAssets/instagram.svg'
 import youtube from '../../assets/redesAssets/youtube.svg'
 import chancelaria from '../../assets/chancelaria.png'
+
 class Footer extends Component {
     render() {
         return (
