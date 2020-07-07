@@ -6,6 +6,7 @@ import banner from '../../assets/banner-2.jpg'
 import Carousel from 'react-bootstrap/Carousel';
 import { Link } from 'react-router-dom'
 import history from '../../services/history'
+import bannerlive from '../../assets/banner-live.jpg'
 
 function Home() {
   const [workshops, setWorkshop] = useState([])
@@ -62,7 +63,10 @@ function Home() {
 
   return (
     <div className="home-container">
-      <div className="banner-div">
+      <div className="carousel-container">
+      <Carousel>
+        <Carousel.Item>
+        <div className="banner-div">
         <section className="section-1">
           <p style={{fontSize:'2.4em', fontFamily:'Amatic SC' }}>BOSSACRIATIVA</p>
             <p className="min-home">No Bossa Criativa – Arte de Toda Gente, a Fundação Nacional de Artes – Funarte e a Universidade Federal do Rio de Janeiro (UFRJ) reúnem apresentações e capacitação em diversas formas artísticas e de economia criativa.</p>
@@ -71,15 +75,18 @@ function Home() {
 
             <p className="min-home">Aqui você vai assistir gratuitamente a pocket shows, apresentações de projetos e videoaulas com a participação de artistas e especialistas de todo o país. Em 2021, o projeto vai promover eventos presenciais em nove pontos do patrimônio mundial no Brasil.</p>
           <br/>
-          {/* <div className="banner-dots" style={{backgroundColor: 'transparent'}}>
-            <span className="dot"></span>
-            <span className="dot"></span>
-            <span className="dot"></span>
-          </div> */}
         </section>
         <section className="section-2" style={{backgroundImage:`url(${banner})`}}> 
         </section>
       </div>
+        </Carousel.Item>
+  <Carousel.Item>
+    <div className="banner-div live" style={{backgroundImage: `url(${bannerlive})`}}>
+    </div>
+  </Carousel.Item>
+</Carousel>
+
+    </div>
       <div className="home-content">
         <h4 className="title max-home">APRESENTAÇÕES</h4>
         <div className="artistas">

@@ -96,10 +96,14 @@ h6{
     padding: 5px 0 5px 15px;
     background-color: blueviolet;
 }
-.home-carousel-item:hover{
-    cursor: pointer;
+.live{
+    width: 80%;
+    height: 80vh;
+    background-color: #E7C032;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
 }
-
 .artistas .mySlides, .oficinas-palestras{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -194,3 +198,4 @@ h6{
 .dot:hover {
     background-color: #E7C032;
 }
+

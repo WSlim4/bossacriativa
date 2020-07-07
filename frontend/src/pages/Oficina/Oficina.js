@@ -96,11 +96,12 @@ class Oficina extends React.Component{
             <h1 className="main-title">OUTRAS OFICINAS DESTE OFICINEIRO</h1>
             <div className="oficinas-content"> 
                 {workshops.map(workshop=>
-                <div onClick={()=>
+                <div style={{ backgroundColor: "#E7C032"}} onClick={()=>
                     this.reloadPage(workshop.id, workshop.artist_name)
                 }>
-                    <img className="div-img" src={workshop.img_url}/>
-                    <h6 className="oficina-name" style={{backgroundColor: `${workshop.theme_color}`}}>{workshop.name}</h6>
+                    <div className="div-img" style={{backgroundImage: `url(${workshop.img_url})`}}/>
+                    <h6 style={{backgroundColor: `${workshop.theme_color}`}}>{workshop.artist_name}</h6>
+                    <p>{workshop.description}</p>
                 </div>
                 )}
             </div>
