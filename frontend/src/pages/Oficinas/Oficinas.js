@@ -99,13 +99,11 @@ class Oficinas extends React.Component{
                 </div>
                 <div className="main-content"> 
                     {workshops.map(workshop=>
-                        <div onClick={()=>
-                            history.push(`/oficina/${workshop.id}/${workshop.artist_name}`)
-                        }>
-                            <img className="div-img" src={workshop.img_url}/>
-                            <h6 style={{backgroundColor: workshop.theme_color}}>{workshop.artist_name}</h6>
+                        <div style={{ backgroundColor: "#E7C032"}} onClick={()=>{ history.push(`/oficina/${workshop.id}`)}}>
+                            <div className="div-img" style={{backgroundImage: `url(${workshop.img_url})`}}/>
+                            <h6 style={{backgroundColor: `${workshop.theme_color}`}}>{workshop.artist_name}</h6>
                             <p>{workshop.description}</p>
-                        </div>
+                      </div>
                     )}
                 </div>
                 {pgNmb.map(val=>

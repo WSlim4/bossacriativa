@@ -10,14 +10,10 @@ class WorkshopController {
         return workshop
     }
 
-    async edit({ request, params, response, auth }){
+    async edit({ request, params, response }){
         const { category, name, artist_name, description, about_artist, theme_color, img_url } = request.all()
-        const user = auth.getUser()
-        
+
         try{
-            if(user.role != "admin"){
-                throw "Error"
-            }
             let workshop = await Workshop.findOrFail(params.id)
             workshop.category = category
             workshop.name = name
@@ -31,7 +27,6 @@ class WorkshopController {
         } catch(err){
             return response.err
         }
-
     }
     
     async index ({ request }){
