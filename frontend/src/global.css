@@ -95,17 +95,6 @@ input, button, textarea {
     font-size: 2.2em;
 }
 
-.modal-title{
-    background-color: blueviolet;
-}
-
-.modal-desc {
-    padding-top: 5vh;
-}
-.cont{
-    height: 100vh;
-    background-color: white;
-}
 .home-content{
     margin-top: 6vh;
 }
@@ -168,13 +157,19 @@ option{
 .head h2{
     margin-top: 1.2vh;
 }
-
-.modal-header {
-    background-color: blueviolet;
+.buttons{
+    margin-top: 2vh;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
 }
-
-.modal-body {
+.buttons button, .links-btn{
     background-color: #E7C032;
+    border-style: none;
+    font-weight: bold;
+    width: 180px;
+    padding-bottom: 10px;
+    padding-top: 10px;
 }
 
 @media only screen and (max-width:1091px){

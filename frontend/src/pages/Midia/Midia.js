@@ -37,7 +37,6 @@ class Midia extends React.Component {
     }
 
     handleImageChanges(index) {
-        console.log(index, this.state.images)
         let new_state = this.state.images;
         const changeType = this.state.images[index].toggled;
         for (let photo of new_state){

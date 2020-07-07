@@ -27,12 +27,10 @@ body,
 .bloco {
     height: 12vh;
     width: 100%;
-    display: inline-block;
-    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     font: 400 15px 'Barlow Semi Condensed', sans-serif !important;
-    padding: 0;
-    margin: 0;
-    
 }
 .grey{
   background-color: lightgrey;
@@ -60,15 +58,12 @@ body,
   font-size: 1.1em !important;
 }
 
-.apoio {
-  margin-top: 3vh;
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  right: 5vh;
-  position: absolute;
-  margin-top: 15px;
+@media only screen and(min-width: 1288px){
+  .bloco{
+    flex-direction: column-reverse;
+  }
 }
+
 .footer-img{
   margin-right: 2vh;
 }
@@ -81,15 +76,7 @@ body,
     height: 30px;
 } */
 
-.logo {
-  height: 4vh;
-  margin: 0 0.25em;
-}
-
 .copyright {
-    position: absolute;
-    margin-top: 15px;
-    left: 2vw;
     font: 400 15px 'Barlow Semi Condensed', sans-serif !important;
 }
 
@@ -160,9 +147,6 @@ body,
     font-size: 0.6em !important;
   }
 
-  .logo {
-    margin-top: 45px;
-  }
 }
 
 @media only screen and (max-width: 400px) {

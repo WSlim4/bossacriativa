@@ -39,11 +39,9 @@ class Footer extends Component {
                 </div>
                 <div className="bloco yellow">
                     <h6 className="copyright left" style={{backgroundColor: 'transparent'}}>
-                        © 2020 Copyright Bossa Criativa: Arte de toda gente - todos os direitos reservados<br/></h6>
-                    <div className='apoio'>
-                        <div className="footer-img" href="https://ufrj.br/" target="_blank">
-                            <img src={chancelaria} alt="Logo UFRJ" className="logo"/>
-                        </div>
+                        © 2020 Copyright Bossa Criativa: Arte de toda gente - todos os direitos reservados</h6>
+                    <div className="footer-img apoio">
+                        <img src={chancelaria} alt="Logo UFRJ"/>
                     </div>
                 </div>
             </div>

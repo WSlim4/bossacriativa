@@ -23,6 +23,8 @@ import history from './services/history'
 import Patrimonio from './pages/Patrimonio/Patrimonio'
 import Temas from './pages/Temas/Temas';
 import Apresentacao from './pages/Show/Show'
+import Links from './pages/Links/Links'
+import NotFound from './pages/NotFoundPage/NotFound'
 
 export default function Routes(){
 
@@ -51,6 +53,8 @@ export default function Routes(){
               <Route path="/patrimonio" component={Patrimonio}/>
               <Route path="/temas" component={Temas}/>
               <Route path="/apresentacao/:id?" component={Apresentacao}/>
+              <Route path="/links" component={Links}/>
+              <Route path="" component={NotFound}/>
             </Switch>
             </div>
             <Footer/>

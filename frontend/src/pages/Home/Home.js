@@ -62,7 +62,6 @@ function Home() {
 
   return (
     <div className="home-container">
-      {console.log(workshops)}
       <div className="banner-div">
         <section className="section-1">
           <p style={{fontSize:'2.4em', fontFamily:'Amatic SC' }}>BOSSACRIATIVA</p>

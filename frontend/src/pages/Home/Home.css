@@ -174,20 +174,6 @@ h6{
 
 /*BOTÕES*/
 
-.buttons{
-    margin-top: 2vh;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-}
-.buttons button{
-    background-color: #E7C032;
-    border-style: none;
-    font-weight: bold;
-    width: 180px;
-    padding-bottom: 10px;
-    padding-top: 10px;
-}
 .dots{
     background-color:black;
     width: 77.5%;

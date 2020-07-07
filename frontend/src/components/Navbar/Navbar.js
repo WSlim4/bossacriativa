@@ -30,7 +30,7 @@ class NavBar extends Component {
                     <NavDropdown title="MENU" id="correctFont">
                         <NavDropdown.Item><NavLink className="link" to="/about">O PROJETO</NavLink></NavDropdown.Item>
                         {/*<NavDropdown.Item><NavLink className="link" to="/palestras">PALESTRAS</NavLink></NavDropdown.Item>*/}
-                        <NavDropdown.Item><NavLink className="link" to="/oficinass">OFICINAS</NavLink></NavDropdown.Item>
+                        <NavDropdown.Item><NavLink className="link" to="/oficinas">OFICINAS</NavLink></NavDropdown.Item>
                         <NavDropdown.Item><NavLink className="link" to="/galeria">GALERIA</NavLink></NavDropdown.Item>
                         <NavDropdown.Item><NavLink className="link" to="/noticias">NOTÍCIAS</NavLink></NavDropdown.Item>
                         <NavDropdown.Item><NavLink className="link" to="/parceiros">PARCEIROS</NavLink></NavDropdown.Item>
