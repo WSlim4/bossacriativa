@@ -26,10 +26,7 @@ class Noticia extends React.Component{
                     {this.state.news.title}
                 </h1>
                 <p className="text-about">
-                    {this.state.news.introduction}
-                </p>
-                <p className="text-about">
-                    {this.state.news.description}
+                    <td dangerouslySetInnerHTML={{__html: this.state.news.description}} />
                 </p>
             </div>
             <Link className="link" to="/noticias"><a className="volte btn">Voltar para Notícias</a></Link>

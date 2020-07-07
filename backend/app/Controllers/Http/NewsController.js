@@ -48,9 +48,9 @@ class NewsController {
     async lastNews({ request }){
         let { page } = request.all()
         page = page ? page : 1
-        const news = Database.table('news').limit(6).orderBy('id', 'desc')
+        const news = Database.table('news').limit(2).orderBy('id', 'desc')
         
-        return await news.paginate(page ? page : 1, 2)
+        return await news
     }
     async searchNews({ request }){
         const { value } = request.all()

@@ -66,7 +66,7 @@ class Oficina extends React.Component{
                             <p className="desc">{infos[0].name}
                             <br/>
                             <br/>
-                            {infos[0].description}
+                            <td dangerouslySetInnerHTML={{__html: infos[0].description}} />
                             </p>
                         </div>
                     </Col>
@@ -101,7 +101,7 @@ class Oficina extends React.Component{
                 }>
                     <div className="div-img" style={{backgroundImage: `url(${workshop.img_url})`}}/>
                     <h6 style={{backgroundColor: `${workshop.theme_color}`}}>{workshop.artist_name}</h6>
-                    <p>{workshop.description}</p>
+                    <p>{workshop.about_artist}</p>
                 </div>
                 )}
             </div>

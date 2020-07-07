@@ -11,6 +11,7 @@ import Modal from '../lessonModal/modal'
 import { IoMdAddCircle } from 'react-icons/io'
 import { FaEdit } from 'react-icons/fa'
 import { IconContext } from 'react-icons'
+import CKEditor from 'ckeditor4-react';
 
 export default function FormDialog(props) {
   const [open, setOpen] = useState(false);
@@ -18,10 +19,17 @@ export default function FormDialog(props) {
   const [name, setName] = useState()
   const [artist_name, setArtist] = useState()
   const [about_artist, setAbout] = useState()
-  const [description, setDescription] = useState()
+  const [description, setDesc] = useState()
   const [category, setCategory] = useState()
   const [theme_color, setTheme] = useState()
   const [img_url, setImg] = useState()
+
+  function onEditorChange( evt ){
+    return setDesc(evt.editor.getData())
+  }
+  function handleChange( changeEvent ){
+    return setDesc( changeEvent.target.value )
+  }
 
   async function handleCoursePost(e){
     e.preventDefault()
@@ -124,22 +132,20 @@ export default function FormDialog(props) {
             autoFocus
             margin="dense"
             id="about"
-            label="Sobre o artista"
+            label="Chamada da oficina"
             type="text"
             fullWidth
             value={about_artist}
             onChange={e => setAbout(e.target.value) }
           />
-          <TextField
-            autoFocus
-            margin="dense"
-            id="description"
-            label="Descrição"
-            type="text"
-            fullWidth
-            value={description}
-            onChange={e => setDescription(e.target.value) }
-          />
+          <div className="App">
+                <h2>Insira aqui o corpo da oficina, cronogramas etc...</h2>
+                <CKEditor
+                    data={description}
+                    type="classic"
+                    onChange={onEditorChange}
+                />
+          </div>
           <TextField
             autoFocus
             margin="dense"

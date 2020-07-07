@@ -19,7 +19,7 @@ function Home() {
       const lastworkshops = await api.get(`/lastWorkshops`)
       const lastlectures = await api.get('/lectures')
       const lastShows = await api.get('/lastShows')
-      const lastNews = await api.get('/news')
+      const lastNews = await api.get('/lastNews')
 
       let w = new Array()
       let temp = new Array()
@@ -54,7 +54,7 @@ function Home() {
       setWorkshop(lastworkshops.data.data)
       setLectures(l)
       setShows(lastShows.data.data)
-      setNews(lastNews.data.data)
+      setNews(lastNews.data)
       
       return
     }
@@ -64,8 +64,6 @@ function Home() {
   return (
     <div className="home-container">
       <div className="carousel-container">
-      <Carousel>
-        <Carousel.Item>
         <div className="banner-div">
         <section className="section-1">
           <p style={{fontSize:'2.4em', fontFamily:'Amatic SC' }}>BOSSACRIATIVA</p>
@@ -79,13 +77,6 @@ function Home() {
         <section className="section-2" style={{backgroundImage:`url(${banner})`}}> 
         </section>
       </div>
-        </Carousel.Item>
-  <Carousel.Item>
-    <div className="banner-div live" style={{backgroundImage: `url(${bannerlive})`}}>
-    </div>
-  </Carousel.Item>
-</Carousel>
-
     </div>
       <div className="home-content">
         <h4 className="title max-home">APRESENTAÇÕES</h4>
@@ -130,7 +121,7 @@ function Home() {
               <div style={{ backgroundColor: "#E7C032"}} onClick={()=>{ history.push(`/oficina/${workshop.id}`)}}>
                 <div className="div-img" style={{backgroundImage: `url(${workshop.img_url})`}}/>
                 <h6 style={{backgroundColor: `${workshop.theme_color}`}}>{workshop.artist_name}</h6>
-                <p>{workshop.description}</p>
+                <p>{workshop.about_artist}</p>
               </div>
             )}
           </div>

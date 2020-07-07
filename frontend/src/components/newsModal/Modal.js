@@ -10,6 +10,7 @@ import api from '../../services/api'
 import { MdNoteAdd } from 'react-icons/md'
 import { IconContext } from 'react-icons'
 import { FaEdit } from 'react-icons/fa'
+import CKEditor from 'ckeditor4-react';
 
 export default function FormDialog(props) {
   const [open, setOpen] = useState(false);
@@ -18,6 +19,14 @@ export default function FormDialog(props) {
   const [introduction, setIntro] = useState()
   const [description, setDesc] = useState()
   const [img_url, setImg] = useState()
+
+  function onEditorChange( evt ){
+    return setDesc(evt.editor.getData())
+  }
+  function handleChange( changeEvent ){
+    return setDesc( changeEvent.target.value )
+  }
+
 
   async function handleNewsPost(e){
     e.preventDefault()
@@ -65,6 +74,7 @@ export default function FormDialog(props) {
 
   return (
     <>
+    {console.log(description)}
     {props.addNews ?
       <IconContext.Provider value={{ size:"2em", className: "del" }}>
          <MdNoteAdd onClick={handleClickOpen}/>
@@ -109,16 +119,14 @@ export default function FormDialog(props) {
             value={introduction}
             onChange={e => setIntro(e.target.value) }
           />
-          <TextField
-            autoFocus
-            margin="dense"
-            id="description"
-            label="Corpo da notícia"
-            type="text"
-            fullWidth
-            value={description}
-            onChange={e => setDesc(e.target.value) }
-          />
+          <div className="App">
+                <h2>Insira aqui o corpo da notícia</h2>
+                <CKEditor
+                    data={description}
+                    type="classic"
+                    onChange={onEditorChange}
+                />
+          </div>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">
