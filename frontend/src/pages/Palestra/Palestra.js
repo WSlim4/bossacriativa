@@ -65,7 +65,7 @@ class Palestra extends React.Component{
                     <Col sm={8}>
                         <div className="top-div">
                             <h2 className="oficina-title">Sobre esta palestra</h2>
-                            <p className="desc">{infos[0].name}
+                            <p className="desc">
                             <br/>
                             <br/>
                             {infos[0].description}

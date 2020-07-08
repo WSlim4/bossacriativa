@@ -23,6 +23,7 @@ export default function FormDialog(props) {
   const [category, setCategory] = useState()
   const [theme_color, setTheme] = useState()
   const [img_url, setImg] = useState()
+  const [introduction, setIntro] = useState()
 
   function onEditorChange( evt ){
     return setDesc(evt.editor.getData())
@@ -41,7 +42,8 @@ export default function FormDialog(props) {
       description,
       category,
       theme_color,
-      img_url
+      img_url,
+      introduction
     }
       try{
         await api.post('/workshops', data)
@@ -62,7 +64,8 @@ export default function FormDialog(props) {
       description,
       category,
       theme_color,
-      img_url
+      img_url,
+      introduction
     }
 
     try{
@@ -131,8 +134,18 @@ export default function FormDialog(props) {
           <TextField
             autoFocus
             margin="dense"
+            id="name"
+            label="Chamada para a oficina"
+            type="text"
+            fullWidth
+            value={introduction}
+            onChange={e => setIntro(e.target.value) }
+          />
+          <TextField
+            autoFocus
+            margin="dense"
             id="about"
-            label="Chamada da oficina"
+            label="Sobre o artista"
             type="text"
             fullWidth
             value={about_artist}

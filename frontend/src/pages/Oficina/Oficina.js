@@ -57,16 +57,16 @@ class Oficina extends React.Component{
                         <div className="top-div">
                             <div className="top-img" style={{backgroundImage: `url(${infos[0].img_url})`}}></div>
                             <h6 className="oficina-name" style={{backgroundColor: `${infos[0].theme_color}`}}>{infos[0].artist_name}</h6>
-                            <p className="desc">{infos[0].about_artist}</p>
+                            <p className="desc" style={{padding: '29px'}}>{infos[0].about_artist}</p>
                         </div>
                     </Col>
                     <Col sm={8}>
                         <div className="top-div">
                             <h2 className="oficina-title">Sobre esta oficina</h2>
-                            <p className="desc">{infos[0].name}
+                            <p className="desc">
                             <br/>
                             <br/>
-                            <td dangerouslySetInnerHTML={{__html: infos[0].description}} />
+                            <td style={{padding: '16px'}}dangerouslySetInnerHTML={{__html: infos[0].description}} />
                             </p>
                         </div>
                     </Col>

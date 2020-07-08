@@ -11,7 +11,7 @@ class WorkshopController {
     }
 
     async edit({ request, params, response }){
-        const { category, name, artist_name, description, about_artist, theme_color, img_url } = request.all()
+        const { category, introduction, name, artist_name, description, about_artist, theme_color, img_url } = request.all()
 
         try{
             let workshop = await Workshop.findOrFail(params.id)
@@ -22,6 +22,7 @@ class WorkshopController {
             workshop.about_artist = about_artist
             workshop.theme_color = theme_color 
             workshop.img_url = img_url
+            workshop.introduction = introduction
             workshop.save()
             return workshop
         } catch(err){

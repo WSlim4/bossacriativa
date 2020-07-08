@@ -21,7 +21,7 @@
 .banner-div {
     text-align: center;
     font-size: 0.8em;
-    height: auto;
+    height: 90vh;
     margin-top: 5vh;
     display: flex;
 }
@@ -44,12 +44,9 @@
 }
 .banner-div .section-2{
     width: 55%;
-    background-color: black;
-    background-position: top;
     background-repeat: no-repeat;
-    background-size: auto;
+    background-size: cover;
 }
-
 .min-home {
     font-size: 1.4em;
 }

@@ -113,7 +113,7 @@ export default function FormDialog(props) {
             autoFocus
             margin="dense"
             id="introduction"
-            label="Introdução"
+            label="Chamada para a notícia"
             type="text"
             fullWidth
             value={introduction}

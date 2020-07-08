@@ -21,42 +21,9 @@ function Home() {
       const lastShows = await api.get('/lastShows')
       const lastNews = await api.get('/lastNews')
 
-      let w = new Array()
-      let temp = new Array()
-      for (let i = 0; i <= lastworkshops.data.data.length; i++) {
-        if (((i % 4) == 0) && i != 0) {
-          w.push(temp)
-          temp = []
-        }
-        temp.push(lastworkshops.data.data[i])
-      }
-      let l = new Array()
-      temp = []
-      console.log(lastlectures.data.data.length)
-      for (let i = 0; i <= lastlectures.data.data.length; i++) {
-        if (((i % 4) == 0) && i != 0) {
-          l.push(temp)
-          temp = []
-        }
-        temp.push(lastlectures.data.data[i])
-      }
-
-      let s = new Array()
-      temp = []
-      for (let i = 0; i <= lastShows.data.data.length; i++) {
-        if ((i % 8) == 0 && i != 0) {
-          s.push(temp)
-          temp = []
-        }
-        temp.push(lastShows.data.data[i])
-      }
-
       setWorkshop(lastworkshops.data.data)
-      setLectures(l)
       setShows(lastShows.data.data)
-      setNews(lastNews.data)
-      
-      return
+      setNews(lastNews.data)    
     }
     getData()
   }, [])
@@ -64,7 +31,23 @@ function Home() {
   return (
     <div className="home-container">
       <div className="carousel-container">
-        <div className="banner-div">
+      <Carousel>
+        <Carousel.Item>
+          <div className="banner-div">
+        <section className="section-1">
+          <p style={{fontSize:'2.4em', fontFamily:'Amatic SC' }}>Cultura nos tempos da covid-19</p>
+            <p className="min-home">Teatro e centros culturais fechados, distanciamento social. Como a produção cultural pode se funcionar em um momento tão complicado? Na live “Processos e modos de estruturação da produção cultural em tempos de restrição”, no ar às 18h desta quarta-feira, 8/7, quatro especialistas no assunto vão conversar sobre esse assunto e comentar os caminhos alternativos que surgiram e continuam a se abrir no segmento.</p>
+
+            <p className="min-home"> Participam do encontro Danielle Torres (sócia do Cultura de Mercado e da Companhia de Cultura e conselheira da Comissão de Direito das Artes da OAB de SP), Christiane Campos (doutoranda em comunicação e produção cultural pela UFF, consultora e diretora da Barka Criativa Ações Culturais) e Cacau Gondomar (produtora cultural, jornalista e designer), com mediação da produtora e gerente de produção do projeto Bossa Criativa, Mariana Pietrobon.</p>
+
+          <br/>
+        </section>
+        <section className="section-2" style={{backgroundImage:`url(${bannerlive})`}}> 
+        </section>
+      </div>
+      </Carousel.Item>
+      <Carousel.Item>
+      <div className="banner-div">
         <section className="section-1">
           <p style={{fontSize:'2.4em', fontFamily:'Amatic SC' }}>BOSSACRIATIVA</p>
             <p className="min-home">No Bossa Criativa – Arte de Toda Gente, a Fundação Nacional de Artes – Funarte e a Universidade Federal do Rio de Janeiro (UFRJ) reúnem apresentações e capacitação em diversas formas artísticas e de economia criativa.</p>
@@ -77,6 +60,8 @@ function Home() {
         <section className="section-2" style={{backgroundImage:`url(${banner})`}}> 
         </section>
       </div>
+      </Carousel.Item>
+      </Carousel>
     </div>
       <div className="home-content">
         <h4 className="title max-home">APRESENTAÇÕES</h4>
@@ -121,7 +106,7 @@ function Home() {
               <div style={{ backgroundColor: "#E7C032"}} onClick={()=>{ history.push(`/oficina/${workshop.id}`)}}>
                 <div className="div-img" style={{backgroundImage: `url(${workshop.img_url})`}}/>
                 <h6 style={{backgroundColor: `${workshop.theme_color}`}}>{workshop.artist_name}</h6>
-                <p>{workshop.about_artist}</p>
+                <p>{workshop.introduction}</p>
               </div>
             )}
           </div>

@@ -9,6 +9,7 @@ class WorkshopSchema extends Schema {
       table.increments()
       table.string('name')
       table.string('artist_name')
+      table.text('introduction')
       table.text('about_artist')
       table.text('description')
       table.string('category')
