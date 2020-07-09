@@ -7,6 +7,10 @@ class GaleriaSchema extends Schema {
   up () {
     this.create('galerias', (table) => {
       table.increments()
+      table.string('img_url')
+
+      table.integer('file_id').unsigned()
+      table.foreign('file_id').references('id').inTable('files').onDelete('cascade')
       table.timestamps()
     })
   }
