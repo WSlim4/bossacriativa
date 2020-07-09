@@ -25,6 +25,11 @@
     margin-top: 5vh;
     display: flex;
 }
+.news-btn{
+    margin-top: 40vh !important;
+    width: 100px;
+    height: 30px;
+}
 
 .banner-div>* {
     max-height: 100vh;
@@ -45,6 +50,7 @@
 .banner-div .section-2{
     width: 55%;
     background-repeat: no-repeat;
+    background-position: center;
     background-size: cover;
 }
 .min-home {

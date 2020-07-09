@@ -6,7 +6,7 @@ import banner from '../../assets/banner-2.jpg'
 import Carousel from 'react-bootstrap/Carousel';
 import { Link } from 'react-router-dom'
 import history from '../../services/history'
-import bannerlive from '../../assets/banner-live.jpg'
+import noticia from '../../assets/noticia.jpg'
 
 function Home() {
   const [workshops, setWorkshop] = useState([])
@@ -35,14 +35,12 @@ function Home() {
         <Carousel.Item>
           <div className="banner-div">
         <section className="section-1">
-          <p style={{fontSize:'2.4em', fontFamily:'Amatic SC' }}>Cultura nos tempos da covid-19</p>
-            <p className="min-home">Teatro e centros culturais fechados, distanciamento social. Como a produção cultural pode se funcionar em um momento tão complicado? Na live “Processos e modos de estruturação da produção cultural em tempos de restrição”, no ar às 18h desta quarta-feira, 8/7, quatro especialistas no assunto vão conversar sobre esse assunto e comentar os caminhos alternativos que surgiram e continuam a se abrir no segmento.</p>
-
-            <p className="min-home"> Participam do encontro Danielle Torres (sócia do Cultura de Mercado e da Companhia de Cultura e conselheira da Comissão de Direito das Artes da OAB de SP), Christiane Campos (doutoranda em comunicação e produção cultural pela UFF, consultora e diretora da Barka Criativa Ações Culturais) e Cacau Gondomar (produtora cultural, jornalista e designer), com mediação da produtora e gerente de produção do projeto Bossa Criativa, Mariana Pietrobon.</p>
-
+          <p style={{fontSize:'2.4em', fontFamily:'Amatic SC' }}>Homenagem de Cristovão Bastos e Clarisse Grova a Aldir Blanc</p>
+            <p className="min-home">Homenagem de Cristovão Bastos e Clarisse Grova a Aldir Blanc estreia, aqui no Bossa Criativa nesta sexta-feira, 10/7, a partir das 18h</p>
+            <a className="leia btn news-btn" onClick={()=> { history.push(`/noticia/${5}`)}}>Leia mais</a>
           <br/>
         </section>
-        <section className="section-2" style={{backgroundImage:`url(${bannerlive})`}}> 
+        <section className="section-2" style={{backgroundImage:`url(${noticia})`}}> 
         </section>
       </div>
       </Carousel.Item>

@@ -57,6 +57,7 @@ function Workshops(props){
                         <NewsModal
                         action="editar"
                         id={news.id}
+                        description={news.description}
                         />
                         <IconContext.Provider value={{ size:"2em", className: "del" }}>
                             <MdDelete onClick={()=>handleDelete(news.id)}/>

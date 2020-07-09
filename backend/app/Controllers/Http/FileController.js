@@ -26,7 +26,7 @@ class FileController {
         type: upload.type,
         subtype: upload.subtype
       })
-      return file.id
+      return file
     
     } catch(err){
       return response.status(err.status).send({ error: { message: "Erro no upload"} })

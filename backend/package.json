@@ -28,7 +28,8 @@
     "bootstrap": "^4.4.1",
     "moment": "^2.26.0",
     "pg": "^8.2.1",
-    "sqlite3": "^4.2.0"
+    "sqlite3": "^4.2.0",
+    "url-parse": "^1.4.7"
   },
   "devDependencies": {},
   "autoload": {

@@ -8,7 +8,8 @@ class NewsController {
             'title',
             'introduction',
             'description',
-            'img_url'
+            'img_url',
+            'file_id'
         ])
 
         const news = await News.create(newsData)
@@ -16,11 +17,13 @@ class NewsController {
         return news
     }
     async edit({ request, params }){
-        const { title, description, img_url } = request.all()
+        const { title, description, img_url, introduction, file_id } = request.all()
         const news = await News.findOrFail(params.id)
             news.title = title,
             news.description = description,
-            news.img_url = img_url
+            news.introduction = introduction,
+            news.img_url = img_url,
+            news.file_id = file_id
             news.save()
         
         return news
@@ -48,7 +51,7 @@ class NewsController {
     async lastNews({ request }){
         let { page } = request.all()
         page = page ? page : 1
-        const news = Database.table('news').limit(2).orderBy('id', 'desc')
+        const news = Database.table('news').limit(4).orderBy('id', 'desc')
         
         return await news
     }
