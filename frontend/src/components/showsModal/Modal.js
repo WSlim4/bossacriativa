@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
@@ -19,8 +19,25 @@ export default function FormDialog(props) {
   const [description, setDescription] = useState()
   const [category, setCategory] = useState()
   const [theme_color, setTheme] = useState()
-  const [img_url, setImg] = useState()
   const [show_url, setShow] = useState()
+
+  const [img_url, setImg] = useState()
+  const [file_id, setFile] = useState()
+    
+  const ref = useRef()
+
+  async function handleChange(e){
+    const data = new FormData()
+
+    data.append('file', e.target.files[0])
+
+    const response = await api.post('files', data)
+
+    const { id, url } = response.data
+
+    setFile(id)
+    setImg(url)
+    }
 
 
   async function handleShowPost(e){
@@ -91,6 +108,19 @@ export default function FormDialog(props) {
           <DialogContentText>
             Para {props.action} um show, preencha os campos abaixo
           </DialogContentText>
+          <div>
+            <label htmlFor="file">
+                <img id="preview" src={img_url || "https://www.hanselman.com/blog/content/binary/Windows-Live-Writer/There-is-only-one-Cloud-Icon-in-the-Enti_137BD/image_d64843a5-92db-44cd-98ec-cc1f74c05526.png"} alt=""/>
+                <input 
+                    type="file"
+                    id="file"
+                    data-file={file_id}
+                    accept="image/*"
+                    ref={ref}
+                    onChange={handleChange}
+                />
+            </label>
+          </div>
           <TextField
             autoFocus
             margin="dense"
@@ -110,16 +140,6 @@ export default function FormDialog(props) {
             fullWidth
             value={artist}
             onChange={e => setArtist(e.target.value) }
-          />
-          <TextField
-            autoFocus
-            margin="dense"
-            id="img"
-            label="Img_url"
-            type="text"
-            fullWidth
-            value={img_url}
-            onChange={e => setImg(e.target.value) }
           />
           <TextField
             autoFocus

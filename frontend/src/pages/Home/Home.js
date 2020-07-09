@@ -59,7 +59,7 @@ function Home() {
             {shows.map(show=>
                     <div className="home-carousel-item" style={{ backgroundColor: "#E7C032"}} onClick={()=>history.push(`/apresentacao/${show.id}`)}>
                         <img className="div-img" src={show.img_url}/>
-                        <h5 style={{backgroundColor:`${show.theme_color}`}}>{show.artist}</h5>
+                        <h6 style={{backgroundColor:`${show.theme_color}`}}>{show.artist}</h6>
                           <p>{show.introduction}</p>
                     </div>
                         )}
@@ -76,7 +76,7 @@ function Home() {
                     <div style={{ backgroundColor: "#E7C032"}}>
                         <div className="div-img news-img" style={{backgroundImage: `url(${news.img_url})`}}/>
                         <div className="news-text">
-                          <h5 className="not-title" style={{backgroundColor: 'white'}}>{news.title}</h5>
+                          <h6 className="not-title" style={{backgroundColor: 'white'}}>{news.title}</h6>
                           <p className="desc">{news.introduction}</p>
                           <a className="leia btn" onClick={()=> { history.push(`/noticia/${news.id}`)}}>Leia mais</a>
                         </div>
@@ -94,7 +94,7 @@ function Home() {
             {workshops.map(workshop =>
               <div style={{ backgroundColor: "#E7C032"}} onClick={()=>{ history.push(`/oficina/${workshop.id}`)}}>
                 <div className="div-img" style={{backgroundImage: `url(${workshop.img_url})`}}/>
-                <h5 style={{backgroundColor: `${workshop.theme_color}`}}>{workshop.artist_name}</h5>
+                <h6 style={{backgroundColor: `${workshop.theme_color}`}}>{workshop.artist_name}</h6>
                 <p>{workshop.introduction}</p>
               </div>
             )}

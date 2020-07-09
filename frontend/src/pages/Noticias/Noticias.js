@@ -46,7 +46,7 @@ function Noticias() {
                         <div className="div-img news-img" style={{backgroundImage: `url(${news.img_url})`}}/>
                         <div>
                           <h6 className="not-title" style={{backgroundColor: 'white'}}>{news.title}</h6>
-                          <p className="desc">{news.introduction}</p>
+                          <p style={{fontSize: ' 1.2em'}}>{news.introduction}</p>
                           <a className="leia btn" onClick={()=> { history.push(`/noticia/${news.id}`)}}>Leia mais</a>
                         </div>
                     </div>
