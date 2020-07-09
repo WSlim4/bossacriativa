@@ -7,23 +7,19 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import api from '../../services/api'
-import { MdNoteAdd } from 'react-icons/md'
-import { IconContext } from 'react-icons'
+import { IoMdAddCircle } from 'react-icons/io'
 import { FaEdit } from 'react-icons/fa'
+import { IconContext } from 'react-icons'
 import CKEditor from 'ckeditor4-react';
+import './BannerModal.css'
 
 export default function FormDialog(props) {
   const [open, setOpen] = useState(false);
   
   const [title, setTitle] = useState()
   const [introduction, setIntro] = useState()
-  const [description, setDesc] = useState()
   const [img_url, setImg] = useState()
   const [file_id, setFile] = useState()
-
-  function onEditorChange( evt ){
-    return setDesc(evt.editor.getData())
-  }
     
   const ref = useRef()
 
@@ -40,61 +36,45 @@ export default function FormDialog(props) {
     setImg(url)
     }
 
-  async function handleBannerPost(news_id){
-
-    const data = {
-      title,
-      introduction,
-      img_url,
-      news_id,
-      file_id
-    }
-    const banner = await api.post('/banners', data)
-
-    return banner.data
+  function onEditorChange( evt ){
+    return setIntro(evt.editor.getData())
   }
 
-  async function handleNewsPost(e){
+  async function handleBannerPost(e){
     e.preventDefault()
 
     const data = {
       title,
       introduction,
-      description,
       img_url,
       file_id
     }
       try{
-        const news = await api.post(`/news`, data)
-        
-        const addBanner = window.confirm("Deseja adicionar a notícia ao Banner?")
-        
-        if(addBanner == true){
-          handleBannerPost(news.data.id)
-        }
-        
+        await api.post('/banners', data)
+        alert("Banner adicionado")
         handleClose()
       }catch(err){
-        alert("Erro ao adicionar notícia")
+        alert("Erro ao adicionar banner")
       }
   }
-  async function handleNewsEdit(e){
+
+  async function handleBannerEdit(e){
     e.preventDefault()
 
     const data = {
-      title,
-      introduction,
-      description,
-      img_url,
-      file_id
+        title,
+        introduction,
+        img_url,
+        file_id
     }
-      try{
-        await api.put(`/news/${props.id}`, data)
-        alert("Notícia editada")
-        handleClose()
-      }catch(err){
-        alert("Erro ao editar notícia")
-      }
+
+    try{
+      await api.put(`/banner/${props.id}`, data)
+      alert("Banner editado com sucesso")
+      handleClose()
+    } catch(err){
+      return alert("Algo deu errado")
+    }
   }
   
   const handleClickOpen = () => {
@@ -107,19 +87,19 @@ export default function FormDialog(props) {
 
   return (
     <>
-    {props.addNews ?
-      <IconContext.Provider value={{ size:"2em", className: "del" }}>
-         <MdNoteAdd onClick={handleClickOpen}/>
-      </IconContext.Provider> : 
-      <IconContext.Provider value={{ size:"2em", className: "del" }}>
-        <FaEdit onClick={handleClickOpen}/>
-    </IconContext.Provider>
-    }
+        {props.addBanner ? 
+          <IconContext.Provider value={{ size:"2em", className: "del" }}>
+            <IoMdAddCircle onClick={handleClickOpen}/>
+          </IconContext.Provider> : 
+          <IconContext.Provider value={{ size:"2em", className: "del" }}>
+            <FaEdit onClick={handleClickOpen}/>
+          </IconContext.Provider>
+        }
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">Adicionar notícia</DialogTitle>
-        <DialogContent onSubmit={handleNewsPost}>
+        <DialogTitle id="form-dialog-title">Oficina</DialogTitle>
+        <DialogContent onSubmit={handleBannerPost}>
           <DialogContentText>
-            Para adicionar uma notícia, preencha os campos abaixo
+            Para {props.action} um Banner à home, preencha os campos abaixo
           </DialogContentText>
           <div>
             <label htmlFor="file">
@@ -138,27 +118,18 @@ export default function FormDialog(props) {
             autoFocus
             margin="dense"
             id="title"
-            label="Título"
+            label="Título do Banner"
             type="text"
             fullWidth
             value={title}
             onChange={e => setTitle(e.target.value) }
           />
-          <TextField
-            autoFocus
-            margin="dense"
-            id="introduction"
-            label="Chamada para a notícia"
-            type="text"
-            fullWidth
-            value={introduction}
-            onChange={e => setIntro(e.target.value) }
-          />
+          
           <div className="App">
-                <h2>Insira aqui o corpo da notícia</h2>
-                { props.action == "adicionar" ?
+                <h2>Insira aqui o texto do Banner</h2>
+                {props.action == "adicionar" ?
                 <CKEditor
-                    data={description}
+                    data={introduction}
                     type="classic"
                     onChange={onEditorChange}
                 />
@@ -173,8 +144,8 @@ export default function FormDialog(props) {
           <Button onClick={handleClose} color="primary">
             Cancelar
           </Button>
-          <Button onClick={props.action == "adicionar" ? handleNewsPost : handleNewsEdit} color="primary" type="submit">
-            Cadastrar/Editar
+          <Button onClick={props.action == "adicionar" ? handleBannerPost : handleBannerEdit} color="primary" type="submit">
+            Cadastrar
           </Button>
         </DialogActions>
       </Dialog>

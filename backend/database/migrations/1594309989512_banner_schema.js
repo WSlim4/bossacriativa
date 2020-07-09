@@ -8,9 +8,12 @@ class BannerSchema extends Schema {
     this.create('banners', (table) => {
       table.increments()
       table.string('title')
-      table.text('description')
+      table.text('introduction')
       table.string('img_url')
-      
+
+      table.integer('news_id').unsigned()
+      table.foreign('news_id').references('id').inTable('news').onDelete('cascade')
+
       table.integer('file_id').unsigned()
       table.foreign('file_id').references('id').inTable('files').onDelete('cascade')
       table.timestamps()

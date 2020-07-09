@@ -15,8 +15,10 @@ import { store } from '../../../store'
 import { signOut } from '../../../store/modules/auth/actions'
 import Shows from '../Shows/Shows'
 import Lectures from '../Palestras/Palestras'
+import Banner from '../Banner/Banner'
 import ShowsModal from '../../../components/showsModal/Modal'
 import LectureModal from '../../../components/lectureModal/Modal'
+import BannerModal from '../../../components/bannerModal/BannerModal'
 
 function AdminPanel(props){
    const [page, setPage] = useState()
@@ -56,6 +58,12 @@ function AdminPanel(props){
                     action="adicionar"
                     />
         }
+        else if(display==="banners"){
+            return <BannerModal
+                    addBanner
+                    action="adicionar"
+                    />
+        }
        else{
            return
        }
@@ -75,6 +83,7 @@ function AdminPanel(props){
                     <li onClick={()=>setDisplay('lectures')}>Palestras <MdKeyboardArrowRight size="1.2em"/></li>
                     <li onClick={()=>setDisplay('shows')}>Apresentações<MdKeyboardArrowRight size="1.2em"/></li>
                     <li onClick={()=>setDisplay('news')}>Notícias<MdKeyboardArrowRight size="1.2em"/></li>
+                    <li onClick={()=>setDisplay('banners')}>Banners<MdKeyboardArrowRight size="1.2em"/></li>
                 </ul>
                 <br/>
             </section>
@@ -93,6 +102,7 @@ function AdminPanel(props){
                         {display === "shows" ? <Shows page={page}/>: null}
                         {display === "lectures" ? <Lectures page={page}/>: null}
                         {display === "news" ? <News page={page}/>: null}
+                        {display === "banners" ? <Banner page={page}/>: null}
                     </div>
             </section>
         </div>

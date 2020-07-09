@@ -50,7 +50,6 @@ Route.get('/showOne/:id', 'ShowController.showOne')
 Route.get('/showAll', 'ShowController.showAll')
 Route.get('/searchShows', 'ShowController.searchShows')
 
-
 Route.post('/workshopLessons/:id', 'LessonController.workshopLessonStore') //Adiciona uma aula a oficina específfica
 Route.post('/lectureLessons/:id', 'LessonController.lectureLessonStore') //Adiciona uma aula a palestra específica
 Route.get('/lastLessons', 'LessonController.show') //Puxa as quatro últimas aulas
@@ -62,6 +61,12 @@ Route.get('/file/:id', 'FileController.show') //Faz o download do arquivo
 
 Route.post('/forgotPassword', 'ForgotPasswordController.store') //Envia uma solicitação de troca de senha
 Route.put('/resetPassword', 'ForgotPasswordController.update') //Reseta a senha
+
+Route.post('/banners', 'BannerController.store')
+Route.put('/banner/:id', 'BannerController.edit')
+Route.get('/banners', 'BannerController.index')
+Route.get('/paginateBanners', 'BannerController.paginateBanners')
+Route.delete('/banner/:id', 'BannerController.destroy')
 
 
 

@@ -13,6 +13,7 @@ function Home() {
   const [lectures, setLectures] = useState([])
   const [shows, setShows] = useState([])
   const [newses, setNews] = useState([])
+  const [banners, setBanners] = useState([])
 
   useEffect(()=>{
     async function getData(){
@@ -20,7 +21,9 @@ function Home() {
       const lastlectures = await api.get('/lectures')
       const lastShows = await api.get('/lastShows')
       const lastNews = await api.get('/lastNews')
+      const banners = await api.get('/banners')
 
+      setBanners(banners.data)
       setWorkshop(lastworkshops.data.data)
       setShows(lastShows.data.data)
       setNews(lastNews.data)    
@@ -32,33 +35,22 @@ function Home() {
     <div className="home-container">
       <div className="carousel-container">
       <Carousel>
+        {banners.map(banner=>
         <Carousel.Item>
           <div className="banner-div">
         <section className="section-1">
-          <p style={{fontSize:'2.4em', fontFamily:'Amatic SC' }}>Homenagem de Cristovão Bastos e Clarisse Grova a Aldir Blanc</p>
-            <p className="min-home">Homenagem de Cristovão Bastos e Clarisse Grova a Aldir Blanc estreia, aqui no Bossa Criativa nesta sexta-feira, 10/7, a partir das 18h</p>
-            <a className="leia btn news-btn" onClick={()=> { history.push(`/noticia/${5}`)}}>Leia mais</a>
+          <p style={{fontSize:'2.4em', fontFamily:'Amatic SC' }}>{banner.title}</p>
+            <td dangerouslySetInnerHTML={{__html: banner.introduction}} />
+            {banner.news_id ? <a className="leia btn news-btn" onClick={()=> { history.push(`/noticia/${banner.news_id}`)}}>
+              Leia mais</a> : null}
+            
           <br/>
         </section>
-        <section className="section-2" style={{backgroundImage:`url(${noticia})`}}> 
+        <section className="section-2" style={{backgroundImage:`url(${banner.img_url})`}}> 
         </section>
       </div>
       </Carousel.Item>
-      <Carousel.Item>
-      <div className="banner-div">
-        <section className="section-1">
-          <p style={{fontSize:'2.4em', fontFamily:'Amatic SC' }}>BOSSACRIATIVA</p>
-            <p className="min-home">No Bossa Criativa – Arte de Toda Gente, a Fundação Nacional de Artes – Funarte e a Universidade Federal do Rio de Janeiro (UFRJ) reúnem apresentações e capacitação em diversas formas artísticas e de economia criativa.</p>
-
-            <p className="min-home">Com curadoria da Escola de Música da UFRJ, o Bossa Criativa tem com foco na diversidade, na democratização da cultura no Brasil e na difusão das nossas artes em todas as suas formas e origens, de maneira inclusiva.</p>
-
-            <p className="min-home">Aqui você vai assistir gratuitamente a pocket shows, apresentações de projetos e videoaulas com a participação de artistas e especialistas de todo o país. Em 2021, o projeto vai promover eventos presenciais em nove pontos do patrimônio mundial no Brasil.</p>
-          <br/>
-        </section>
-        <section className="section-2" style={{backgroundImage:`url(${banner})`}}> 
-        </section>
-      </div>
-      </Carousel.Item>
+        )}
       </Carousel>
     </div>
       <div className="home-content">
