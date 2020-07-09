@@ -39,11 +39,10 @@ function Home() {
         <Carousel.Item>
           <div className="banner-div">
         <section className="section-1">
-          <p style={{fontSize:'2.4em', fontFamily:'Amatic SC' }}>{banner.title}</p>
-            <td dangerouslySetInnerHTML={{__html: banner.introduction}} />
+          <p style={{fontSize:'3.2em', fontFamily:'Amatic SC' }}>{banner.title}</p>
+            <td style={{fontSize: '1.8em'}} dangerouslySetInnerHTML={{__html: banner.introduction}} />
             {banner.news_id ? <a className="leia btn news-btn" onClick={()=> { history.push(`/noticia/${banner.news_id}`)}}>
               Leia mais</a> : null}
-            
           <br/>
         </section>
         <section className="section-2" style={{backgroundImage:`url(${banner.img_url})`}}> 
@@ -60,7 +59,7 @@ function Home() {
             {shows.map(show=>
                     <div className="home-carousel-item" style={{ backgroundColor: "#E7C032"}} onClick={()=>history.push(`/apresentacao/${show.id}`)}>
                         <img className="div-img" src={show.img_url}/>
-                        <h6 style={{backgroundColor:`${show.theme_color}`}}>{show.artist}</h6>
+                        <h5 style={{backgroundColor:`${show.theme_color}`}}>{show.artist}</h5>
                           <p>{show.introduction}</p>
                     </div>
                         )}
@@ -77,7 +76,7 @@ function Home() {
                     <div style={{ backgroundColor: "#E7C032"}}>
                         <div className="div-img news-img" style={{backgroundImage: `url(${news.img_url})`}}/>
                         <div className="news-text">
-                          <h6 className="not-title" style={{backgroundColor: 'white'}}>{news.title}</h6>
+                          <h5 className="not-title" style={{backgroundColor: 'white'}}>{news.title}</h5>
                           <p className="desc">{news.introduction}</p>
                           <a className="leia btn" onClick={()=> { history.push(`/noticia/${news.id}`)}}>Leia mais</a>
                         </div>
@@ -95,7 +94,7 @@ function Home() {
             {workshops.map(workshop =>
               <div style={{ backgroundColor: "#E7C032"}} onClick={()=>{ history.push(`/oficina/${workshop.id}`)}}>
                 <div className="div-img" style={{backgroundImage: `url(${workshop.img_url})`}}/>
-                <h6 style={{backgroundColor: `${workshop.theme_color}`}}>{workshop.artist_name}</h6>
+                <h5 style={{backgroundColor: `${workshop.theme_color}`}}>{workshop.artist_name}</h5>
                 <p>{workshop.introduction}</p>
               </div>
             )}

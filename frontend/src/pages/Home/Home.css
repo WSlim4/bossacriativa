@@ -12,7 +12,7 @@
 }
 .home-content div p{
     padding-left: 17px;
-    font-size: 1.2em;
+    font-size: 1.5em;
 
 }
 
@@ -21,7 +21,7 @@
 .banner-div {
     text-align: center;
     font-size: 0.8em;
-    height: 90vh;
+    height: 500px;
     margin-top: 5vh;
     display: flex;
 }
@@ -29,10 +29,6 @@
     margin-top: 40vh !important;
     width: 100px;
     height: 30px;
-}
-
-.banner-div>* {
-    max-height: 100vh;
 }
 
 .banner-div .section-1{
