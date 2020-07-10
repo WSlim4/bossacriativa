@@ -28,6 +28,8 @@
 .news-btn{
     margin-top: 40vh !important;
     width: 100px;
+    text-align: center;
+    font-size: 1.3em;
     height: 30px;
 }
 .title{
@@ -68,7 +70,7 @@
         margin-top: -4vh;
     }
 }
-@media only screen and (max-width: 920px){
+@media only screen and (max-width: 924px){
     .banner-dots{
         margin-top: 0;
     }
@@ -78,12 +80,10 @@
     .banner-div .section-1, .banner-div .section-2{
         width: 100%;
     }
-    .banner-div .section-2{
-        height: 100vh;
+    .banner-div{
+        margin-top: 34vh;
     }
-    .banner-div>* {
-        max-height: unset;
-    }
+    
 }
 /*APRESENTAÇÕES*/
 /*OFICINAS-PALESTRAS*/
