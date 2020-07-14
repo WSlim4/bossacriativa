@@ -89,6 +89,7 @@ class Oficina extends React.Component{
                             height="250px"
                         />
                         <h6 className="oficina-name" style={{backgroundColor: `${infos[0].theme_color}`}}>{video.title}</h6>
+                        <p>{video.description}</p>
                         <p className="quero" onClick={()=>this.changeArray(video)}>Quero assistir!</p>
                     </div>
                 )}
@@ -102,6 +103,7 @@ class Oficina extends React.Component{
                     <div className="div-img" style={{backgroundImage: `url(${workshop.img_url})`}}/>
                     <h6 style={{backgroundColor: `${workshop.theme_color}`}}>{workshop.artist_name}</h6>
                     <p>{workshop.about_artist}</p>
+                    <p>{workshop.description}</p>
                 </div>
                 )}
             </div>
