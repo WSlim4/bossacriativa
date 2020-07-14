@@ -6,12 +6,22 @@ import './Oficinas.css'
 import { MdDelete } from 'react-icons/md'
 import { IconContext } from "react-icons";
 import range from '../../../helpers/range'
+import Aulas from '../../../components/Aulas/Aulas'
 
 function Workshops(props){
     const [workshops, setWorkshops] = useState([])
     const [pages, setPages] = useState()
     const [page, setPage] = useState(props.page)
     const pgNumb = range(1, pages+1)
+    const [open, setOpen] = useState(false)
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
 
     useEffect(() => {
@@ -26,7 +36,6 @@ function Workshops(props){
     function onClick(val){
         setPage(val)
     }
-
     async function handleDelete(id){
         try{
             await api.delete(`/workshop/${id}`)
@@ -45,7 +54,6 @@ function Workshops(props){
                     <th>ID</th>
                     <th>Categoria</th>
                     <th>Nome</th>
-                    <th>Nome do artista</th>
                     <th>Cor do tema</th>
                     <th>Ações</th>
                 </tr>
@@ -54,13 +62,10 @@ function Workshops(props){
                     <td>{workshop.id}</td>
                     <td>{workshop.category}</td>
                     <td>{workshop.name}</td>
-                    <td>{workshop.artist_name}</td>
                     <td>{workshop.theme_color}</td>
                     <td>
-                        <Modal
-                        to="oficina"
+                        <Aulas
                         id={workshop.id}
-                        rota='workshopLessons'
                         />
                         <CourseModal
                         action="editar"

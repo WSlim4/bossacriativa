@@ -89,7 +89,7 @@ class Oficina extends React.Component{
                             height="250px"
                         />
                         <h6 className="oficina-name" style={{backgroundColor: `${infos[0].theme_color}`}}>{video.title}</h6>
-                        <p>{video.description}</p>
+                        <p style={{backgroundColor: 'white'}}>{video.description}</p>
                         <p className="quero" onClick={()=>this.changeArray(video)}>Quero assistir!</p>
                     </div>
                 )}

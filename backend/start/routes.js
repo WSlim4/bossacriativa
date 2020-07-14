@@ -52,6 +52,7 @@ Route.get('/searchShows', 'ShowController.searchShows')
 
 Route.post('/workshopLessons/:id', 'LessonController.workshopLessonStore') //Adiciona uma aula a oficina específfica
 Route.post('/lectureLessons/:id', 'LessonController.lectureLessonStore') //Adiciona uma aula a palestra específica
+Route.put('/lesson/:id', 'LessonController.edit')
 Route.get('/lastLessons', 'LessonController.show') //Puxa as quatro últimas aulas
 Route.get('/lessons', 'LessonController.index') //Puxa todas as aulas de todas as entidades
 Route.delete('/lesson/:id', 'LessonController.destroy') //Deleta uma aula

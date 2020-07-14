@@ -8,6 +8,7 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import api from '../../services/api'
 import { MdNoteAdd } from 'react-icons/md'
+import { FaEdit } from 'react-icons/fa'
 import { IconContext } from 'react-icons'
 
 export default function FormDialog(props) {
@@ -16,7 +17,7 @@ export default function FormDialog(props) {
   const [title, setTitle] = useState()
   const [description, setDesc] = useState()
   const [url, setUrl] = useState()
-  const course_name = props.name
+  const [course_name, setArtist] = useState()
 
   async function handleLessonPost(e){
     e.preventDefault()
@@ -28,13 +29,29 @@ export default function FormDialog(props) {
       url
     }
       try{
-        await api.post(`/${props.rota}/${props.id}`, data)
+        await api.post(`/workshopLessons/${props.id}`, data)
         alert("Aula adicionada")
         handleClose()
       }catch(err){
         alert("Erro ao adicionar aula")
       }
-  } 
+  }
+  async function handleLessonEdit(e){
+    e.preventDefault()
+
+    const data = {
+      title,
+      description,
+      course_name,
+      url
+    }
+    try{
+      const lesson = await api.put(`/lesson/${props.id}`, data)
+      alert("Aula editada")
+    } catch(err){
+      alert("Erro ao editar aula")
+    }
+  }
   
   const handleClickOpen = () => {
     setOpen(true);
@@ -46,11 +63,17 @@ export default function FormDialog(props) {
 
   return (
     <>
-      <IconContext.Provider value={{ size:"2em", className: "del" }}>
+
+      {props.addLesson ?
+        <IconContext.Provider value={{ size:"2em", className: "del" }}>
          <MdNoteAdd onClick={handleClickOpen}/>
+      </IconContext.Provider> :
+      <IconContext.Provider value={{size: "2em", className:"del"}}>
+        <FaEdit onClick={handleClickOpen}/>
       </IconContext.Provider>
+      }
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">Adicionar aula à {props.to} com id: {props.id}</DialogTitle>
+        <DialogTitle id="form-dialog-title">Adicionar aula a esta oficina</DialogTitle>
         <DialogContent onSubmit={handleLessonPost}>
           <DialogContentText>
             Para adicionar uma aula, preencha os campos abaixo
@@ -85,12 +108,22 @@ export default function FormDialog(props) {
             value={description}
             onChange={e => setDesc(e.target.value) }
           />
+          <TextField
+            autoFocus
+            margin="dense"
+            id="artist"
+            label="Oficineiro"
+            type="text"
+            fullWidth
+            value={course_name}
+            onChange={e => setArtist(e.target.value) }
+          />
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">
             Cancelar
           </Button>
-          <Button onClick={handleLessonPost} color="primary" type="submit">
+          <Button onClick={ props.action == "adicionar" ?  handleLessonPost : handleLessonEdit} color="primary" type="submit">
             Cadastrar
           </Button>
         </DialogActions>

@@ -8,10 +8,9 @@ const Database = use('Database')
 class LessonController {
    async workshopLessonStore ({ request, params }){
         const workshop = await Workshop.find(params.id)
-        let data = request.all()
+        let data = request.only(['course_name', 'title', 'description', 'url'])
        
         if(workshop){
-            data["course_name"] = workshop["name"]
             data["workshop_id"] = workshop["id"]
             const lesson = Lesson.create(data)
             return lesson
@@ -21,18 +20,31 @@ class LessonController {
    }
 
    async lectureLessonStore ({ request, params }){
-    const lecture = await Lecture.find(params.id)
-    let data = request.all()
+        const lecture = await Lecture.find(params.id)
+        let data = request.all()
    
-    if(lecture){
-        data["course_name"] = lecture["name"]
-        data["lecture_id"] = lecture["id"]
-        const lesson = await Lesson.create(data)
-        return lesson
-    } else{
-        return "Erro ao criar aula"
+        if(lecture){
+            data["course_name"] = lecture["name"]
+            data["lecture_id"] = lecture["id"]
+            const lesson = await Lesson.create(data)
+            return lesson
+        } else{
+            return "Erro ao criar aula"
+        }
     }
-}
+
+    async edit({ request, params }){
+        const { title, description, url, course_name } = request.all()
+
+        const lesson = await Lesson.findOrFail(params.id)
+            lesson.title = title,
+            lesson.course_name = course_name,
+            lesson.description = description,
+            lesson.url = url,
+            lesson.save()
+
+        return lesson
+    }
 
    async show(){
        const lessons = await Database.table('lessons')
