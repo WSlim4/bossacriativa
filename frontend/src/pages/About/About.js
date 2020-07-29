@@ -31,6 +31,14 @@ function About() {
                     <p className="text-about">
                         A UFRJ é uma das principais e mais respeitadas universidades do país e tem em seu quadro profissionais especializados nas ações de ensino, pesquisa e projetos de extensão, com metodologias e didáticas específicas para lidar com alunos de todas as faixas etárias e níveis de instrução. E conta também com a pedagogia necessária para capacitar professores de artes, regentes de bandas e orquestras e gestores culturais, com o objetivo de promover o contato entre as pessoas e o compartilhamento de informações. Para reforçar a equipe que atuará no Bossa Criativa, somam-se profissionais dos diversos segmentos envolvidos, formando times multidisciplinares aos quais se juntarão especialistas, que atuarão em cada uma das cidades. Os eventos contarão com o apoio e participação de instituições e secretarias de cultura dos estados e municípios.
                     </p>
+                    <h3 className="text-about">Conheça também:</h3>
+                    <h1 className="title-about">
+                        SISTEMA NACIONAL DE ORQUESTRAS SOCIAIS – SINOS
+                        </h1> 
+                    <p className="text-about">
+                        O Sistema Nacional de Orquestras Sociais, Sinos é formado por uma rede de dezenas de professores de música que, por meio de cursos, oficinas, concertos e festivais, atua na capacitação de regentes, instrumentistas, compositores e educadores musicais, apoiando projetos sociais de música.
+                    </p>
+                    <p className="text-about"><a href="http://www.sinos.art.br/" target="__blank" >Clique aqui</a>  e saiba mais sobre esse projeto que, como Bossa Criativa, o Sinos é uma parceria de Funarte e UFRJ, com curadoria de sua Escola de Música, e faz parte do Programa Funarte de Toda Gente.</p>
                     <Row>
                         <Col lg={8}>
 
@@ -40,7 +48,7 @@ function About() {
                                 <img src={logoesp} alt="Logo" className="logoesp"/>
                             </div>
                         </Col>
-                    </Row>              
+                    </Row>             
                 </div>
             </Container>
         </div>

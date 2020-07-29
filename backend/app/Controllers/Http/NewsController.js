@@ -38,9 +38,9 @@ class NewsController {
     async index ({ request }){
         let { page } = request.all()
         page = page ? page : 1
-        const news = Database.table('news')
+        const news = Database.table('news').orderBy('id', 'desc')
         
-        return await news.paginate(page ? page : 1, 6)
+        return await news.paginate(page ? page : 1, 30)
     }
 
     async show ({ params }){
