@@ -27,7 +27,7 @@ export default function FormDialog(props) {
     
   const ref = useRef()
 
-  async function handleChange(e){
+  /*async function handleChange(e){
     const data = new FormData()
 
     data.append('file', e.target.files[0])
@@ -39,6 +39,7 @@ export default function FormDialog(props) {
     setFile(id)
     setImg(url)
     }
+    */
 
   async function handleBannerPost(news_id){
 
@@ -46,8 +47,7 @@ export default function FormDialog(props) {
       title,
       introduction,
       img_url,
-      news_id,
-      file_id
+      news_id
     }
     const banner = await api.post('/banners', data)
 
@@ -61,8 +61,7 @@ export default function FormDialog(props) {
       title,
       introduction,
       description,
-      img_url,
-      file_id
+      img_url
     }
       try{
         const news = await api.post(`/news`, data)
@@ -85,8 +84,7 @@ export default function FormDialog(props) {
       title,
       introduction,
       description,
-      img_url,
-      file_id
+      img_url
     }
       try{
         await api.put(`/news/${props.id}`, data)
@@ -121,8 +119,9 @@ export default function FormDialog(props) {
           <DialogContentText>
             Para adicionar uma notícia, preencha os campos abaixo
           </DialogContentText>
-          <div>
-            <label htmlFor="file">
+          
+            {
+              /*<div><label htmlFor="file">
                 <img id="preview" src={img_url || "https://www.hanselman.com/blog/content/binary/Windows-Live-Writer/There-is-only-one-Cloud-Icon-in-the-Enti_137BD/image_d64843a5-92db-44cd-98ec-cc1f74c05526.png"} alt=""/>
                 <input 
                     type="file"
@@ -133,7 +132,19 @@ export default function FormDialog(props) {
                     onChange={handleChange}
                 />
             </label>
-        </div>
+            </div>*/
+            }
+            <TextField
+            autoFocus
+            margin="dense"
+            id="title"
+            label="Url da imagem"
+            type="text"
+            fullWidth
+            value={img_url}
+            onChange={e => setImg(e.target.value) }
+            />
+        
           <TextField
             autoFocus
             margin="dense"
