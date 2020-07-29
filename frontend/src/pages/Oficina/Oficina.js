@@ -63,9 +63,7 @@ class Oficina extends React.Component{
                     <Col sm={8}>
                         <div className="top-div">
                             <h2 className="oficina-title">Sobre esta oficina</h2>
-                            <p className="desc">
-                            <br/>
-                            <br/>
+                            <p className="desc">             
                             <td style={{padding: '16px'}}dangerouslySetInnerHTML={{__html: infos[0].description}} />
                             </p>
                         </div>
@@ -89,7 +87,6 @@ class Oficina extends React.Component{
                             height="250px"
                         />
                         <h6 className="oficina-name" style={{backgroundColor: `${infos[0].theme_color}`}}>{video.title}</h6>
-                        <p style={{backgroundColor: 'white'}}>{video.description}</p>
                         <p className="quero" onClick={()=>this.changeArray(video)}>Quero assistir!</p>
                     </div>
                 )}
