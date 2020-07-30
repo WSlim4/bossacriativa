@@ -54,6 +54,7 @@ class Oficina extends React.Component{
             <Container>
                 <Row>
                     <Col sm={4}>
+                    {/**/}
                         <div className="top-div">
                             <div className="top-img" style={{backgroundImage: `url(${infos[0].img_url})`}}></div>
                             <h6 className="oficina-name" style={{backgroundColor: `${infos[0].theme_color}`}}>{infos[0].artist_name}</h6>
