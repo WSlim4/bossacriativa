@@ -2,11 +2,9 @@ import React, { useState, useEffect } from 'react';
 import '../../global.css';
 import './Home.css';
 import api from '../../services/api'
-import banner from '../../assets/banner-2.jpg'
 import Carousel from 'react-bootstrap/Carousel';
 import { Link } from 'react-router-dom'
 import history from '../../services/history'
-import noticia from '../../assets/noticia.jpg'
 
 function Home() {
   const [workshops, setWorkshop] = useState([])
@@ -39,8 +37,8 @@ function Home() {
         <Carousel.Item>
           <div className="banner-div">
         <section className="section-1">
-          <p style={{fontSize:'3.2em', fontFamily:'Amatic SC' }}>{banner.title}</p>
-            <td style={{fontSize: '1.8em'}} dangerouslySetInnerHTML={{__html: banner.introduction}} />
+          <p style={{fontSize:'3.0em', fontFamily:'Amatic SC' }}>{banner.title}</p>
+            <td style={{fontSize: '1.5em'}} dangerouslySetInnerHTML={{__html: banner.introduction}} />
             {banner.news_id ? <a className="leia btn news-btn" onClick={()=> { history.push(`/noticia/${banner.news_id}`)}}>
               Leia mais</a> : null}
           <br/>
@@ -78,7 +76,7 @@ function Home() {
                         <div className="news-text">
                           <h6 className="not-title" style={{backgroundColor: 'white'}}>{news.title}</h6>
                           <p className="desc">{news.introduction}</p>
-                          <a className="leia btn" onClick={()=> { history.push(`/noticia/${news.id}`)}}>Leia mais</a>
+                          <a className="leia btn nws-btn" onClick={()=> { history.push(`/noticia/${news.id}`)}}>Leia mais</a>
                         </div>
                     </div>
                     )}

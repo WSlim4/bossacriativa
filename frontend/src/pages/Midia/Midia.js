@@ -1,81 +1,60 @@
 import React from 'react';
-import '../../global.css';
 import './Midia.css';
-import { Container } from 'react-grid-system';
-import Masonry from 'react-masonry-component';
+import ReactPlayer from 'react-player'
 
-/*
-{
-    file_name: Nome do arquivo
-    visible: Booleano que seta visibilidade 
-    toggled: Imagem ativada
-    index: Número pra poder ser acessável na array
-}
-*/
+import foto_1 from '../../assets/novaGaleria/catia_de_franca_depoimento.jpg'
+import foto_2 from '../../assets/novaGaleria/tim_rescala_depoimento.jpg'
+import foto_3 from '../../assets/novaGaleria/maria_eugenia_tita_depoimento.jpg'
+
 class Midia extends React.Component {
-    constructor(props) {
-        super(props);
-
-        const names = ["raffa", "nad", "walda"];
-        const range = [17, 10, 11];
-        let file_names = [{ file_name: "ufrj", visible: true, index: 0 }]
-
-        let j = 0;
-        let index_counter = 0;
-        for (let name of names) {
-            for (let i = 1; i <= range[j]; i++) {
-                index_counter++;
-                file_names.push({
-                    file_name: name + "_" + i, 
-                    visible: true,
-                    toggled: false, 
-                    index: index_counter
-                });
-            } j++;
-        }
-        this.state = { images: file_names}
-    }
-
-    handleImageChanges(index) {
-        let new_state = this.state.images;
-        const changeType = this.state.images[index].toggled;
-        for (let photo of new_state){
-            if (!changeType){
-                photo.index == index ? photo.visible = true : photo.visible = false;
-            } else {
-                photo.visible = true;
-            }
-        }
-        new_state[index].toggled = !new_state[index].toggled;
-        this.setState({images: new_state})
-    }
-
+    
     render() {
-        const masonryOptions = {
-            fitWidth: true,
-            columnWidth: 3
-        }
         return (
             <div className="midia-container">
-                <Container>
-                    <div className="midia-div">
-                        <h1 className="title-midia">GALERIA DE MÍDIA</h1>
-                        <Masonry
-                            className={'gallery-list'}
-                            options={masonryOptions}
-                        >
-                            {this.state.images.map((filename) => {
-                                if (filename.visible) {
-                                    return (<img className={this.state.images[filename.index].toggled? "gallery_full_scale_photo" : "gallery-photo"}
-                                        key={filename.file_name}
-                                        onClick={()=>{this.handleImageChanges(filename.index)}}
-                                        src={require(`./../../assets/galeria/${filename.file_name}.jpg`)}></img>)
-                                } else return null;
-                            })}
-                        </Masonry>
-                    </div>
+                <h1 className="title-midia">GALERIA DE FOTOS E VÍDEOS</h1>
+                <div className="midia-div">
+                    <div className="gallery">
+                        <div className="videos">  
+                            
+                            <ReactPlayer
+                            url='https://www.youtube.com/watch?v=UgCqyBFd9cQ'
+                            light={true}
+                            />
+                            <ReactPlayer
+                            url='https://www.youtube.com/watch?v=zzvt85Cq7F0'
+                            light={true}
+                            />
+                            <div className="gallery-photo" style={{backgroundImage: `url(${foto_1})`}}/>
+                            <ReactPlayer
+                            url='https://www.youtube.com/watch?v=FKvW0EsoEBI'
+                            light={true}
+                            />
+                            
+                            <ReactPlayer
+                            url='https://www.youtube.com/watch?v=Llrxh8ro5tU'
+                            light={true}
+                            />
+                            <ReactPlayer
+                            url='https://www.youtube.com/watch?v=PlRpCFz0iEI'
+                            light={true}
+                            />
 
-                </Container>
+                            <div className="gallery-photo" style={{backgroundImage: `url(${foto_2})`}}/>
+                            <div className="gallery-photo" style={{backgroundImage: `url(${foto_3})`}}/>
+                        </div>
+                        
+                        {/*<div className="gallery-photo">
+                            <img alt="catia_de_franca" src={foto_1}/>
+                        </div>
+                        <div className="gallery-photo">
+                            <img alt="tim_rescala" src={foto_2}/>
+                        </div>
+                        <div className="gallery-photo">
+                            <img alt="maria_eugenia_tita" src={foto_3}/>
+        </div>*/}
+                        
+                    </div>
+                </div>
             </div>
         )
     }

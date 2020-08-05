@@ -47,7 +47,7 @@ function Noticias() {
                         <div>
                           <h6 className="not-title" style={{backgroundColor: 'white'}}>{news.title}</h6>
                           <p style={{fontSize: ' 1.2em'}}>{news.introduction}</p>
-                          <a className="leia btn" onClick={()=> { history.push(`/noticia/${news.id}`)}}>Leia mais</a>
+                          <a className="leia btn nws-btn" onClick={()=> { history.push(`/noticia/${news.id}`)}}>Leia mais</a>
                         </div>
                     </div>
                     )}
