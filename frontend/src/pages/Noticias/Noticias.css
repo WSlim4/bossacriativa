@@ -18,6 +18,7 @@
 }
 .news-img{
     height: 300px;
+    background-size: cover;
 }
 
 .not-title {
@@ -41,6 +42,7 @@
     padding: .15em;
     border-radius: 0!important;
     font: 500 1.5em "Barlow Semi Condensed",sans-serif!important;
-    float: right;
-    margin: 0 3vh 3vh;
+    float: left;
+    margin: 2em 0;
+    position: sticky;
 }
