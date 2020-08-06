@@ -53,11 +53,10 @@
 .banner-dots .dot:hover {
     background-color: black;
 }
-.banner-div .section-2{
+.banner-div .section-2 {
     width: 55%;
     background-repeat: no-repeat;
-    background-position: center;
-    background-size: 100% 100%;
+    background-size: auto 100%;
 }
 .min-home {
     font-size: 1.4em;
@@ -94,8 +93,8 @@
     width: 100%;
     height: 200px;
     background-size: 100% 100%;
-    background-position: center;
-    background-repeat: none;
+    background-repeat: no-repeat;
+    object-fit: cover;
 }
 
 h6{
