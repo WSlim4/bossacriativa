@@ -41,7 +41,8 @@
     background-color: #fff!important;
     padding: .15em;
     border-radius: 0!important;
-    font: 500 1.5em "Barlow Semi Condensed",sans-serif!important;
+    font: 500 1em "Barlow Semi Condensed",sans-serif!important;
+    margin-left: 20px;
     float: left;
     margin: 2em 0;
     position: sticky;

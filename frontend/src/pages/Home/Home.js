@@ -39,7 +39,7 @@ function Home() {
         <section className="section-1">
           <p style={{fontSize:'3.0em', fontFamily:'Amatic SC' }}>{banner.title}</p>
             <td style={{fontSize: '1.5em'}} dangerouslySetInnerHTML={{__html: banner.introduction}} />
-            {banner.news_id ? <a className="leia btn news-btn" onClick={()=> { history.push(`/noticia/${banner.news_id}`)}}>
+            {banner.news_id ? <a className="news-btn" onClick={()=> { history.push(`/noticia/${banner.news_id}`)}}>
               Leia mais</a> : null}
           <br/>
         </section>
