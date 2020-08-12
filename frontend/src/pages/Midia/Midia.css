@@ -1,33 +1,47 @@
-.title-midia {
-    text-align: center;
-    font: 500 32px 'Barlow Semi Condensed', sans-serif;
-    background-color: #E7C032;
-    width: 80%;
-    margin-left: 10%;
-    margin-top: 5vh;
-    padding: 10px;
+.gallery-title{
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: #E7C032;;
+  padding: 16px;
+  font-family: 'Amatic SC';
+  letter-spacing: 3px;
+}
+.gallery{
+  background-color: white;
+}
+.my-masonry-grid {
+    display: -webkit-box; /* Not needed if autoprefixing */
+    display: -ms-flexbox; /* Not needed if autoprefixing */
+    display: flex;
+    margin-left: -30px; /* gutter size offset */
+    width: auto;
+  }
+.my-masonry-grid_column {
+    padding-left: 30px; /* gutter size */
+    background-clip: padding-box;
+}
+   
+  /* Style your items */
+.my-masonry-grid_column > div { /* change div to reference your elements you put in <Masonry> */
+    background: grey;
+    margin-bottom: 10px;
+    margin-left: 5px;
 }
 
-.midia-container{
+.my-masonry-grid_column > div > img{
     width: 100%;
+    height: auto;
 }
 
-.midia-div {
-    background-color: white;
-    width: 100%;
-    padding: 50px;
-}
-
-.gallery .videos{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 15px;
-    row-gap: 15px;
-}
-
-.gallery-photo{
-    width: 100%;
-    height: 350px;
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-}
+@media (max-width: 800px) {
+    .my-masonry-grid {
+      margin-left: -15px; /* gutter size offset */
+    }
+    .my-masonry-grid_column {
+      padding-left: 15px; /* gutter size offset */
+    }
+    .my-masonry-grid_column > div {
+      margin-bottom: 15px; /* space between items */
+    }
+  }
