@@ -65,7 +65,7 @@ export default function Schedule() {
                 <button>ant</button>
               </span>
               <span style={{ marginLeft: 10, marginRight: 10, backgroundColor: '#efefef', padding: 3 }}>
-                Março
+                Abril
               </span>
               <span>
                 <button>next</button>
