@@ -10,10 +10,11 @@ class ShowController {
         return show
     }
     async edit({ request, params }){
-        const { name, artist, introduction, description, theme_color, category, img_url, file_id } = request.all()
+        const { name, artist, introduction, description, theme_color, category, img_url, file_id, show_url } = request.all()
         const show = await Show.findOrFail(params.id)
             show.name = name,
             show.artist = artist,
+            show.show_url = show_url,
             show.introduction = introduction,
             show.description = description,
             show.category = category,

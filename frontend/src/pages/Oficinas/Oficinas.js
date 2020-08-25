@@ -22,7 +22,7 @@ class Oficinas extends React.Component{
     async loadData(page){
         const response = await api.get(`/workshops?page=${page}`)
         this.setState({ total: response.data.total })
-        this.setState({ data: response.data.data })
+        this.setState({ data: response.data.data.reverse() })
         this.setState({ pageNumbers: Math.ceil(this.state.total / this.state.perPage)})
     }
 
