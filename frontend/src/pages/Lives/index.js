@@ -1,10 +1,10 @@
-import React, { createElement } from 'react'
+import React, { Component } from 'react'
 import api from '../../services/api'
 import range from '../../helpers/range'
 import history from '../../services/history'
 import { GiMagnifyingGlass } from 'react-icons/gi'
 
-class Shows extends React.Component{
+class Lives extends Component{
     constructor(props){
         super(props)
         this.state = {
@@ -23,7 +23,7 @@ class Shows extends React.Component{
         const response = await api.get(`/shows?page=${page}`)
         this.setState({ total: response.data.total })
         this.setState({ allArtists: artists.data })
-        this.setState({ data: response.data.data.reverse() })
+        this.setState({ data: response.data.data })
         this.setState({ pageNumbers: Math.ceil(this.state.total / this.state.perPage)})
     }
 
@@ -79,7 +79,7 @@ class Shows extends React.Component{
             <>
             <div className="home-content">
                 <div className="head title">
-                    <h2>APRESENTAÇÕES</h2>
+                    <h2>LIVES</h2>
                     <div className="filters">
                         <div id="buscar">
                             <form onSubmit={this.search}>
@@ -108,7 +108,7 @@ class Shows extends React.Component{
                 </div>
                 <div className="main-content"> 
                     {shows.map(show=>
-                    <div onClick={()=>history.push(`/apresentacao/${show.id}`)}>
+                    <div onClick={()=>history.push(`/live/${show.id}`)}>
                         <div className="div-img" style={{backgroundImage: `url(${show.img_url})`}}>
                             
                         </div>
@@ -125,4 +125,4 @@ class Shows extends React.Component{
         )   
     }
 }
-export default Shows
+export default Lives
