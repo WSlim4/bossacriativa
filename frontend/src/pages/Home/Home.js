@@ -15,28 +15,34 @@ function Home() {
   const [events, setEvents] = useState([])
 
   useEffect(()=>{
+    const baseURL = 'http://localhost:1338/';
     api.get(`/lastWorkshops`).then(({ data: { data } }) => setWorkshop(data));
     // api.get(`/lectures`).then(({ data }) => setBanners(data));
     // api.get(`/schedule`, { baseURL: '' }).then(({ data }) => setEvents(data));
     api.get(`/lastShows`).then(({ data: { data } }) => setShows(data));
     api.get(`/lastNews`).then(({ data }) => setNews(data));
     api.get(`/banners`).then(({ data }) => setBanners(data));
+    api.get(`/events?_limit=5`,{ baseURL }).then(({ data }) => setEvents(data));
   }, [])
-
+  
   return (
     <div className="home-container">
       <div className="home-content banner">
         <div className="schedule">
           <h4 className="title max-home">AGENDA</h4>
-          <div className="events">
-            <div>
-              <p className="event-day">25</p>
-            </div>
-            <div>
-              <h5 className="event-title">Titulo</h5>
-              <p className="event-intro">fsjdhfkjsdhfjkshf fjshd fkshdkjf sd fskdjhfs</p>
-            </div>
-          </div>
+          {
+            events.map(event => (
+              <div className="events" key={event.id}>
+                <div>
+                  <p className="event-day">{new Date(event.date).getDate()}</p>
+                </div>
+                <div>
+                  <h5 className="event-title">{event.title}</h5>
+                  <p className="event-intro">{event.description}</p>
+                </div>
+              </div>
+            ))
+          }
           <div className="buttons">
             <Link to="/agenda">
               <button>Veja a programação completa</button>

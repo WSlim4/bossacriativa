@@ -8,7 +8,8 @@ export default function Live(props){
 
     useEffect(()=>{
         async function loadData(){
-            const response = await api.get(`/showOne/${props.match.params.id}`)
+          const baseURL = 'http://localhost:1338/';
+            const response = await api.get(`/lives/${props.match.params.id}`, { baseURL })
             setShow(response.data)
         }
         loadData()
@@ -20,7 +21,7 @@ export default function Live(props){
             <h4 className="title max-home">LIVE DE {show.artist}</h4>
                 <div className="video-div" width="100%">
                     <ReactPlayer
-                        url={show.show_url}
+                        url={show.video_url}
                         width="100%"
                         height="80vh"
                         controls

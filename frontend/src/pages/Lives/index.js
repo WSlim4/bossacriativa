@@ -19,11 +19,12 @@ class Lives extends Component{
     }
 
     async loadData(page){
+        const baseURL = 'http://localhost:1338/';
         const artists = await api.get('/showAll')
-        const response = await api.get(`/shows?page=${page}`)
+        const response = await api.get(`/lives?_start=&_limit=10`, { baseURL })
         this.setState({ total: response.data.total })
         this.setState({ allArtists: artists.data })
-        this.setState({ data: response.data.data })
+        this.setState({ data: response.data })
         this.setState({ pageNumbers: Math.ceil(this.state.total / this.state.perPage)})
     }
 
@@ -37,9 +38,10 @@ class Lives extends Component{
     }
     
     async filterCategory(){
-        const response = await api.get(`/shows?page=${this.props.match.params.page}`)
+        const baseURL = 'http://localhost:1338/';
+        const response = await api.get(`/lives?page=${this.props.match.params.page}`, { baseURL })
         this.setState({ data: response.data.data })
-
+        
         var selectBox = document.getElementById("tema")
         var selectedValue = selectBox.options[selectBox.selectedIndex].value
         var datas = this.state.data
@@ -112,7 +114,7 @@ class Lives extends Component{
                         <div className="div-img" style={{backgroundImage: `url(${show.img_url})`}}>
                             
                         </div>
-                        <h6 style={{backgroundColor: show.theme_color}}>{show.name}</h6>
+                        <h6 style={{backgroundColor: show.theme_color}}>{show.title}</h6>
                         <p>{show.introduction}</p>
                     </div>
                     )}
