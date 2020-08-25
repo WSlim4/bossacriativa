@@ -11,12 +11,65 @@
     width: 100%;
 }
 .home-content div p{
-    padding-left: 17px;
-    font-size: 1.4em;
-
+  padding-left: 17px;
+  font-size: 1.4em;
 }
 
 /*BANNER DE LIVES*/
+.banner {
+  display: flex;
+  align-items: flex-start;
+}
+
+.banner > div:first-of-type {
+  margin-right: 15px;
+}
+
+.banner > div:last-of-type {
+  margin-left: 15px;
+}
+
+.banner > div {
+  flex: 1;
+  width: 100%;
+}
+
+.banner .events {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100px;
+  margin-bottom: 20px;
+}
+
+.banner .events div:first-of-type {
+  border-right: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+}
+
+.banner .events div:last-of-type {
+  flex: 1;
+  margin-left: 20px;
+}
+
+.banner .events .event-day {
+  margin-right: 20px;
+  font-size: 2em;
+}
+
+.banner .events .event-intro {
+  padding: 0;
+  font-size: .9em;
+}
+
+.banner .buttons > * {
+  flex: 1;
+}
+
+.banner .buttons button {
+  width: 100%;
+}
 
 .banner-div {
     text-align: center;
@@ -74,6 +127,19 @@
     }
 }
 @media only screen and (max-width: 924px){
+  .banner {
+    flex-direction: column;
+  }
+  
+  .banner > div:first-of-type {
+    margin-right: 0;
+  }
+  
+  .banner > div:last-of-type {
+    margin-left: 0;
+    margin-top: 6vh;
+  }
+
     .banner-dots{
         margin-top: 0;
     }
@@ -90,53 +156,67 @@
 }
 /*APRESENTAÇÕES*/
 /*OFICINAS-PALESTRAS*/
-
 .div-img{
-    width: 100%;
-    min-height: 200px;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    object-fit: cover;
+  width: 100%;
+  /* min-height: 200px; */
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  object-fit: cover;
 }
 
 h6{
-    padding: 5px 0 5px 15px;
-    background-color: blueviolet;
+  padding: 5px 0 5px 15px;
+  background-color: blueviolet;
 }
+
+.mySlides p {
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+}
+
 .live{
-    width: 80%;
-    height: 80vh;
-    background-color: #E7C032;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: 50% 50%;
+  width: 80%;
+  height: 80vh;
+  background-color: #E7C032;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
 }
+
 .artistas .mySlides, .oficinas-palestras{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-gap: 8px;
-    font-size: 0.8em;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 8px;
+  font-size: 0.8em;
+}
+
+.buttons {
+  justify-content: inherit;
 }
 
 @media only screen and (max-width: 1011px){
-    .artistas .mySlides, .oficinas-palestras{
-        grid-template-columns: 1fr 1fr;
-    }
+  .artistas .mySlides, .oficinas-palestras{
+    grid-template-columns: 1fr 1fr;
+  }
 }
 @media only screen and (max-width: 540px){
-    .artistas .mySlides, .oficinas-palestras{
-        grid-template-columns: 1fr;
-    }
+  .artistas .mySlides, .oficinas-palestras{
+    grid-template-columns: 1fr;
+  }
 }
 
 /*NOTÍCIAS*/
-
 .noticias{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 8px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 8px;
 }
+
 .noticias section{
     height: 70vh;
     background-color: #E7C032;
@@ -164,6 +244,14 @@ h6{
     border-style: none;
     font-weight: bold;
 }
+
+.bar-btnleia {
+  padding-right: 20px;
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+}
+
 @media only screen and (max-width: 856px){
     .noticias{
         grid-template-columns: 1fr;
@@ -186,12 +274,14 @@ h6{
 
 /*BOTÕES*/
 
-.dots{
-    background-color:black;
-    width: 77.5%;
-    height: 10px;
-    display: flex;
-    align-items: center;
+.dots {
+  flex: 1;
+  margin-right: 5px;
+  background-color:black;
+  width: 77.5%;
+  height: 10px;
+  display: flex;
+  align-items: center;
 }
 .dot{
     cursor: pointer;

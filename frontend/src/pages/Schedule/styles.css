@@ -1,0 +1,43 @@
+.slt-buttons {
+  text-align: left;
+}
+
+h4 {
+  text-align: left;
+}
+
+.list-events {
+  margin-right: 0;
+  margin-left: 0;
+  width: 100%;
+}
+
+.events {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100px;
+  margin-bottom: 20px;
+}
+
+.events div:first-of-type {
+  border-right: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+}
+
+.events div:last-of-type {
+  flex: 1;
+  margin-left: 20px;
+  text-align: left;
+}
+
+.events .event-day {
+  margin-right: 20px;
+  font-size: 2em;
+}
+
+.events .event-intro {
+  padding: 0;
+  font-size: .9em;
+}
