@@ -13,6 +13,7 @@ function Home() {
   const [newses, setNews] = useState([])
   const [banners, setBanners] = useState([])
   const [events, setEvents] = useState([])
+  const [publications, setPublications] = useState([])
 
   useEffect(()=>{
     api.get(`/lastWorkshops`).then(({ data: { data } }) => setWorkshop(data));
@@ -21,8 +22,12 @@ function Home() {
     api.get(`/lastShows`).then(({ data: { data } }) => setShows(data));
     api.get(`/lastNews`).then(({ data }) => setNews(data));
     api.get(`/banners`).then(({ data }) => setBanners(data));
-  }, [])
+    api.get(`/publicacoes`).then(({ data }) => setPublications(data));
+    
+  }, []);
 
+  //console.log(publications);
+  console.log(banners);
   return (
     <div className="home-container">
       <div className="home-content banner">
@@ -46,17 +51,21 @@ function Home() {
         <div>
           <h4 className="title max-home">ÚLTIMOS LANÇAMENTOS</h4>
           <div className="releases">
-            <Carousel indicators={false}>
-              <Carousel.Item>
-                <div>
-                  <img height="400px" />
-                  <div className="buttons">
-                    <Link to="/apresentacao/{:id}">
-                      <button>Pocket Show | ARTISTA</button>
-                    </Link>
+            <Carousel>
+              {
+              publications.map(publication => (                
+                <Carousel.Item>
+                  <div className="publication-div">
+                    <section className="section-img" style= {{ backgroundImage:`url(${api.defaults.baseURL}${publication.image.url})`}}></section>
+                    <div className="buttons">
+                      <Link to={publication.link}>
+                        <button>{`Pocket Show | ${publication.artist}`}</button>
+                      </Link>
+                    </div>
                   </div>
-                </div>
-              </Carousel.Item>
+                </Carousel.Item> 
+              ))
+              }
             </Carousel>
           </div>
         </div>
