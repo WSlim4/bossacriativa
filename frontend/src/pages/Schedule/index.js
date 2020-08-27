@@ -15,7 +15,7 @@ export default function Schedule() {
 
   async function handleClick(i) {
     if (month + i < new Date().getMonth() || month + i > 11) return;
-    const {data} = await Axios.get(`/events?month.id=${month + i}`);
+    const {data} = await strapi.get(`/events?month.id=${month + i}`);
     setMonth(old => old + i);
     setEvents(data);  
   }
