@@ -19,7 +19,7 @@ class Lives extends Component{
     }
 
     async loadData(page){
-        const baseURL = 'http://localhost:1338/';
+        const baseURL = 'https://admin.bossacriativa.art.br/';
         const artists = await api.get('/showAll')
         const response = await api.get(`/lives?_start=&_limit=10`, { baseURL })
         this.setState({ total: response.data.total })
@@ -38,7 +38,7 @@ class Lives extends Component{
     }
     
     async filterCategory(){
-        const baseURL = 'http://localhost:1338/';
+        const baseURL = 'https://admin.bossacriativa.art.br/';
         const response = await api.get(`/lives?page=${this.props.match.params.page}`, { baseURL })
         this.setState({ data: response.data.data })
         
@@ -50,13 +50,9 @@ class Lives extends Component{
     }
 
     async search(e){
-        e.preventDefault()
-
-        const shows = await api.get('/searchShows',{
-            params:{
-                value: this.state.filter
-            }
-        })
+      e.preventDefault()
+        const baseURL = 'https://admin.bossacriativa.art.br/';
+        const shows = await api.get(`/lives?artist=${this.state.filter}`,{baseURL});
         this.setState({ data: shows.data })
     }
     /*async getArtists(){

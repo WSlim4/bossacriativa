@@ -6,16 +6,18 @@ import api from '../../services/api';
 export default function Schedule() {
   const [events, setEvents] = useState([]);
   const [month, setMonth] = useState(new Date().getMonth())
+  const [months, setMonths] = useState([])
 
   useEffect(() => {
-    const baseURL = '';
-    api.get(`/events?month=${month+1}`, { baseURL }).then(({ data }) => setEvents(data));
+    const baseURL = 'https://admin.bossacriativa.art.br/';
+    api.get(`/events?month.id=${month}`, { baseURL }).then(({ data }) => setEvents(data));
+    api.get('/months', { baseURL }).then(({ data }) => setMonths(data));
   }, []);
 
   async function handleClick(i) {
-    if (month + i < 0 && month + i > 11) return;
-    const baseURL = '';
-    const {data} = await api.get(`/events?month=${month + i}`, { baseURL });
+    if (month + i < new Date().getMonth() || month + i > 11) return;
+    const baseURL = 'https://admin.bossacriativa.art.br/';
+    const {data} = await api.get(`/events?month.id=${month + i}`, { baseURL });
     setMonth(old => old + i);
     setEvents(data);
   }
@@ -28,15 +30,19 @@ export default function Schedule() {
             <div>
               <h4 className="title max-home">AGENDA MENSAL</h4>
               <div className="slt-buttons">
-                <span>
-                  <button onClick={() => handleClick(-1)}>ant</button>
-                </span>
-                <span style={{ marginLeft: 10, marginRight: 10, backgroundColor: '#efefef', padding: 3 }}>
-                  Agosto
-                </span>
-                <span>
-                  <button onClick={() => handleClick(1)}>next</button>
-                </span>
+                <div>
+                  <button onClick={() => handleClick(-1)} className="arrow-left">
+                    <img src={require('../../assets/seta.svg')} height="20px" />
+                  </button>
+                </div>
+                <div style={{ marginLeft: 10, marginRight: 10, backgroundColor: '#efefef', padding: '3px 15px' }}>
+                  {months.length > 0 ? months[month].name : ''}
+                </div>
+                <div>
+                  <button onClick={() => handleClick(1)} className="arrow-right">
+                    <img src={require('../../assets/seta.svg')} height="20px" />
+                  </button>
+                </div>
               </div>
             </div>
           </Col>
@@ -62,13 +68,17 @@ export default function Schedule() {
           <Col lg={12}>
             <div className="slt-buttons">
               <span>
-                <button>ant</button>
+                <button onClick={() => handleClick(-1)} className="arrow-left">
+                  <img src={require('../../assets/seta.svg')} height="20px" />
+                </button>
               </span>
-              <span style={{ marginLeft: 10, marginRight: 10, backgroundColor: '#efefef', padding: 3 }}>
-                Abril
+              <span style={{ marginLeft: 10, marginRight: 10, backgroundColor: '#efefef', padding: '3px 15px' }}>
+                {months.length > 0 ? months[month].name : ''}
               </span>
               <span>
-                <button>next</button>
+                <button onClick={() => handleClick(1)} className="arrow-right">
+                  <img src={require('../../assets/seta.svg')} height="20px" />
+                </button>
               </span>
             </div>
           </Col>

@@ -8,7 +8,7 @@ export default function Live(props){
 
     useEffect(()=>{
         async function loadData(){
-          const baseURL = 'http://localhost:1338/';
+          const baseURL = 'https://admin.bossacriativa.art.br/';
             const response = await api.get(`/lives/${props.match.params.id}`, { baseURL })
             setShow(response.data)
         }

@@ -13,9 +13,10 @@ function Home() {
   const [newses, setNews] = useState([])
   const [banners, setBanners] = useState([])
   const [events, setEvents] = useState([])
+  const [publications, setPublications] = useState([])
 
   useEffect(()=>{
-    const baseURL = 'http://localhost:1338/';
+    const baseURL = 'https://admin.bossacriativa.art.br/';
     api.get(`/lastWorkshops`).then(({ data: { data } }) => setWorkshop(data));
     // api.get(`/lectures`).then(({ data }) => setBanners(data));
     // api.get(`/schedule`, { baseURL: '' }).then(({ data }) => setEvents(data));
@@ -23,8 +24,11 @@ function Home() {
     api.get(`/lastNews`).then(({ data }) => setNews(data));
     api.get(`/banners`).then(({ data }) => setBanners(data));
     api.get(`/events?_limit=5`,{ baseURL }).then(({ data }) => setEvents(data));
-  }, [])
-  
+    api.get(`/publicacoes`,  { baseURL }).then(({ data }) => setPublications(data));
+  }, []);
+
+  //console.log(publications);
+  // console.log(banners);
   return (
     <div className="home-container">
       <div className="home-content banner">
@@ -52,17 +56,21 @@ function Home() {
         <div>
           <h4 className="title max-home">ÚLTIMOS LANÇAMENTOS</h4>
           <div className="releases">
-            <Carousel indicators={false}>
-              <Carousel.Item>
-                <div>
-                  <img height="400px" />
-                  <div className="buttons">
-                    <Link to="/apresentacao/{:id}">
-                      <button>Pocket Show | ARTISTA</button>
-                    </Link>
-                  </div>
-                </div>
-              </Carousel.Item>
+            <Carousel>
+              {
+                publications.map(publication => (                
+                  <Carousel.Item>
+                    <div className="publication-div">
+                      <section className="section-img" style= {{ backgroundImage:`url(${api.defaults.baseURL}${publication.image.url})`}}></section>
+                      <div className="buttons">
+                        <Link to={publication.link}>
+                          <button>{`Pocket Show | ${publication.artist}`}</button>
+                        </Link>
+                      </div>
+                    </div>
+                  </Carousel.Item> 
+                ))
+              }
             </Carousel>
           </div>
         </div>

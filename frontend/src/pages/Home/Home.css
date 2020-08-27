@@ -154,7 +154,43 @@
     }
     
 }
+
 /*APRESENTAÇÕES*/
+
+  .title.max-home{
+    margin-bottom: 0;
+  }
+
+  .releases{
+    max-height: 700px;
+    width: 100%;
+    margin-bottom: 5vh;
+  }
+
+
+  .releases .carousel-indicators{
+    margin-bottom: 50px;
+    justify-content: flex-end;
+    margin-right: 1vw;
+  }
+
+  .releases .carousel-indicators li{
+    border-radius: 50%;
+    height: 12px;
+    width: 12px;
+  }
+
+  .publication-div .section-img{
+    background-repeat: no-repeat;
+    width:auto;
+    height: 500px;
+  }
+
+  .releases .buttons {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
 /*OFICINAS-PALESTRAS*/
 .div-img{
   width: 100%;
@@ -213,12 +249,12 @@ h6{
 /*NOTÍCIAS*/
 .noticias{
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 8px;
 }
-
 .noticias section{
     height: 70vh;
+    width: 50vw;
     background-color: #E7C032;
 }
 .section-img{
@@ -250,8 +286,19 @@ h6{
   display: flex;
   width: 100%;
   justify-content: flex-end;
+  
 }
 
+@media only screen and (min-width: 1400px){
+  .section-btn button{
+      margin-top: 5vh;
+  }
+}
+@media only screen and (max-width: 1100px){
+  .noticias{
+      grid-template-columns: 1fr 1fr;
+  }
+}
 @media only screen and (max-width: 856px){
     .noticias{
         grid-template-columns: 1fr;
@@ -265,11 +312,7 @@ h6{
         margin-top: 10vh;
     }
 }
-@media only screen and (min-width: 1400px){
-    .section-btn button{
-        margin-top: 5vh;
-    }
-}
+
 
 
 /*BOTÕES*/

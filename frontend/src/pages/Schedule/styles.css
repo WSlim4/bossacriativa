@@ -1,5 +1,21 @@
 .slt-buttons {
   text-align: left;
+  display: flex;
+  align-items: center;
+}
+
+.arrow-left,
+.arrow-right {
+  height: 30px;
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+}
+
+.arrow-left {
+  transform: rotate(180deg);
 }
 
 h4 {
