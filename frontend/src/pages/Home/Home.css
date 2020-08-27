@@ -23,10 +23,12 @@
 
 .banner > div:first-of-type {
   margin-right: 15px;
+  height: 100%;
 }
 
 .banner > div:last-of-type {
   margin-left: 15px;
+  flex: 1;
 }
 
 .banner > div {
@@ -56,6 +58,15 @@
 .banner .events .event-day {
   margin-right: 20px;
   font-size: 2em;
+  margin-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.banner .events .event-day span {
+  margin-top: 1px;
+  font-size: .5em;
 }
 
 .banner .events .event-intro {
@@ -162,8 +173,9 @@
   }
 
   .releases{
-    max-height: 700px;
+    height: 81vh;
     width: 100%;
+    overflow: hidden;
     margin-bottom: 5vh;
   }
 
@@ -184,12 +196,20 @@
     background-repeat: no-repeat;
     background-size: cover;
     width:auto;
-    height: 500px;
+    height: 480px;
   }
 
   .releases .buttons {
     margin-top: 0;
     margin-bottom: 0;
+  }
+
+  .publication-div a {
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
   }
 
 /*OFICINAS-PALESTRAS*/
@@ -253,6 +273,31 @@ h6{
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 8px;
 }
+
+.noticias .news-img {
+  height: 200px;
+}
+
+.noticias .not-title {
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.noticias .desc {
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+}
+
+.noticias .nws-btn {
+  margin: 20px 0;
+}
+
 .noticias section{
     height: 70vh;
     width: 50vw;

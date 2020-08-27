@@ -15,6 +15,7 @@ function Home() {
   const [banners, setBanners] = useState([])
   const [events, setEvents] = useState([])
   const [publications, setPublications] = useState([])
+  const [lives, setLives] = useState([])
 
   useEffect(()=>{
     api.get(`/lastWorkshops`).then(({ data: { data } }) => setWorkshop(data));
@@ -24,8 +25,9 @@ function Home() {
     api.get(`/lastNews`).then(({ data }) => setNews(data));
     api.get(`/banners`).then(({ data }) => setBanners(data));
     strapi.get(`/events?_limit=5`).then(({ data }) => setEvents(data));
-    strapi.get(`/publicacoes`).then(({ data }) => setPublications(data));
-  }, []);
+    strapi.get(`/publicacoes?_sort=id:DESC`).then(({ data }) => setPublications(data));
+    strapi.get('/lives?_limit=8&_sort=id:DESC').then(({data}) => setLives(data))
+  }, [])
 
   return (
     <div className="home-container">
@@ -36,11 +38,13 @@ function Home() {
             events.map(event => (
               <div className="events" key={event.id}>
                 <div>
-                  <p className="event-day">{new Date(event.date).getDate()}
+                  <p className="event-day">
+                    {`0${new Date(event.date).getDate()}`.slice(-2)}
+                    <span>{event.month.name}</span>
                   </p>
                 </div>
                 <div>
-                 <h5 className="event-title">{event.time} | {event.title}</h5>
+                  <h5 className="event-title">{event.time} | {event.title}</h5>
                   <p className="event-intro">{event.description}</p>
                 </div>
               </div>
@@ -62,7 +66,7 @@ function Home() {
                     <div className="publication-div">
                       <section className="section-img" style= {{ background:`url(https://admin.bossacriativa.art.br${publication.image.url}) center top / cover no-repeat`} }></section>
                       <div className="buttons">
-                          <button><a target='__blank' href={publication.link} style={{color: 'black'}}>{`Pocket Show | ${publication.artist}`}</a></button>
+                          <button><a target='__blank' href={publication.link} style={{color: 'black'}}>{`${publication.type} | ${publication.title}`}</a></button>
                       </div>
                     </div>
                   </Carousel.Item> 
@@ -179,16 +183,16 @@ function Home() {
           </div>
         </div>
       </div>
-      <div className="home-content">
+      {<div className="home-content">
         <h4 className="title max-home">LIVES</h4>
         <div className="artistas">
           <div className="mySlides">
             {
-              workshops.map(workshop => (
-                <div style={{ backgroundColor: "#E7C032"}} onClick={()=>{ history.push(`/live/${workshop.id}`)}}>
-                  <div className="div-img" style={{backgroundImage: `url(${workshop.img_url})`}}/>
-                  <h6 style={{backgroundColor: `${workshop.theme_color}`}}>{workshop.artist_name}</h6>
-                  <p>{workshop.introduction}</p>
+              lives.map(live => (
+                <div style={{ backgroundColor: "#E7C032"}} onClick={()=>{ history.push(`/live/${live.id}`)}}>
+                  <div className="div-img" style={{backgroundImage: `url(https://admin.bossacriativa.art.br${live.image.url})`}}/>
+                  <h6 style={{backgroundColor: `${live.theme_color}`}}>{live.title}</h6>
+                  <p>{live.introduction}</p>
                 </div>
               ))
             }
@@ -202,7 +206,7 @@ function Home() {
             <Link to="/lives"><button>Veja mais</button></Link>
           </div>
         </div>
-      </div>
+      </div>}
       {/*<div className="home-content">
 
       <h4 className="title max-home">PALESTRAS</h4>

@@ -21,10 +21,10 @@ class Lives extends Component{
 
     async loadData(page){
         const artists = await api.get('/showAll')
-        const response = await strapi.get(`/lives?_start=&_limit=10`)
+        const response = await strapi.get(`/lives`)
         this.setState({ total: response.data.total })
         this.setState({ allArtists: artists.data })
-        this.setState({ data: response.data })
+        this.setState({ data: response.data.reverse() })
         this.setState({ pageNumbers: Math.ceil(this.state.total / this.state.perPage)})
     }
 
@@ -68,53 +68,25 @@ class Lives extends Component{
     }
         */  
     render(){
-        const shows = this.state.data
+        const lives = this.state.data
         const pgNmb = range(1,this.state.pageNumbers+1)
         return(
             <>
             <div className="home-content">
                 <div className="head title">
                     <h2>LIVES</h2>
-                    <div className="filters">
-                        <div id="buscar">
-                            <form onSubmit={this.search}>
-                                <label htmlFor="buscar">BUSCAR POR ARTISTA:</label>
-                                <input type="text" name="buscar" id="buscar" placeholder="Digite aqui para buscar" onChange={(e)=>this.setState({ filter: e.target.value })}/>
-                                <button type="submit"><GiMagnifyingGlass size="1.5em"></GiMagnifyingGlass></button>
-                            </form>
-                        </div>
-                        <div id="filter">
-                            <label htmlFor="temas">FILTRAR POR CATEGORIA:</label>
-                            <select name="temas" id="tema" onChange={()=>this.filterCategory()}>
-                                <option value=""></option>
-                                <option value="Música">Música</option>
-                                <option value="Artes Integradas">Artes Integradas</option>
-                                <option value="Artes Visuais">Artes Visuais</option>
-                                <option value="Circo">Circo</option>
-                                <option value="Dança">Dança</option>
-                                <option value="Literatura">Literatura </option>
-                                <option value="Teatro">Teatro </option>
-                            </select>
-                            {/*<select name="temas" id="artista">
-                                <option value="">Escolha um artista</option>
-                            </select>*/}
-                        </div>
-                    </div>
                 </div>
                 <div className="main-content"> 
-                    {shows.map(show=>
-                    <div onClick={()=>history.push(`/live/${show.id}`)}>
-                        <div className="div-img" style={{backgroundImage: `url(${show.img_url})`}}>
+                    {lives.map(live=>
+                    <div onClick={()=>history.push(`/live/${live.id}`)}>
+                        <div className="div-img" style={{backgroundImage: `url(https://admin.bossacriativa.art.br${live.image.url})`}}>
                             
                         </div>
-                        <h6 style={{backgroundColor: show.theme_color}}>{show.title}</h6>
-                        <p>{show.introduction}</p>
+                        <h6 style={{backgroundColor: live.theme_color}}>{live.title}</h6>
+                        <p>{live.introduction}</p>
                     </div>
                     )}
                 </div>
-                {pgNmb.map(val =>
-                        <button value={val} className="page-btns" onClick={() => this.__onClick(val)} >{val}</button>
-                )}
             </div>
             </>
         )   
