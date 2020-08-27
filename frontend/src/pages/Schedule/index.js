@@ -2,9 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap'
 import './styles.css'
 import strapi from '../../services/strapi';
-import Axios from 'axios';
-
-import strapi from '../../services/strapi'
 
 export default function Schedule() {
   const [events, setEvents] = useState([]);
@@ -18,9 +15,9 @@ export default function Schedule() {
 
   async function handleClick(i) {
     if (month + i < new Date().getMonth() || month + i > 11) return;
-    const {data} = await Axios.get(`/events?month.id=${month + i}`);
+    const response = await strapi.get(`/events/${month + i}`);
     setMonth(old => old + i);
-    setEvents(data);  
+    setEvents(response.data);  
   }
 
   return (
