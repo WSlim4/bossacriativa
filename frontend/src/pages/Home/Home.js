@@ -5,6 +5,7 @@ import api from '../../services/api'
 import Carousel from 'react-bootstrap/Carousel';
 import { Link } from 'react-router-dom'
 import history from '../../services/history'
+import Axios from 'axios';
 
 function Home() {
   const [workshops, setWorkshop] = useState([])
@@ -23,8 +24,8 @@ function Home() {
     api.get(`/lastShows`).then(({ data: { data } }) => setShows(data));
     api.get(`/lastNews`).then(({ data }) => setNews(data));
     api.get(`/banners`).then(({ data }) => setBanners(data));
-    api.get(`/events?_limit=5`,{ baseURL }).then(({ data }) => setEvents(data));
-    api.get(`/publicacoes`,  { baseURL }).then(({ data }) => setPublications(data));
+    Axios.get(`/events?_limit=5`,{ baseURL }).then(({ data }) => setEvents(data));
+    Axios.get(`/publicacoes`,  { baseURL }).then(({ data }) => setPublications(data));
   }, []);
 
   //console.log(publications);
