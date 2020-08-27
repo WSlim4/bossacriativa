@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap'
 import './styles.css'
 import api from '../../services/api';
+import Axios from 'axios';
 
 export default function Schedule() {
   const [events, setEvents] = useState([]);
@@ -10,14 +11,14 @@ export default function Schedule() {
 
   useEffect(() => {
     const baseURL = 'https://admin.bossacriativa.art.br/';
-    api.get(`/events?month.id=${month}`, { baseURL }).then(({ data }) => setEvents(data));
-    api.get('/months', { baseURL }).then(({ data }) => setMonths(data));
+    Axios.get(`/events?month.id=${month}`, { baseURL }).then(({ data }) => setEvents(data));
+    Axios.get('/months', { baseURL }).then(({ data }) => setMonths(data));
   }, []);
 
   async function handleClick(i) {
     if (month + i < new Date().getMonth() || month + i > 11) return;
     const baseURL = 'https://admin.bossacriativa.art.br/';
-    const {data} = await api.get(`/events?month.id=${month + i}`, { baseURL });
+    const {data} = await Axios.get(`/events?month.id=${month + i}`, { baseURL });
     setMonth(old => old + i);
     setEvents(data);  
   }
