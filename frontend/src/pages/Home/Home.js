@@ -7,8 +7,6 @@ import Carousel from 'react-bootstrap/Carousel';
 import { Link } from 'react-router-dom'
 import history from '../../services/history'
 
-import strapi from '../../services/strapi'
-
 function Home() {
   const [workshops, setWorkshop] = useState([])
   // const [lectures, setLectures] = useState([])
@@ -25,11 +23,10 @@ function Home() {
     api.get(`/lastShows`).then(({ data: { data } }) => setShows(data));
     api.get(`/lastNews`).then(({ data }) => setNews(data));
     api.get(`/banners`).then(({ data }) => setBanners(data));
-    strapi.get(`/events?_limit=5`,{ baseURL }).then(({ data }) => setEvents(data));
-    strapi.get(`/publicacoes`,  { baseURL }).then(({ data }) => setPublications(data));
+    strapi.get(`/events?_limit=5`).then(({ data }) => setEvents(data));
+    strapi.get(`/publicacoes`).then(({ data }) => setPublications(data));
   }, []);
 
-  //console.log(publications);
   return (
     <div className="home-container">
       <div className="home-content banner">

@@ -2,9 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap'
 import './styles.css'
 import strapi from '../../services/strapi';
-import Axios from 'axios';
-
-import strapi from '../../services/strapi'
 
 export default function Schedule() {
   const [events, setEvents] = useState([]);
