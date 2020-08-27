@@ -23,7 +23,7 @@ class Shows extends React.Component{
         const response = await api.get(`/shows?page=${page}`)
         this.setState({ total: response.data.total })
         this.setState({ allArtists: artists.data })
-        this.setState({ data: response.data.data })
+        this.setState({ data: response.data.data.reverse() })
         this.setState({ pageNumbers: Math.ceil(this.state.total / this.state.perPage)})
     }
 
