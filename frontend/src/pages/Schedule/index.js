@@ -3,23 +3,29 @@ import { Container, Row, Col } from 'react-bootstrap'
 import './styles.css'
 import api from '../../services/api';
 
+import strapi from '../../services/strapi'
+
 export default function Schedule() {
   const [events, setEvents] = useState([]);
   const [month, setMonth] = useState(new Date().getMonth())
   const [months, setMonths] = useState([])
 
   useEffect(() => {
-    const baseURL = 'https://admin.bossacriativa.art.br/';
-    api.get(`/events?month.id=${month}`, { baseURL }).then(({ data }) => setEvents(data));
-    api.get('/months', { baseURL }).then(({ data }) => setMonths(data));
-  }, []);
+    async function fetchData(){
+      const response = await strapi.get(`/months/${month + 1}`);
+      setEvents(response.data.events)
+
+      const res = await strapi.get('/months');
+      setMonths(res.data)
+    }
+    fetchData()
+  }, [month]);
 
   async function handleClick(i) {
     if (month + i < new Date().getMonth() || month + i > 11) return;
-    const baseURL = 'https://admin.bossacriativa.art.br/';
-    const {data} = await api.get(`/events?month.id=${month + i}`, { baseURL });
+    const response = await strapi.get(`/months/${month + i}`);
     setMonth(old => old + i);
-    setEvents(data);
+    setEvents(response.data);
   }
 
   return (
@@ -62,7 +68,7 @@ export default function Schedule() {
                 </div>
               </Col>
             ))
-          }
+            }
         </Row>
         <Row className="home-content">
           <Col lg={12}>
