@@ -9,15 +9,21 @@ export default function Schedule() {
   const [months, setMonths] = useState([])
 
   useEffect(() => {
-    strapi.get(`/events?month.id=${month}`).then(({ data }) => setEvents(data));
-    strapi.get('/months').then(({ data }) => setMonths(data));
-  }, []);
+    async function fetchData(){
+      const response = await strapi.get(`/months/${month + 1}`);
+      setEvents(response.data.events)
+
+      const res = await strapi.get('/months');
+      setMonths(res.data)
+    }
+    fetchData()
+  }, [month]);
 
   async function handleClick(i) {
     if (month + i < new Date().getMonth() || month + i > 11) return;
-    const response = await strapi.get(`/events/${month + i}`);
+    const response = await strapi.get(`/months/${month + i}`);
     setMonth(old => old + i);
-    setEvents(response.data);  
+    setEvents(response.data.events);  
   }
 
   return (

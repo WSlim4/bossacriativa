@@ -27,7 +27,6 @@ function Home() {
     strapi.get(`/publicacoes`).then(({ data }) => setPublications(data));
   }, []);
 
-  //console.log(publications);
   return (
     <div className="home-container">
       <div className="home-content banner">
