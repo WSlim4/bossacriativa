@@ -19,7 +19,7 @@ export default function Schedule() {
     const baseURL = 'https://admin.bossacriativa.art.br/';
     const {data} = await api.get(`/events?month.id=${month + i}`, { baseURL });
     setMonth(old => old + i);
-    setEvents(data);
+    setEvents(data);  
   }
 
   return (
