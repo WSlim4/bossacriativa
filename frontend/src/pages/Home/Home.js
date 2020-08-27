@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react';
 import '../../global.css';
 import './Home.css';
 import api from '../../services/api'
+import strapi from '../../services/strapi'
 import Carousel from 'react-bootstrap/Carousel';
 import { Link } from 'react-router-dom'
 import history from '../../services/history'
-import Axios from 'axios';
+
+import strapi from '../../services/strapi'
 
 function Home() {
   const [workshops, setWorkshop] = useState([])
@@ -17,19 +19,17 @@ function Home() {
   const [publications, setPublications] = useState([])
 
   useEffect(()=>{
-    const baseURL = 'https://admin.bossacriativa.art.br/';
     api.get(`/lastWorkshops`).then(({ data: { data } }) => setWorkshop(data));
     // api.get(`/lectures`).then(({ data }) => setBanners(data));
     // api.get(`/schedule`, { baseURL: '' }).then(({ data }) => setEvents(data));
     api.get(`/lastShows`).then(({ data: { data } }) => setShows(data));
     api.get(`/lastNews`).then(({ data }) => setNews(data));
     api.get(`/banners`).then(({ data }) => setBanners(data));
-    Axios.get(`/events?_limit=5`,{ baseURL }).then(({ data }) => setEvents(data));
-    Axios.get(`/publicacoes`,  { baseURL }).then(({ data }) => setPublications(data));
+    strapi.get(`/events?_limit=5`,{ baseURL }).then(({ data }) => setEvents(data));
+    strapi.get(`/publicacoes`,  { baseURL }).then(({ data }) => setPublications(data));
   }, []);
 
   //console.log(publications);
-  // console.log(banners);
   return (
     <div className="home-container">
       <div className="home-content banner">
@@ -39,10 +39,11 @@ function Home() {
             events.map(event => (
               <div className="events" key={event.id}>
                 <div>
-                  <p className="event-day">{new Date(event.date).getDate()}</p>
+                  <p className="event-day">{new Date(event.date).getDate()}
+                  </p>
                 </div>
                 <div>
-                  <h5 className="event-title">{event.title}</h5>
+                 <h5 className="event-title">{event.time} | {event.title}</h5>
                   <p className="event-intro">{event.description}</p>
                 </div>
               </div>
@@ -62,11 +63,9 @@ function Home() {
                 publications.map(publication => (                
                   <Carousel.Item>
                     <div className="publication-div">
-                      <section className="section-img" style= {{ backgroundImage:`url(${api.defaults.baseURL}${publication.image.url})`}}></section>
+                      <section className="section-img" style= {{ background:`url(https://admin.bossacriativa.art.br${publication.image.url}) center top / cover no-repeat`} }></section>
                       <div className="buttons">
-                        <Link to={publication.link}>
-                          <button>{`Pocket Show | ${publication.artist}`}</button>
-                        </Link>
+                          <button><a target='__blank' href={publication.link} style={{color: 'black'}}>{`Pocket Show | ${publication.artist}`}</a></button>
                       </div>
                     </div>
                   </Carousel.Item> 

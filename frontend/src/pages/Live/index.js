@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import ReactPlayer from 'react-player'
-import api from '../../services/api'
+import strapi from '../../services/strapi'
 import './Live.css'
 
 export default function Live(props){
@@ -8,8 +8,7 @@ export default function Live(props){
 
     useEffect(()=>{
         async function loadData(){
-          const baseURL = 'https://admin.bossacriativa.art.br/';
-            const response = await api.get(`/lives/${props.match.params.id}`, { baseURL })
+            const response = await strapi.get(`/lives/${props.match.params.id}`)
             setShow(response.data)
         }
         loadData()

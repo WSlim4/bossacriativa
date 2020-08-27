@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import api from '../../services/api'
+import strapi from '../../services/strapi'
 import range from '../../helpers/range'
 import history from '../../services/history'
 import { GiMagnifyingGlass } from 'react-icons/gi'
@@ -19,9 +20,8 @@ class Lives extends Component{
     }
 
     async loadData(page){
-        const baseURL = 'https://admin.bossacriativa.art.br/';
         const artists = await api.get('/showAll')
-        const response = await api.get(`/lives?_start=&_limit=10`, { baseURL })
+        const response = await strapi.get(`/lives?_start=&_limit=10`)
         this.setState({ total: response.data.total })
         this.setState({ allArtists: artists.data })
         this.setState({ data: response.data })
@@ -38,10 +38,8 @@ class Lives extends Component{
     }
     
     async filterCategory(){
-        const baseURL = 'https://admin.bossacriativa.art.br/';
-        const response = await api.get(`/lives?page=${this.props.match.params.page}`, { baseURL })
+        const response = await strapi.get(`/lives?page=${this.props.match.params.page}`)
         this.setState({ data: response.data.data })
-        
         var selectBox = document.getElementById("tema")
         var selectedValue = selectBox.options[selectBox.selectedIndex].value
         var datas = this.state.data
@@ -51,8 +49,7 @@ class Lives extends Component{
 
     async search(e){
       e.preventDefault()
-        const baseURL = 'https://admin.bossacriativa.art.br/';
-        const shows = await api.get(`/lives?artist=${this.state.filter}`,{baseURL});
+        const shows = await strapi.get(`/lives?artist=${this.state.filter}`);
         this.setState({ data: shows.data })
     }
     /*async getArtists(){

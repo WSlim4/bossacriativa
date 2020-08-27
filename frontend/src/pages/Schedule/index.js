@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap'
 import './styles.css'
-import api from '../../services/api';
+import strapi from '../../services/strapi';
 import Axios from 'axios';
+
+import strapi from '../../services/strapi'
 
 export default function Schedule() {
   const [events, setEvents] = useState([]);
@@ -10,15 +12,13 @@ export default function Schedule() {
   const [months, setMonths] = useState([])
 
   useEffect(() => {
-    const baseURL = 'https://admin.bossacriativa.art.br/';
-    Axios.get(`/events?month.id=${month}`, { baseURL }).then(({ data }) => setEvents(data));
-    Axios.get('/months', { baseURL }).then(({ data }) => setMonths(data));
+    strapi.get(`/events?month.id=${month}`).then(({ data }) => setEvents(data));
+    strapi.get('/months').then(({ data }) => setMonths(data));
   }, []);
 
   async function handleClick(i) {
     if (month + i < new Date().getMonth() || month + i > 11) return;
-    const baseURL = 'https://admin.bossacriativa.art.br/';
-    const {data} = await Axios.get(`/events?month.id=${month + i}`, { baseURL });
+    const {data} = await Axios.get(`/events?month.id=${month + i}`);
     setMonth(old => old + i);
     setEvents(data);  
   }
@@ -63,7 +63,7 @@ export default function Schedule() {
                 </div>
               </Col>
             ))
-          }
+            }
         </Row>
         <Row className="home-content">
           <Col lg={12}>

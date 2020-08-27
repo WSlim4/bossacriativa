@@ -182,6 +182,7 @@
 
   .publication-div .section-img{
     background-repeat: no-repeat;
+    background-size: cover;
     width:auto;
     height: 500px;
   }
