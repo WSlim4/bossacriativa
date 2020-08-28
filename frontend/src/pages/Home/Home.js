@@ -32,11 +32,11 @@ function Home() {
   return (
     <div className="home-container">
       <div className="home-content banner">
-        <div className="schedule">
+        <div className="schedule" style={{backgroundColor: 'white'}}>
           <h4 className="title max-home">AGENDA</h4>
           {
             events.map(event => (
-              <div className="events" key={event.id}>
+              <div className="events" key={event.id} >
                 <div>
                   <p className="event-day">
                     {`0${new Date(event.date).getDate()}`.slice(-2)}
