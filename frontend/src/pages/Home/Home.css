@@ -39,15 +39,17 @@
 .banner .events {
   display: flex;
   align-items: center;
+  padding: 5px;
   justify-content: space-between;
   height: 100px;
-  margin-bottom: 20px;
 }
 
 .banner .events div:first-of-type {
   border-right: 1px solid #ccc;
   display: flex;
+  flex: .4;
   align-items: center;
+  justify-content: center;
 }
 
 .banner .events div:last-of-type {
