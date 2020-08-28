@@ -24,7 +24,7 @@ function Home() {
     api.get(`/lastShows`).then(({ data: { data } }) => setShows(data));
     api.get(`/lastNews`).then(({ data }) => setNews(data));
     api.get(`/banners`).then(({ data }) => setBanners(data));
-    strapi.get(`/events?_limit=5`).then(({ data }) => setEvents(data));
+    strapi.get(`/events?_limit=4`).then(({ data }) => setEvents(data));
     strapi.get(`/publicacoes?_sort=id:DESC`).then(({ data }) => setPublications(data));
     strapi.get('/lives?_limit=8&_sort=id:DESC').then(({data}) => setLives(data))
   }, [])
