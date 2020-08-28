@@ -21,8 +21,8 @@ export default function Schedule() {
   }
 
   return (
-    <div className="home-container">
-      <Container className="home-content">
+    <div className="home-container" >
+      <Container className="home-content" style={{backgroundColor: 'white'}}>
         <Row>
           <Col lg={12}>
             <div>
