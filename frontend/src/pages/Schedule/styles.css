@@ -2,12 +2,18 @@
   text-align: left;
   display: flex;
   align-items: center;
+  margin-top: 3vh;
+  margin-left: 3vh;
+}
+
+.slt-buttons:last-of-type {
+  margin-bottom: 5vh;
 }
 
 .arrow-left,
 .arrow-right {
-  height: 30px;
-  width: 30px;
+  height: 34px;
+  width: 34px;
   display: flex;
   align-items: center;
   justify-content: center;
