@@ -34,7 +34,7 @@ export default function Schedule() {
                     <img src={require('../../assets/seta.svg')} height="20px" />
                   </button>
                 </div>
-                <div style={{ marginLeft: 10, marginRight: 10, backgroundColor: '#efefef', padding: '3px 15px' }}>
+                <div style={{ marginRight: 10, backgroundColor: '#efefef', padding: '3px 15px' }}>
                   {months.length > 0 ? months[month - 1].name : ''}
                 </div>
                 <div>
