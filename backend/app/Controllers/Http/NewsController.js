@@ -49,8 +49,7 @@ class NewsController {
     }
 
     async lastNews({ request }){
-        let { page } = request.all()
-        page = page ? page : 1
+        
         const news = Database.table('news').limit(3).orderBy('id', 'desc')
         
         return await news
