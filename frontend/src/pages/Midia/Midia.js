@@ -12,7 +12,7 @@ import foto_7 from '../../assets/nova-galeria/Foto-7.jpg'
 import foto_8 from '../../assets/nova-galeria/Foto-8.jpg'
 import foto_9 from '../../assets/nova-galeria/Foto-9.jpg'
 import foto_10 from '../../assets/nova-galeria/Foto-10.jpg'
-
+import foto_11 from '../../assets/nova-galeria/Foto-11.jpg'
  
 var items = [
     {id: 1, src: foto_1 },
@@ -24,7 +24,8 @@ var items = [
     {id: 7, src: foto_7 },
     {id: 8, src: foto_8 },
     {id: 9, src: foto_9 },
-    {id: 10, src: foto_10 }
+    {id: 10, src: foto_10 },
+    {id: 11, src: foto_11 }
   ];
 
   items = items.map(function(item) {
