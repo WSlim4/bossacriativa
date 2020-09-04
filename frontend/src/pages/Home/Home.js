@@ -183,7 +183,7 @@ function Home() {
           </div>
         </div>
       </div>
-      {<div className="home-content">
+      <div className="home-content">
         <h4 className="title max-home">LIVES</h4>
         <div className="artistas">
           <div className="mySlides">
@@ -206,7 +206,31 @@ function Home() {
             <Link to="/lives"><button>Veja mais</button></Link>
           </div>
         </div>
-      </div>}
+      </div>
+      <div className="home-content">
+        <h4 className="title max-home">Patrimônio em VR</h4>
+        <div className="artistas">
+          <div className="mySlides">
+            {
+              lives.map(live => (
+                <div style={{ backgroundColor: "#E7C032"}} onClick={()=>{ history.push(`/live/${live.id}`)}}>
+                  <div className="div-img" style={{backgroundImage: `url(https://admin.bossacriativa.art.br${live.image.url})`}}/>
+                  <h6 style={{backgroundColor: `${live.theme_color}`}}>{live.title}</h6>
+                  <p>{live.introduction}</p>
+                </div>
+              ))
+            }
+          </div>
+          <div className="buttons">
+            <div className="dots">
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+            </div>
+            <Link to="/lives"><button>Veja mais</button></Link>
+          </div>
+        </div>
+      </div>
       {/*<div className="home-content">
 
       <h4 className="title max-home">PALESTRAS</h4>
