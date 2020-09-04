@@ -7,11 +7,13 @@ const styles = {
   list: {
     flex: 1,
     marginBottom: 10,
-    padding: '1vh 10px'
+    padding: '1vh 50px',
+    listStyle: 'url(seta2.svg)'
   },
 
   item: {
-    textAlign: 'left'
+    textAlign: 'left',
+    marginTop: '1em'
   }
 }
 

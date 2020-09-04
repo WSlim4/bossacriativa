@@ -9,12 +9,12 @@ export default function ListRelease() {
   const [start, setStart] = useState(0);
 
   function goPage(value) {
-    if ((start+value) < 0 || releases.length < 6) return;
+    if ((start+value) < 0 || releases.length < 4) return;
     setStart(start + value);
   }
 
   useEffect(() => { 
-    strapi.get(`/releases?_start=${start}&_limit=6&_sort=date:DESC`)
+    strapi.get(`/releases?_start=${start}&_limit=4&_sort=date:DESC`)
       .then(({data}) => setReleases(data));
   }, [start]);
 

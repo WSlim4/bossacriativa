@@ -24,7 +24,7 @@ export default function ListClip() {
         {
           clips.map(item => (
             <ListItem key={item.id}>
-              <CardClip clip={item} />
+              <CardClip clip={item}/>
             </ListItem>
           ))
         }

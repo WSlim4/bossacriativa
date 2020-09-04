@@ -31,6 +31,7 @@ export const Link = styled.a`
 export const Figure = styled.figure`
   flex: .8;
   height: 100%;
+  width: 50px;
   border: 2px solid #777;
 
   @media (max-width: 600px) {
