@@ -2,7 +2,6 @@ import React from 'react';
 import './Imprensa.css';
 import { Container, Row, Col } from 'react-bootstrap';
 import { pdfjs } from "react-pdf";
-import { Link } from 'react-router-dom';
 import Box from '../../components/Box';
 import ListRelease from '../../components/ListRelease';
 import ListClip from '../../components/ListClip';
