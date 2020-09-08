@@ -2,12 +2,9 @@ import styled from 'styled-components';
 
 export const Card = styled.article`
   width: 470px;
-  height: 200px;
-  background-color: #eee;
 
   @media (max-width: 600px) {
     width: 100%;
-    height: 400px;
   }
 `;
 
@@ -30,9 +27,14 @@ export const Link = styled.a`
 
 export const Figure = styled.figure`
   flex: .8;
-  height: 100%;
-  width: 50px;
-  border: 2px solid #777;
+  height: 100px;
+  width: 150px;
+  margin: 0;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
 
   @media (max-width: 600px) {
     width: 100%;
@@ -41,7 +43,7 @@ export const Figure = styled.figure`
 
 export const Content = styled.div`
   flex: 1;
-  padding: 10px 10px 10px 15px;
+  margin-left: 1em;
 `;
 
 export const Title = styled.h4`

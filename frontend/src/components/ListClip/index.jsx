@@ -9,7 +9,7 @@ export default function ListClip() {
   const [start, setStart] = useState(0);
 
   function goPage(value) {
-    if ((start+value) < 0 || clips.length < 6) return;
+    if ((start+value) < 0 || (clips.length < 6 && (start+value) > start)) return;
     setStart(start + value);
   }
   
@@ -24,7 +24,7 @@ export default function ListClip() {
         {
           clips.map(item => (
             <ListItem key={item.id}>
-              <CardClip clip={item}/>
+              <CardClip clip={item} />
             </ListItem>
           ))
         }

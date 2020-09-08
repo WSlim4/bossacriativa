@@ -3,12 +3,12 @@ import ReactPlayer from 'react-player'
 import strapi from '../../services/strapi'
 import './Live.css'
 
-export default function Live(props){
+export default function Live({ match }){
     const [live, setLive] = useState([])
 
     useEffect(()=>{
         async function loadData(){
-            const response = await strapi.get(`/lives/${props.match.params.id}`)
+            const response = await strapi.get(`/lives/${match.params.id}`)
             setLive(response.data)
         }
         loadData()

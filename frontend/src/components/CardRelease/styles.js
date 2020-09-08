@@ -5,6 +5,11 @@ export const Link = styled.a `
   text-align: left;
   margin-bottom: 10px;
   color: #000;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
 
   :hover {
     text-decoration: underline;

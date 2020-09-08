@@ -43,7 +43,7 @@ class Shows extends React.Component{
         var selectBox = document.getElementById("tema")
         var selectedValue = selectBox.options[selectBox.selectedIndex].value
         var datas = this.state.data
-        var filtered = datas.filter((element)=>element.category == selectedValue)
+        var filtered = datas.filter((element)=>element.category === selectedValue)
         this.setState({ data: filtered })
     }
 

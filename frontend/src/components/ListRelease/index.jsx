@@ -9,7 +9,7 @@ export default function ListRelease() {
   const [start, setStart] = useState(0);
 
   function goPage(value) {
-    if ((start+value) < 0 || releases.length < 4) return;
+    if ((start+value) < 0 || (releases.length < 4 && (start+value) > start)) return;
     setStart(start + value);
   }
 
@@ -30,8 +30,8 @@ export default function ListRelease() {
         }
       </ul>
       <BarPagination 
-        onBack={() => goPage(-6)} 
-        onNext={() => goPage(6)} 
+        onBack={() => goPage(-4)} 
+        onNext={() => goPage(4)} 
       />
     </div>
   )

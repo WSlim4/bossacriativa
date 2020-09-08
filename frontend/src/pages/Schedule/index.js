@@ -31,7 +31,7 @@ export default function Schedule() {
               <div className="slt-buttons">
                 <div>
                   <button onClick={() => handleClick(-1)} className="arrow-left">
-                    <img src={require('../../assets/seta.svg')} height="20px" />
+                    <img src={require('../../assets/seta.svg')} height="20px" alt="" />
                   </button>
                 </div>
                 <div style={{ marginLeft: 10, marginRight: 10, backgroundColor: '#efefef', padding: '3px 15px', height: 34, display: 'flex', alignItems: 'center' }}>
@@ -39,7 +39,7 @@ export default function Schedule() {
                 </div>
                 <div>
                   <button onClick={() => handleClick(1)} className="arrow-right">
-                    <img src={require('../../assets/seta.svg')} height="20px" />
+                    <img src={require('../../assets/seta.svg')} height="20px" alt="" />
                   </button>
                 </div>
               </div>
@@ -70,7 +70,7 @@ export default function Schedule() {
             <div className="slt-buttons">
               <span>
                 <button onClick={() => handleClick(-1)} className="arrow-left">
-                  <img src={require('../../assets/seta.svg')} height="20px" />
+                  <img src={require('../../assets/seta.svg')} height="20px" alt="" />
                 </button>
               </span>
               <span style={{ marginLeft: 10, marginRight: 10, backgroundColor: '#efefef', padding: '3px 15px', height: 34, display: 'flex', alignItems: 'center' }}>
@@ -78,7 +78,7 @@ export default function Schedule() {
               </span>
               <span>
                 <button onClick={() => handleClick(1)} className="arrow-right">
-                  <img src={require('../../assets/seta.svg')} height="20px" />
+                  <img src={require('../../assets/seta.svg')} height="20px" alt="" />
                 </button>
               </span>
             </div>
