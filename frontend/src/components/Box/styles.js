@@ -1,23 +1,24 @@
-const styles = {
-  box: {
-    backgroundColor: '#FFF',
-    marginBottom: '10vh',
-    minHeight: 400,
-    display: 'flex',
-    flexDirection: 'column'
-  },
-  title: {
-    backgroundColor: '#E7C032',
-    fontFamily: "'Amatic SC', 'cursive'",
-    fontWeight: 'bold',
-    padding: '0.25em',
-    textAlign: 'left'
-  },
-  content: {
-    flex: 1,
-    display: 'flex',
-    flexDirection: 'column'
-  }
-}
+import styled from 'styled-components';
 
-export default styles;
+export const Section = styled.section`
+  background-color: #fff;
+  margin-bottom: 10vh;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+
+  h2 {
+    background-color: #E7C032;
+    font-family: 'Amatic SC', 'cursive';
+    font-weight: bold;
+    padding: 0.25em;
+    text-align: left;
+  }
+`;
+
+export const Content = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-top: ${({ mt }) => mt || 0}px;
+`;

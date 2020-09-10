@@ -1,18 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './styles';
+import { Section, Content } from './styles';
 
-export default function Box({ title, children }) {
+export default function Box({ title, children, mt }) {
   return (
-    <section style={styles.box}>
-      <h2 style={styles.title}>{ title }</h2>
-      <div style={styles.content}>
-        { children }
-      </div>
-    </section>
+    <Section>
+      <h2>{ title }</h2>
+      <Content mt={mt}>
+        {children}
+      </Content>
+    </Section>
   );
 };
 
 Box.propTypes = {
-  title: PropTypes.string.isRequired
-}
+  title: PropTypes.string.isRequired,
+  mt: PropTypes.number,
+};
+
+Box.defaultProps = {
+  mt: 0
+};

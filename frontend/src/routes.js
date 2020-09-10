@@ -8,14 +8,14 @@ import Home from './pages/Home/Home'
 import Route from './Route'
 import About from './pages/About/About';
 import Shows from './pages/Shows/Shows'
-import Imprensa from './pages/Imprensa/Imprensa';
+import Imprensa from './pages/Imprensa';
 import Oficinas from './pages/Oficinas/Oficinas';
 import Noticias from './pages/Noticias/Noticias';
 import Noticia from './pages/Noticia/Noticia';
 import Oficina from './pages/Oficina/Oficina';
 import Parceiros from './pages/Parceiros/Parceiros';
 import Palestras from './pages/Palestras/Palestras';
-import Midia from './pages/Midia/Midia';
+import Midia from './pages/Midia';
 import Editais from './pages/Editais/Editais';
 import NavBar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
