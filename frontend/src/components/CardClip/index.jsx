@@ -4,7 +4,7 @@ import { Card, Link, Figure, Content, Title } from './styles';
 
 export default function CardClip({ clip }) {
   const title = `${clip.title} | ${clip.date.split('-').reverse().join('.').substring(0, 5)}`;
-  const image = `https://admin.bossacriativa.art.br${clip.cover.formats.thumbnail.url}`;
+  const image = `https://admin.bossacriativa.art.br${clip.cover ? clip.cover.formats.thumbnail.url : '' }`;
 
   return (
     <Card>

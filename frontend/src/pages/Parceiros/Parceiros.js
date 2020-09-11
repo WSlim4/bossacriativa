@@ -15,6 +15,7 @@ import olinda from '../../assets/apoio/olinda.png'
 import paraty from '../../assets/apoio/paraty.jpg'
 import saoluis from '../../assets/apoio/saoluis.jpg'
 import brasao from '../../assets/apoio/brasao.png'
+import ppg from '../../assets/apoio/ppg.jpeg'
 
 function Parceiros() {
     return (
@@ -134,7 +135,7 @@ function Parceiros() {
                             <a href="http://www.turismo.gov.br/" target="_blank">
                                 <img src={patria} alt="Logo UFRJ" className="logoss" width="1000px"/>
                             </a>
-                        </div> 
+                        </div>
                 </div>
             </div>
             <h1 className="main-title">QUER SER NOSSO PARCEIRO?</h1>

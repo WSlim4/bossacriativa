@@ -6,7 +6,8 @@ const styles = {
     alignItems: 'flex-start',
   },
   contact: {
-    padding: 10
+    padding: 10,
+    height: 298
   },
   textContact: {
     textAlign: 'left',

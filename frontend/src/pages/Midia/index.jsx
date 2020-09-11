@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-// import './Midia.css'
-import { Container, Row, Col } from 'react-bootstrap';
+import Masonry from 'react-masonry-css';
 import Box from '../../components/Box';
 import CardPhoto from '../../components/CardPhoto';
 import CardTestimony from '../../components/CardTestimony';
+import Page from '../../components/Page';
 import strapi from '../../services/strapi';
-import styles from './styles';
+import './Midia.css';
 
 export default function Midia() {
   const [midias, setMidias] = useState([]);
@@ -17,26 +17,41 @@ export default function Midia() {
   }, [viewed]);
 
   return(
-    <Box title="Galeria" mt={50}>
-      <Container fluid>
-        <Row style={styles.row}>
+    <Page>
+      <Box title="Galeria" p={15}>
+        <Masonry
+          breakpointCols={{ default: 3, 700: 2, 500: 1 }}
+          className="my-masonry-grid"
+          columnClassName="my-masonry-grid_column"
+        >
           {
             midias.map((item) => (
-              <Col className="col-12 col-md-6 col-xl-4">
-                {
-                  item.depoimento
-                    ? <CardTestimony data={item} />
-                    : <CardPhoto data={item} />
-                }
-              </Col>
+              item.depoimento
+                ? <CardTestimony data={item} />
+                : <CardPhoto data={item} />
             ))
           }
-          <Col className="col-12">
-            <button onClick={() => setViewed(viewed+12)}>Carregar mais</button>
-          </Col>
-        </Row>
-      </Container>
-    </Box>
+        </Masonry>
+        {/* <Container fluid>
+          <Row style={styles.row}>
+            {
+              midias.map((item) => (
+                <Col className="col-12 col-md-6 col-xl-4">
+                  {
+                    item.depoimento
+                      ? <CardTestimony data={item} />
+                      : <CardPhoto data={item} />
+                  }
+                </Col>
+              ))
+            }
+            <Col className="col-12">
+              <button onClick={() => setViewed(viewed+12)}>Carregar mais</button>
+            </Col>
+          </Row>
+        </Container> */}
+      </Box>
+    </Page>
     // <div className="gallery-container">
     //   <h3 className="gallery-title">Galeria</h3>
     //   <div className="gallery">

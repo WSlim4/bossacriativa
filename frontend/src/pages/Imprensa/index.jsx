@@ -6,6 +6,7 @@ import Box from '../../components/Box';
 import ListRelease from '../../components/ListRelease';
 import ListClip from '../../components/ListClip';
 import styles from './styles';
+import Page from '../../components/Page';
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 export default function Imprensa() {
@@ -29,36 +30,38 @@ export default function Imprensa() {
   ]
   
   return (
-    <Container className="imprensa-container">
-      <Row style={styles.row}>
-        <Col className="col-12 col-md-6">
-          <Box title="Releases">
-            <ListRelease />
-          </Box>
-        </Col>
-        <Col className="col-12 col-md-6">
-          <Box title="Contato">
-            <div style={styles.contact}>
-              <p style={styles.textContact}>
-                <strong>Funarte - Assessoria de Comunicação:</strong>
-              </p>
-              <p style={styles.textContact}>ascomfunarte@funarte.gov.br</p>
-              <p style={styles.textContact}>
-                <strong>Contato da Assessoria de Imprensa:</strong>
-              </p>
-              <p style={styles.textContact}>imprensa@musica.ufrj.br</p>
-            </div>
-          </Box>
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <Box title="Clipping">
-            <ListClip />
-          </Box>
-        </Col>
-      </Row>      
-    </Container>
+    <Page>
+      <Container>
+        <Row style={styles.row}>
+          <Col className="col-12 col-md-6">
+            <Box title="Releases">
+              <ListRelease />
+            </Box>
+          </Col>
+          <Col className="col-12 col-md-6">
+            <Box title="Contato">
+              <div style={styles.contact}>
+                <p style={styles.textContact}>
+                  <strong>Funarte - Assessoria de Comunicação:</strong>
+                </p>
+                <p style={styles.textContact}>ascomfunarte@funarte.gov.br</p>
+                <p style={styles.textContact}>
+                  <strong>Contato da Assessoria de Imprensa:</strong>
+                </p>
+                <p style={styles.textContact}>imprensa@musica.ufrj.br</p>
+              </div>
+            </Box>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <Box title="Clipping">
+              <ListClip />
+            </Box>
+          </Col>
+        </Row>      
+      </Container>
+    </Page>
         // <div className="imprensa-container">
         //     <Container>
         //         <h1 className="imprensa-title">RELEASES</h1>

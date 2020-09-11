@@ -13,7 +13,7 @@ const styles = {
 
   item: {
     textAlign: 'left',
-    marginTop: '1em'
+    marginBottom: '1em'
   }
 }
 

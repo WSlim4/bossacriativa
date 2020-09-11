@@ -4,6 +4,7 @@ export const Card = styled.article`
   display: flex;
   flex-direction: column;
   background-color: #ddd;
+  margin-top: 30px;
 `;
 
 export const Body = styled.main`

@@ -5,6 +5,7 @@ export const Card = styled.article`
   background-color: #ebebeb;
   display: flex;
   flex-direction: column;
+  margin-top: 30px;
 `;
 
 export const Header = styled.header`
