@@ -3,11 +3,12 @@ import PropTypes from 'prop-types';
 import { Card, Header, Body } from './styles';
 
 export default function CardTestimony({ data }) {
+  console.log(data)
   return (
     <Card>
       <Header>
         <figure>
-          <img src={data.autor.photo} alt=""/>
+          <img src={`https://admin.bossacriativa.art.br${data.image.url}`} alt=""/>
         </figure>
         <h1>{data.autor.nome}</h1>
       </Header>
