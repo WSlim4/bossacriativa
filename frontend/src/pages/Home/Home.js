@@ -167,7 +167,7 @@ function Home() {
               workshops.map(workshop => (
                 <div style={{ backgroundColor: "#E7C032"}} onClick={()=>{ history.push(`/oficina/${workshop.id}`)}}>
                   <div className="div-img" style={{backgroundImage: `url(${workshop.img_url})`}}/>
-                  <h6 style={{backgroundColor: `${workshop.theme_color}`}}>{workshop.artist_name}</h6>
+                  <h6 style={{backgroundColor: `${workshop.theme_color}`}}>{workshop.name}</h6>
                   <p>{workshop.introduction}</p>
                 </div>
               ))
