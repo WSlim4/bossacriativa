@@ -16,13 +16,15 @@ function Home() {
   const [events, setEvents] = useState([])
   const [publications, setPublications] = useState([])
   const [lives, setLives] = useState([])
+  const [baseUrl, ] = useState('https://admin.bossacriativa.art.br');
 
   useEffect(()=>{
     api.get(`/lastWorkshops`).then(({ data: { data } }) => setWorkshop(data));
     // api.get(`/lectures`).then(({ data }) => setBanners(data));
     // api.get(`/schedule`, { baseURL: '' }).then(({ data }) => setEvents(data));
     api.get(`/lastShows`).then(({ data: { data } }) => setShows(data));
-    api.get(`/lastNews`).then(({ data }) => setNews(data));
+    strapi.get(`/noticias?date_lte=${Date.now()}&_sort=date:desc&_limit=3`)
+      .then(({ data }) => setNews(data));
     api.get(`/banners`).then(({ data }) => setBanners(data));
     strapi.get(`/events?_limit=4&date_gte=${Date.now()}`).then(({ data }) => setEvents(data));
     strapi.get(`/publicacoes?_sort=id:DESC`).then(({ data }) => setPublications(data));
@@ -136,10 +138,16 @@ function Home() {
         {
           newses.map(news => (
             <div style={{ backgroundColor: "#E7C032"}}>
-              <div className="div-img news-img" style={{backgroundImage: `url(${news.img_url})`}}/>
+              <div 
+                className="div-img news-img" 
+                style={{backgroundImage: `url(${
+                  news.Cover 
+                    ? `${baseUrl}${news.Cover.formats.thumbnail.url}`
+                    : ''
+                  })`}}/>
               <div className="news-text">
                 <h6 className="not-title">{news.title}</h6>
-                <p className="desc">{news.introduction}</p>
+                <p className="desc">{news.intro}</p>
                 <div className="bar-btnleia">
                   <a className="leia btn nws-btn" onClick={()=> { history.push(`/noticia/${news.id}`)}}>Leia mais</a>
                 </div>

@@ -13,7 +13,7 @@ import Oficinas from './pages/Oficinas/Oficinas';
 import Noticias from './pages/Noticias/Noticias';
 import Noticia from './pages/Noticia/Noticia';
 import Oficina from './pages/Oficina/Oficina';
-import Parceiros from './pages/Parceiros/Parceiros';
+import Parceiros from './pages/Parceiros';
 import Palestras from './pages/Palestras/Palestras';
 import Midia from './pages/Midia';
 import Editais from './pages/Editais/Editais';
