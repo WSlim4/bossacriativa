@@ -37,10 +37,10 @@
     "video-react": "^0.14.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test",
+    "eject": "react-app-rewired eject"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -58,6 +58,9 @@
     ]
   },
   "devDependencies": {
+    "babel-plugin-root-import": "^6.5.0",
+    "customize-cra": "^1.0.0",
+    "react-app-rewired": "^2.1.6",
     "reactotron-react-js": "^3.3.7",
     "reactotron-redux": "^3.1.3"
   }

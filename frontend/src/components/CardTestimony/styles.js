@@ -44,7 +44,6 @@ export const Body = styled.main`
 
   p {
     text-align: left;
-    font-size: 1em;
-    margin: 0;
+    font-size: 1.2em;
   }
 `;
