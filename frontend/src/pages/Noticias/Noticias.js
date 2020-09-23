@@ -9,7 +9,7 @@ export default function Noticias() {
   const [baseUrl, ] = useState('https://admin.bossacriativa.art.br');
     
   useEffect(()=>{
-    strapi.get(`/noticias?date_lte=${Date.now()}`).then(({ data }) => setNews(data));
+    strapi.get(`/noticias?date_lte=${Date.now()}&_sort=date:DESC`).then(({ data }) => setNews(data));
   }, [])
 
   async function search(e){
