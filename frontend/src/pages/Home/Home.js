@@ -12,7 +12,7 @@ function Home() {
   // const [lectures, setLectures] = useState([])
   const [shows, setShows] = useState([])
   const [newses, setNews] = useState([])
-  const [banners, setBanners] = useState([])
+  // const [banners, setBanners] = useState([])
   const [events, setEvents] = useState([])
   const [publications, setPublications] = useState([])
   const [lives, setLives] = useState([])
@@ -23,13 +23,15 @@ function Home() {
     // api.get(`/lectures`).then(({ data }) => setBanners(data));
     // api.get(`/schedule`, { baseURL: '' }).then(({ data }) => setEvents(data));
     api.get(`/lastShows`).then(({ data: { data } }) => setShows(data));
-    strapi.get(`/noticias?date_lte=${Date.now()}&_sort=date:desc&_limit=3`)
+    strapi.get(`/noticias?_sort=date:desc&date_lte=${Date.now()}&_limit=4`)
       .then(({ data }) => setNews(data));
-    api.get(`/banners`).then(({ data }) => setBanners(data));
+    // api.get(`/banners`).then(({ data }) => setBanners(data));
     strapi.get(`/events?_limit=4&date_gte=${Date.now()}`).then(({ data }) => setEvents(data));
     strapi.get(`/publicacoes?_sort=id:DESC`).then(({ data }) => setPublications(data));
     strapi.get('/lives?_limit=8&_sort=id:DESC').then(({data}) => setLives(data))
   }, [])
+
+  console.log(newses)
 
   return (
     <div className="home-container">
@@ -81,23 +83,23 @@ function Home() {
       <div className="carousel-container">
         <Carousel>
           {
-            banners.map(banner => (
+            newses.map(banner => (
               <Carousel.Item>
                 <div className="banner-div">
                   <section className="section-1">
                     <p style={{fontSize:'3.0em', fontFamily:'Amatic SC' }}>{banner.title}</p>
-                    <td style={{fontSize: '1.5em'}} dangerouslySetInnerHTML={{__html: banner.introduction}} />
+                    <td style={{fontSize: '1.5em'}} dangerouslySetInnerHTML={{__html: banner.intro}} />
                     { 
-                      banner.news_id 
+                      banner.id 
                         ? (
-                          <a className="news-btn" onClick={()=> { history.push(`/noticia/${banner.news_id}`)}}>
+                          <a className="news-btn" onClick={()=> { history.push(`/noticia/${banner.id}`)}}>
                             Leia mais
                           </a>
                         ) : null
                     }
                     <br/>
                   </section>
-                  <section className="section-2" style={{backgroundImage:`url(${banner.img_url})`}}></section>
+                  <section className="section-2" style={{backgroundImage:`url(${baseUrl}${banner.Cover.url})`}}></section>
                 </div>
               </Carousel.Item>
             ))
@@ -136,7 +138,7 @@ function Home() {
         <h4 className="title max-home">ÚLTIMAS NOTÍCIAS</h4>
         <div className="noticias">
         {
-          newses.map(news => (
+          newses.slice(0, 3).map(news => (
             <div style={{ backgroundColor: "#E7C032"}}>
               <div 
                 className="div-img news-img" 
