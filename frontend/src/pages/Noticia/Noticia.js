@@ -2,6 +2,7 @@ import React from 'react';
 import './Noticia.css';
 import { Link } from 'react-router-dom';
 import strapi from '../../services/strapi';
+import ReactMarkdown from 'react-markdown'
 
 class Noticia extends React.Component{
     constructor(props){
@@ -35,7 +36,7 @@ class Noticia extends React.Component{
                     {this.state.news.title}
                 </h1>
                 <p className="text-about">
-                    <td dangerouslySetInnerHTML={{__html: this.state.news.text}} />
+                    <ReactMarkdown source={this.state.news.text}/>
                 </p>
             </div>
             <Link className="link" to="/noticias"><a className="volte btn">Voltar para Notícias</a></Link>
