@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Masonry from 'react-masonry-css';
+import CardVideo from '~/components/CardVideo/index';
 import Box from '../../components/Box';
 import CardPhoto from '../../components/CardPhoto';
 import CardTestimony from '../../components/CardTestimony';
@@ -26,9 +27,11 @@ export default function Midia() {
         >
           {
             midias.map((item) => (
-              item.depoimento
-                ? <CardTestimony data={item} />
-                : <CardPhoto data={item} />
+              !!item.video_url 
+                ? <CardVideo data={item} />
+                : item.depoimento
+                  ? <CardTestimony data={item} />
+                  : <CardPhoto data={item} />
             ))
           }
         </Masonry>
