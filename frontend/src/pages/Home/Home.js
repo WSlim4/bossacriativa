@@ -22,13 +22,21 @@ function Home() {
     api.get(`/lastShows`).then(({ data: { data } }) => setShows(data));
     strapi.get(`/noticias?_sort=date:desc&date_lte=${Date.now()}&_limit=4`).then(({ data }) => setNews(data));
     strapi.get(`/events?_limit=4&date_gte=${Date.now()}`).then(({ data }) => setEvents(data));
-    strapi.get('/lives?_limit=8&_sort=id:DESC').then(({data}) => setLives(data))
-    strapi.get(`/publicacoes?_sort=id:DESC`).then(({ data }) => setPublications(data));
+    strapi.get('/lives?_limit=8&_sort=id:DESC').then(({data}) => setLives(data));
     
-
+    // strapi.get(`/publicacoes?_sort=id:DESC`).then(({ data }) => setPublications(data));
     // api.get(`/lectures`).then(({ data }) => setBanners(data));
     // api.get(`/schedule`, { baseURL: '' }).then(({ data }) => setEvents(data));
   }, [])
+
+  useEffect(() => {
+    if (!workshops.length || !lives.length || !shows.length) return;
+    setPublications([
+      { image_url: shows[0].img_url, link: `/apresentacao/${shows[0].id}`, title: shows[0].artist, type: 'Apresentação' },
+      { image_url: `https://admin.bossacriativa.art.br${lives[0].image.url}`, link: `/live/${lives[0].id}`, title: lives[0].title, type: 'Live' },
+      { image_url: workshops[0].img_url, link: `/oficina/${workshops[0].id}`, title: workshops[0].name, type: 'Oficina' },
+    ]);
+  }, [shows, lives, workshops]);
 
   return (
     <div className="home-container">
@@ -62,10 +70,10 @@ function Home() {
           <div className="releases">
             <Carousel>
               {
-                publications.map(publication => (                
+                publications.map(publication => (
                   <Carousel.Item>
                     <div className="publication-div">
-                      <section className="section-img" style= {{ background:`url(https://admin.bossacriativa.art.br${publication.image.url}) center top / cover no-repeat`} }></section>
+                      <section className="section-img" style= {{ background:`url(${publication.image_url}) center top / cover no-repeat`}}></section>
                       <div className="buttons">
                           <button><a target='__blank' href={publication.link} style={{color: 'black'}}>{`${publication.type} | ${publication.title}`}</a></button>
                       </div>
