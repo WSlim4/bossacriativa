@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { Card, Header, Body } from './styles';
 
 export default function CardTestimony({ data }) {
-  console.log(data)
   return (
     <Card>
       <Header>
