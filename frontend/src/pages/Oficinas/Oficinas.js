@@ -1,6 +1,6 @@
 import React from 'react';
 import './Oficinas.css';
-import api from '../../services/api'
+import strapi from '../../services/strapi'
 import range from '../../helpers/range'
 import { Link, Redirect } from 'react-router-dom'
 import history from '../../services/history'
@@ -20,10 +20,10 @@ class Oficinas extends React.Component{
      }
 
     async loadData(page){
-        const response = await api.get(`/workshops?page=${page}`)
-        this.setState({ total: response.data.total })
-        this.setState({ data: response.data.data.reverse() })
-        this.setState({ pageNumbers: Math.ceil(this.state.total / this.state.perPage)})
+        const response = await strapi.get(`/oficinas?_sort=id:desc`)
+        // this.setState({ total: response.data.total })
+        this.setState({ data: response.data })
+        // this.setState({ pageNumbers: Math.ceil(this.state.total / this.state.perPage)})
     }
 
     componentDidMount(){
@@ -42,7 +42,7 @@ class Oficinas extends React.Component{
     }
 
     async filterCategory(){
-        const response = await api.get(`/workshops?page=${this.props.match.params.page}`)
+        const response = await strapi.get(`/oficinas`)
         this.setState({ data: response.data.data })
 
         var selectBox = document.getElementById("tema")
@@ -54,12 +54,7 @@ class Oficinas extends React.Component{
 
     async search(e){
         e.preventDefault()
-
-        const workshops = await api.get('/searchWorkshops',{
-            params:{
-                value: this.state.filter
-            }
-        })
+        const workshops = await strapi.get(`/oficinas?title_contains=${this.state.filter}`);
         this.setState({ data: workshops.data })
     }
 
@@ -100,9 +95,9 @@ class Oficinas extends React.Component{
                 <div className="main-content"> 
                     {workshops.map(workshop=>
                         <div style={{ backgroundColor: "#E7C032"}} onClick={()=>{ history.push(`/oficina/${workshop.id}`)}}>
-                            <div className="div-img" style={{backgroundImage: `url(${workshop.img_url})`}}/>
-                            <h6 style={{backgroundColor: `${workshop.theme_color}`}}>{workshop.name}</h6>
-                            <p>{workshop.introduction}</p>
+                            <div className="div-img" style={{backgroundImage: `url(${workshop.image ? workshop.image.name : ''})`}}/>
+                            <h6 style={{backgroundColor: `${workshop.theme_color}`}}>{workshop.title}</h6>
+                            <p>{workshop.intro}</p>
                       </div>
                     )}
                 </div>
