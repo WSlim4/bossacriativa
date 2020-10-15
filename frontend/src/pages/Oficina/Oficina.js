@@ -47,7 +47,7 @@ class Oficina extends React.Component{
         const infos = [this.state.infos]
       return (
         <div className="container">
-            <h6 className="breadcrumb"><span className="colorspan"><Link className="link" to="/oficinas">OFICINAS -</Link><span className="fontspan"> Oficina de {workshops.title}</span></span></h6>
+            <h6 className="breadcrumb"><span className="colorspan"><Link className="link" to="/oficinas">OFICINAS -</Link><span className="fontspan">{workshops.title}</span></span></h6>
             <h1 className="main-title">{workshops.title}</h1>
             <div className="top-container">
             <Container>
