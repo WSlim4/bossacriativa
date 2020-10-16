@@ -18,7 +18,7 @@ function Home() {
   const [baseUrl, ] = useState('https://admin.bossacriativa.art.br');
 
   useEffect(()=>{
-    api.get(`/lastWorkshops`).then(({ data: { data } }) => setWorkshop(data));
+    strapi.get(`/oficinas?_limit=8&_sort=id:desc`).then(({ data }) => setWorkshop(data));
     api.get(`/lastShows`).then(({ data: { data } }) => setShows(data));
     strapi.get(`/noticias?_sort=date:desc&date_lte=${Date.now()}&_limit=4`).then(({ data }) => setNews(data));
     strapi.get(`/events?_limit=4&date_gte=${Date.now()}`).then(({ data }) => setEvents(data));
@@ -34,7 +34,7 @@ function Home() {
     setPublications([
       { image_url: shows[0].img_url, link: `/apresentacao/${shows[0].id}`, title: shows[0].artist, type: 'Apresentação' },
       { image_url: `https://admin.bossacriativa.art.br${lives[0].image.url}`, link: `/live/${lives[0].id}`, title: lives[0].title, type: 'Live' },
-      { image_url: workshops[0].img_url, link: `/oficina/${workshops[0].id}`, title: workshops[0].name, type: 'Oficina' },
+      { image_url: workshops[0].image ? workshops[0].image.name : '', link: `/oficina/${workshops[0].id}`, title: workshops[0].title, type: 'Oficina' },
     ]);
   }, [shows, lives, workshops]);
 
@@ -181,9 +181,9 @@ function Home() {
             {
               workshops.map(workshop => (
                 <div style={{ backgroundColor: "#E7C032"}} onClick={()=>{ history.push(`/oficina/${workshop.id}`)}}>
-                  <div className="div-img" style={{backgroundImage: `url(${workshop.img_url})`}}/>
-                  <h6 style={{backgroundColor: `${workshop.theme_color}`}}>{workshop.name}</h6>
-                  <p>{workshop.introduction}</p>
+                  <div className="div-img" style={{backgroundImage: `url(${workshop.image ? workshop.image.name : ''})`}}/>
+                  <h6 style={{backgroundColor: `${workshop.categoria.color}`}}>{workshop.title}</h6>
+                  <p>{workshop.intro}</p>
                 </div>
               ))
             }

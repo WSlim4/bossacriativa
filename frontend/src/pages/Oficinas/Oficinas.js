@@ -16,6 +16,7 @@ class Oficinas extends React.Component{
         }
         this.__onClick = this.__onClick.bind(this)
         this.search = this.search.bind(this)
+        this.filterCategory = this.filterCategory.bind(this)
         //this.redirectWorkshop = this.redirectWorkshop.bind(this)
      }
 
@@ -41,15 +42,11 @@ class Oficinas extends React.Component{
         this.loadData(this.props.match.params.page)
     }
 
-    async filterCategory(){
-        const response = await strapi.get(`/oficinas`)
-        this.setState({ data: response.data.data })
-
-        var selectBox = document.getElementById("tema")
-        var selectedValue = selectBox.options[selectBox.selectedIndex].value
-        var datas = this.state.data
-        var filtered = datas.filter((element)=>element.category == selectedValue)
-        this.setState({ data: filtered })
+    async filterCategory(e){
+        const category = e.target.value;
+        const response = await strapi.get(`/oficinas?categoria.name=${category}`)
+        console.log(response.data)
+        this.setState({ data: response.data });
     }
 
     async search(e){
@@ -75,7 +72,7 @@ class Oficinas extends React.Component{
                         </form>
                         <div id="filter">
                             <label htmlFor="temas">FILTRAR POR CATEGORIA:</label>
-                            <select name="temas" id="tema" onChange={()=>this.filterCategory()}>
+                            <select name="temas" id="tema" onChange={this.filterCategory}>
                                 <option value=""></option>
                                 <option value="Música">Música</option>
                                 <option value="Artes Integradas">Artes integradas</option>
@@ -96,7 +93,7 @@ class Oficinas extends React.Component{
                     {workshops.map(workshop=>
                         <div style={{ backgroundColor: "#E7C032"}} onClick={()=>{ history.push(`/oficina/${workshop.id}`)}}>
                             <div className="div-img" style={{backgroundImage: `url(${workshop.image ? workshop.image.name : ''})`}}/>
-                            <h6 style={{backgroundColor: `${workshop.theme_color}`}}>{workshop.title}</h6>
+                            <h6 style={{backgroundColor: `${workshop.categoria.color}`}}>{workshop.title}</h6>
                             <p>{workshop.intro}</p>
                       </div>
                     )}
