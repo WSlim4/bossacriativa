@@ -34,7 +34,7 @@ function Home() {
     setPublications([
       { image_url: shows[0].img_url, link: `/apresentacao/${shows[0].id}`, title: shows[0].artist, type: 'Apresentação' },
       { image_url: `https://admin.bossacriativa.art.br${lives[0].image.url}`, link: `/live/${lives[0].id}`, title: lives[0].title, type: 'Live' },
-      { image_url: workshops[0].image ? workshops[0].image.name : '', link: `/oficina/${workshops[0].id}`, title: workshops[0].title, type: 'Oficina' },
+      { image_url: workshops[0].image ? `https://admin.bossacriativa.art.br${workshops[0].image.url}` : '', link: `/oficina/${workshops[0].id}`, title: workshops[0].title, type: 'Oficina' },
     ]);
   }, [shows, lives, workshops]);
 
@@ -181,7 +181,7 @@ function Home() {
             {
               workshops.map(workshop => (
                 <div style={{ backgroundColor: "#E7C032"}} onClick={()=>{ history.push(`/oficina/${workshop.id}`)}}>
-                  <div className="div-img" style={{backgroundImage: `url(${workshop.image ? workshop.image.name : ''})`}}/>
+                  <div className="div-img" style={{backgroundImage: `url(${workshop.image ? `https://admin.bossacriativa.art.br${workshop.image.url}` : ''})`}}/>
                   <h6 style={{backgroundColor: `${workshop.categoria.color}`}}>{workshop.title}</h6>
                   <p>{workshop.intro}</p>
                 </div>

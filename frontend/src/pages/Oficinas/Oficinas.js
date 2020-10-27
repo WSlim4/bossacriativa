@@ -92,7 +92,7 @@ class Oficinas extends React.Component{
                 <div className="main-content"> 
                     {workshops.map(workshop=>
                         <div style={{ backgroundColor: "#E7C032"}} onClick={()=>{ history.push(`/oficina/${workshop.id}`)}}>
-                            <div className="div-img" style={{backgroundImage: `url(${workshop.artista ? `https://admin.bossacriativa.art.br${workshop.artista.image.url}` : ''})`}}/>
+                            <div className="div-img" style={{backgroundImage: `url(${workshop.image ? `https://admin.bossacriativa.art.br${workshop.image.url}` : ''})`}}/>
                             <h6 style={{backgroundColor: `${workshop.categoria.color}`}}>{workshop.title}</h6>
                             <p>{workshop.intro}</p>
                       </div>
