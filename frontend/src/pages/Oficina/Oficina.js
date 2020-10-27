@@ -55,7 +55,7 @@ class Oficina extends React.Component{
                     <Col sm={4}>
                     {/**/}
                         <div className="top-div">
-                            <div className="top-img" style={{backgroundImage: `url(${workshops.artista ? workshops.artista.image.name : ''})`}}></div>
+                            <div className="top-img" style={{backgroundImage: `url(${workshops.artista ? `https://admin.bossacriativa.art.br${workshops.artista.image.url}` : ''})`}}></div>
                             <h6 className="oficina-name" style={{backgroundColor: `${infos[0].theme_color}`}}>{workshops.artista && workshops.artista.name}</h6>
                             <p className="desc" style={{padding: '29px'}}>{workshops.artista && workshops.artista.bio}</p>
                         </div>
