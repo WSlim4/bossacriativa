@@ -23,7 +23,7 @@ export default function CardPhoto({ data }) {
         <figure>
           <img src={image} alt="" />
           <div>
-            <figcaption>{`Foto por: ${data.autor.nome}`}</figcaption>
+            <figcaption>{data.text}</figcaption>
             <button onClick={download}>
               <FiDownload /> 
             </button>
