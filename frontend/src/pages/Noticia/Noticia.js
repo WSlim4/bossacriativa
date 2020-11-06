@@ -8,7 +8,7 @@ class Noticia extends React.Component{
     constructor(props){
         super(props)
         this.state={
-            news: {},
+            news: { title: '', text: '', Cover: null },
             baseUrl: 'https://admin.bossacriativa.art.br'
         }
     }
@@ -16,7 +16,6 @@ class Noticia extends React.Component{
     async componentDidMount(){
       strapi.get(`/noticias/${this.props.match.params.id}`)
         .then(({ data }) => this.setState({ news: data }));
-      console.log(this.props.match.params.id);
     }
 
     render(){
@@ -24,10 +23,11 @@ class Noticia extends React.Component{
         <div className="container">
             <h6 className="breadcrumb"><span className="colorspan"><Link className="link" to="/noticias">NOTÍCIAS</Link><span className="fontspan"> - {this.state.news.title}</span></span></h6>
             <img 
-              className="img-not" 
+              className="img-not"
+              alt="" 
               src={
                 this.state.news.Cover 
-                  ? `${this.state.baseUrl}${this.state.news.Cover.formats.large.url}`
+                  ? `${this.state.baseUrl}${this.state.news.Cover.url}`
                   : ''
               }
             />
