@@ -21,7 +21,7 @@ class Oficinas extends React.Component{
      }
 
     async loadData(page){
-        const response = await strapi.get(`/oficinas?_sort=id:desc`)
+        const response = await strapi.get(`/oficinas?_sort=date:desc`)
         // this.setState({ total: response.data.total })
         this.setState({ data: response.data })
         // this.setState({ pageNumbers: Math.ceil(this.state.total / this.state.perPage)})
@@ -45,13 +45,12 @@ class Oficinas extends React.Component{
     async filterCategory(e){
         const category = e.target.value;
         const response = await strapi.get(`/oficinas?categoria.name=${category}`)
-        console.log(response.data)
         this.setState({ data: response.data });
     }
 
     async search(e){
         e.preventDefault()
-        const workshops = await strapi.get(`/oficinas?title_contains=${this.state.filter}`);
+        const workshops = await strapi.get(`/oficinas?artista.name_contains=${this.state.filter}`);
         this.setState({ data: workshops.data })
     }
 

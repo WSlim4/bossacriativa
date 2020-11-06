@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../../global.css';
 import './Home.css';
-import api from '../../services/api'
 import strapi from '../../services/strapi'
 import Carousel from 'react-bootstrap/Carousel';
 import { Link } from 'react-router-dom'
@@ -18,11 +17,11 @@ function Home() {
   const [baseUrl, ] = useState('https://admin.bossacriativa.art.br');
 
   useEffect(()=>{
-    strapi.get(`/oficinas?_limit=8&_sort=id:desc`).then(({ data }) => setWorkshop(data));
-    api.get(`/lastShows`).then(({ data: { data } }) => setShows(data));
+    strapi.get(`/oficinas?_limit=8&_sort=date:desc`).then(({ data }) => setWorkshop(data));
+    strapi.get(`/apresentacoes?_limit=8&_sort=date:desc`).then(({ data }) => setShows(data));
     strapi.get(`/noticias?_sort=date:desc&date_lte=${Date.now()}&_limit=4`).then(({ data }) => setNews(data));
     strapi.get(`/events?_limit=4&date_gte=${Date.now()}`).then(({ data }) => setEvents(data));
-    strapi.get('/lives?_limit=8&_sort=id:DESC').then(({data}) => setLives(data));
+    strapi.get('/lives?_limit=8&_sort=date:DESC').then(({data}) => setLives(data));
     
     // strapi.get(`/publicacoes?_sort=id:DESC`).then(({ data }) => setPublications(data));
     // api.get(`/lectures`).then(({ data }) => setBanners(data));
@@ -32,7 +31,7 @@ function Home() {
   useEffect(() => {
     if (!workshops.length || !lives.length || !shows.length) return;
     setPublications([
-      { image_url: shows[0].img_url, link: `/apresentacao/${shows[0].id}`, title: shows[0].artist, type: 'Apresentação' },
+      { image_url: `https://admin.bossacriativa.art.br${shows[0].img_url}`, link: `/apresentacao/${shows[0].id}`, title: shows[0].title, type: 'Apresentação' },
       { image_url: `https://admin.bossacriativa.art.br${lives[0].image.url}`, link: `/live/${lives[0].id}`, title: lives[0].title, type: 'Live' },
       { image_url: workshops[0].image ? `https://admin.bossacriativa.art.br${workshops[0].image.url}` : '', link: `/oficina/${workshops[0].id}`, title: workshops[0].title, type: 'Oficina' },
     ]);
@@ -122,8 +121,16 @@ function Home() {
                   style={{ backgroundColor: "#E7C032"}} 
                   onClick={()=>history.push(`/apresentacao/${show.id}`)}
                 >
-                  <img className="div-img" src={show.img_url}/>
-                  <h6 style={{backgroundColor:`${show.theme_color}`}}>{show.artist}</h6>
+                  <img
+                    alt=""
+                    className="div-img" 
+                    src={
+                      show.image ? 
+                        `https://admin.bossacriativa.art.br${show.image.url}` 
+                        : ''
+                    }
+                  />
+                  <h6 style={{backgroundColor:`${show.theme_color}`}}>{show.title}</h6>
                   <p>{show.introduction}</p>
                 </div> 
               ))

@@ -1,5 +1,5 @@
 import React, { createElement } from 'react'
-import api from '../../services/api'
+import strapi from '../../services/strapi'
 import range from '../../helpers/range'
 import history from '../../services/history'
 import { GiMagnifyingGlass } from 'react-icons/gi'
@@ -10,20 +10,20 @@ class Shows extends React.Component{
         this.state = {
             data: [],
             filter: '',
-            allArtists: [],
+            // allArtists: [],
             perPage: 30
         }
         this.__onClick = this.__onClick.bind(this)
-        this.filterCategory = this.filterCategory.bind(this)
+        // this.filterCategory = this.filterCategory.bind(this)
         this.search = this.search.bind(this)
     }
 
     async loadData(page){
-        const artists = await api.get('/showAll')
-        const response = await api.get(`/shows?page=${page}`)
-        this.setState({ total: response.data.total })
-        this.setState({ allArtists: artists.data })
-        this.setState({ data: response.data.data.reverse() })
+        // const artists = await strapi.get('/apresentacoes')
+        const response = await strapi.get(`/apresentacoes/?_start=${page > 1 ? page*this.state.perPage : 0}&_limit=${this.state.perPage}&_sort=date:desc`);
+        this.setState({ total: response.data.length })
+        // this.setState({ allArtists: artists.data })
+        this.setState({ data: response.data.reverse() })
         this.setState({ pageNumbers: Math.ceil(this.state.total / this.state.perPage)})
     }
 
@@ -36,26 +36,16 @@ class Shows extends React.Component{
         this.loadData(this.props.match.params.page)
     }
     
-    async filterCategory(){
-        const response = await api.get(`/shows?page=${this.props.match.params.page}`)
-        this.setState({ data: response.data.data })
-
-        var selectBox = document.getElementById("tema")
-        var selectedValue = selectBox.options[selectBox.selectedIndex].value
-        var datas = this.state.data
-        var filtered = datas.filter((element)=>element.category === selectedValue)
-        this.setState({ data: filtered })
-    }
+    // async filterCategory(e) {
+    //   const category = e.target.value;
+    //   const response = await strapi.get(`/aprensentacoes?categoria.name=${category}`)
+    //   this.setState({ data: response.data });
+    // }
 
     async search(e){
-        e.preventDefault()
-
-        const shows = await api.get('/searchShows',{
-            params:{
-                value: this.state.filter
-            }
-        })
-        this.setState({ data: shows.data })
+      e.preventDefault()
+      const shows = await strapi.get(`/apresentacoes/?artista.name_contains=${this.state.filter}`);
+      this.setState({ data: shows.data })
     }
     /*async getArtists(){
         var arr = this.state.allArtists
@@ -88,7 +78,7 @@ class Shows extends React.Component{
                                 <button type="submit"><GiMagnifyingGlass size="1.5em"></GiMagnifyingGlass></button>
                             </form>
                         </div>
-                        <div id="filter">
+                        {/* <div id="filter">
                             <label htmlFor="temas">FILTRAR POR CATEGORIA:</label>
                             <select name="temas" id="tema" onChange={()=>this.filterCategory()}>
                                 <option value=""></option>
@@ -100,19 +90,16 @@ class Shows extends React.Component{
                                 <option value="Literatura">Literatura </option>
                                 <option value="Teatro">Teatro </option>
                             </select>
-                            {/*<select name="temas" id="artista">
-                                <option value="">Escolha um artista</option>
-                            </select>*/}
-                        </div>
+                        </div> */}
                     </div>
                 </div>
                 <div className="main-content"> 
                     {shows.map(show=>
                     <div onClick={()=>history.push(`/apresentacao/${show.id}`)}>
-                        <div className="div-img" style={{backgroundImage: `url(${show.img_url})`}}>
+                        <div className="div-img" style={{backgroundImage: `url(${show.image ? `https://admin.bossacriativa.art.br${show.image.url}` : ''})`}}>
                             
                         </div>
-                        <h6 style={{backgroundColor: show.theme_color}}>{show.name}</h6>
+                        <h6 style={{backgroundColor: show.theme_color}}>{show.title}</h6>
                         <p>{show.introduction}</p>
                     </div>
                     )}
