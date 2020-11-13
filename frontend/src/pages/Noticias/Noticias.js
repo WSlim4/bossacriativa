@@ -43,7 +43,7 @@ export default function Noticias() {
             <div style={{ backgroundColor: "#E7C032"}}>
               <div 
                 className="div-img news-img" 
-                style={{backgroundImage: `url(${news.Cover ? `${baseUrl}${news.Cover.formats.thumbnail.url}` : ''})`}}
+                style={{backgroundImage: `url(${news.Cover ? `${baseUrl}${news.Cover.url}` : ''})`}}
               />
               <div>
                 <h6 className="not-title" style={{backgroundColor: 'white'}}>
