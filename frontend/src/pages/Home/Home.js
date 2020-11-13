@@ -31,7 +31,7 @@ function Home() {
   useEffect(() => {
     if (!workshops.length || !lives.length || !shows.length) return;
     setPublications([
-      { image_url: `https://admin.bossacriativa.art.br${shows[0].img_url}`, link: `/apresentacao/${shows[0].id}`, title: shows[0].title, type: 'Apresentação' },
+      { image_url: `https://admin.bossacriativa.art.br${shows[0].image.url}`, link: `/apresentacao/${shows[0].id}`, title: shows[0].title, type: 'Apresentação' },
       { image_url: `https://admin.bossacriativa.art.br${lives[0].image.url}`, link: `/live/${lives[0].id}`, title: lives[0].title, type: 'Live' },
       { image_url: workshops[0].image ? `https://admin.bossacriativa.art.br${workshops[0].image.url}` : '', link: `/oficina/${workshops[0].id}`, title: workshops[0].title, type: 'Oficina' },
     ]);
