@@ -156,7 +156,7 @@ function Home() {
                 className="div-img news-img" 
                 style={{backgroundImage: `url(${
                   news.Cover 
-                    ? `${baseUrl}${news.Cover.image.url}`
+                    ? `${baseUrl}${news.Cover.url}`
                     : ''
                   })`}}/>
               <div className="news-text">

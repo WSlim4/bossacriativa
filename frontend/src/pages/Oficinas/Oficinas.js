@@ -10,9 +10,10 @@ class Oficinas extends React.Component{
      constructor(props){
         super(props)
         this.state={
-            data: [],
-            filter: '',
-            perPage: 30
+          data: [],
+          filter: '',
+          perPage: 30,
+          categories: []
         }
         this.__onClick = this.__onClick.bind(this)
         this.search = this.search.bind(this)
@@ -21,10 +22,14 @@ class Oficinas extends React.Component{
      }
 
     async loadData(page){
-        const response = await strapi.get(`/oficinas?_sort=date:desc`)
+      const { data } = await strapi.get(`/oficinas?_sort=date:desc`)
+      const categories = data
+        .map(it => it.categoria.name)
+        .filter((it, i, arr) => arr.indexOf(it) === i);
+        this.setState({ data, categories });
         // this.setState({ total: response.data.total })
-        this.setState({ data: response.data })
-        // this.setState({ pageNumbers: Math.ceil(this.state.total / this.state.perPage)})
+
+      // this.setState({ pageNumbers: Math.ceil(this.state.total / this.state.perPage)})
     }
 
     componentDidMount(){
@@ -44,7 +49,7 @@ class Oficinas extends React.Component{
 
     async filterCategory(e){
         const category = e.target.value;
-        const response = await strapi.get(`/oficinas?categoria.name=${category}`)
+        const response = await strapi.get(`/oficinas?${category.length > 0 ? `categoria.name=${category}` : ''}`);
         this.setState({ data: response.data });
     }
 
@@ -55,8 +60,9 @@ class Oficinas extends React.Component{
     }
 
     render(){
-          const workshops = this.state.data
-          const pgNmb = range(1,this.state.pageNumbers+1)
+      const workshops = this.state.data
+      const pgNmb = range(1,this.state.pageNumbers+1)
+
       return (
         <div className="home-content ">
                 <div className="head title">
@@ -73,14 +79,18 @@ class Oficinas extends React.Component{
                             <label htmlFor="temas">FILTRAR POR CATEGORIA:</label>
                             <select name="temas" id="tema" onChange={this.filterCategory}>
                                 <option value=""></option>
-                                <option value="Música">Música</option>
-                                <option value="Artes Integradas">Artes integradas</option>
+                                {
+                                  this.state.categories.map(cat => (
+                                    <option key={cat} value={cat}>{ cat }</option>
+                                  ))
+                                }
+                                {/* <option value="Artes Integradas">Artes integradas</option>
                                 <option value="Artes Visuais">Artes Visuais</option>
                                 <option value="Circo">Circo</option>
                                 <option value="Dança">Dança</option>
                                 <option value="Gestão e Produção Cultural">Gestão e Produção Cultural</option>
                                 <option value="Literatura">Literatura</option>
-                                <option value="Teatro">Teatro</option>
+                                <option value="Teatro">Teatro</option> */}
                             </select>
                             {/*<select name="temas" id="artista">
                                 <option value="">Escolha um artista</option>
