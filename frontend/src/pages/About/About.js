@@ -33,12 +33,22 @@ function About() {
                     </p>
                     <h3 className="text-about">Conheça também:</h3>
                     <h1 className="title-about">
-                        SISTEMA NACIONAL DE ORQUESTRAS SOCIAIS – SINOS
-                        </h1> 
+                      SINOS - SISTEMA NACIONAL DE ORQUESTRAS SOCIAIS
+                    </h1> 
                     <p className="text-about">
-                        O Sistema Nacional de Orquestras Sociais, Sinos é formado por uma rede de dezenas de professores de música que, por meio de cursos, oficinas, concertos e festivais, atua na capacitação de regentes, instrumentistas, compositores e educadores musicais, apoiando projetos sociais de música.
+                      O Sistema Nacional de Orquestras Sociais, Sinos é formado por uma rede de dezenas de professores de música que, por meio de cursos, oficinas, concertos e festivais, atua na capacitação de regentes, instrumentistas, compositores e educadores musicais, apoiando projetos sociais de música.
                     </p>
-                    <p className="text-about"><a href="http://www.sinos.art.br/" target="__blank" >Clique aqui</a>  e saiba mais sobre esse projeto que, como Bossa Criativa, o Sinos é uma parceria de Funarte e UFRJ, com curadoria de sua Escola de Música, e faz parte do Programa Funarte de Toda Gente.</p>
+                    <p className="text-about"><a href="http://www.sinos.art.br/" target="__blank" >Clique aqui</a>  e saiba mais sobre o projeto SINOS</p>
+                    <h1 className="title-about">
+                      UM NOVO OLHAR
+                    </h1> 
+                    <p className="text-about">
+                      O Um Novo Olhar reúne capacitações em arte-educação e em regência coral, para promover a arte como forma de inclusão e acesso de crianças, jovens e adultos com deficiência. Ao longo de 2020, mais de 70 artistas e educadores se dividem entre cerca de 200 horas de performances, apresentações e capacitações, além de publicações, palestras e eventos com especialistas de diversos países.
+                    </p>
+                    <p className="text-about"><a href="http://umnovoolhar.art.br/" target="__blank" >Clique aqui</a>  e saiba mais sobre o projeto Um Novo Olhar</p>
+                    <p className="text-about">
+                      Assim como Bossa Criativa, o SINOS e o UNO são uma parceria de Funarte e UFRJ, e fazem parte do Programa Funarte de Toda Gente.
+                    </p>
                     <Row>
                         <Col lg={8}>
 
