@@ -2,6 +2,8 @@ import styled from 'styled-components';
 
 export const Card = styled.article`
   width: 470px;
+  border: 2px solid #ececec;
+  overflow: hidden;
 
   @media (max-width: 600px) {
     width: 100%;
@@ -27,7 +29,7 @@ export const Link = styled.a`
 
 export const Figure = styled.figure`
   flex: .8;
-  height: 100px;
+  height: 127px;
   width: 150px;
   margin: 0;
 
