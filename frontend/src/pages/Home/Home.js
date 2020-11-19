@@ -146,6 +146,11 @@ function Home() {
           </div>
         </div>
       </div>
+      <figure className="home-content">
+        <a href="http://www.ifcplp.org">
+          <img src={require('~/assets/banner-home.jpg')} alt="" width="100%" />
+        </a>
+      </figure>
       <div className="home-content">
         <h4 className="title max-home">ÚLTIMAS NOTÍCIAS</h4>
         <div className="noticias">
