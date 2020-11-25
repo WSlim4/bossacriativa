@@ -13,7 +13,7 @@ export default function Midia() {
   const [viewed, setViewed] = useState(0);
 
   useEffect(() => {
-    strapi.get(`/galerias?_start=${viewed}&_limit=12&_sort=created_at:desc`)
+    strapi.get(`/galerias?_start=${viewed}&_sort=created_at:desc`)
       .then(({data}) => setMidias([...midias, ...data]));
   }, [viewed]);
 
