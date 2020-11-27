@@ -93,14 +93,16 @@ function Home() {
                   <section className="section-1">
                     <p style={{fontSize:'3.0em', fontFamily:'Amatic SC' }}>{banner.title}</p>
                     <td style={{fontSize: '1.5em'}} dangerouslySetInnerHTML={{__html: banner.intro}} />
-                    { 
-                      banner.id 
-                        ? (
-                          <a className="news-btn" onClick={()=> { history.push(`/noticia/${banner.id}`)}}>
-                            Leia mais
-                          </a>
-                        ) : null
-                    }
+                    <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                      { 
+                        banner.id 
+                          ? (
+                            <a className="news-btn" onClick={()=> { history.push(`/noticia/${banner.id}`)}}>
+                              Leia mais
+                            </a>
+                          ) : null
+                      }
+                    </div>
                     <br/>
                   </section>
                   <section className="section-2" style={{backgroundImage:`url(${baseUrl}${banner.Cover.url})`}}></section>
