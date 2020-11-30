@@ -12,7 +12,7 @@ export default function CardTestimony({ data }) {
         <h1>{data.autor.nome}</h1>
       </Header>
       <Body>
-        <p>{data.text}</p>
+        <p>{data.informacao}</p>
       </Body>
     </Card>
   )
@@ -21,6 +21,6 @@ export default function CardTestimony({ data }) {
 CardTestimony.propTypes = {
   data: PropTypes.shape({
     autor: PropTypes.shape(),
-    text: PropTypes.string.isRequired
+    informacao: PropTypes.string.isRequired
   }).isRequired
 };
