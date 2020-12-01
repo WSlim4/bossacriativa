@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
-import api from '../../services/api'
 import strapi from '../../services/strapi'
 import range from '../../helpers/range'
 import history from '../../services/history'
 import { GiMagnifyingGlass } from 'react-icons/gi'
 
-class Lives extends Component{
+class Realities extends Component{
     constructor(props){
         super(props)
         this.state = {
@@ -20,15 +19,11 @@ class Lives extends Component{
     }
 
     async loadData(page){
-      const { data } = await strapi.get(`/lives?_sort=date:desc`);
-      // console.log(data);
+      const { data } = await strapi.get(`/mostras?_sort=date:desc`)
       // const categories = data
       //   .map(it => it.categoria.name)
       //   .filter((it, i, arr) => arr.indexOf(it) === i);
         this.setState({ data });
-        // this.setState({ total: response.data.total })
-
-      // this.setState({ pageNumbers: Math.ceil(this.state.total / this.state.perPage)})
     }
 
     componentDidMount(){
@@ -42,14 +37,14 @@ class Lives extends Component{
     
     async filterCategory(e){
       const category = e.target.value;
-      const response = await strapi.get(`/lives?${category.length > 0 ? `categoria.name=${category}` : ''}`);
+      const response = await strapi.get(`/mostras?${category.length > 0 ? `categoria.name=${category}` : ''}`);
       this.setState({ data: response.data });
     }
 
     async search(e){
       e.preventDefault()
-      const lives = await strapi.get(`/lives?artista.name_contains=${this.state.filter}`);
-      this.setState({ data: lives.data })
+      const realities = await strapi.get(`/mostras?artista.name_contains=${this.state.filter}`);
+      this.setState({ data: realities.data })
     }
     /*async getArtists(){
         var arr = this.state.allArtists
@@ -67,21 +62,22 @@ class Lives extends Component{
     }
         */  
     render(){
-        const lives = this.state.data
+        const realities = this.state.data
         const pgNmb = range(1,this.state.pageNumbers+1)
         return(
             <>
             <div className="home-content">
-              <div className="head title">
-                <h2>LIVES</h2>
-              </div>
+                <div className="head title">
+                  <h2>Realidades Atuais</h2>
+                </div>
                 <div className="main-content"> 
-                    {lives.map(live=>
-                    <div onClick={()=>history.push(`/live/${live.id}`)}>
-                        <div className="div-img" style={{backgroundImage: `url(https://admin.bossacriativa.art.br${live.image.url})`}}>
+                    {realities.map(reality=>
+                    <div onClick={()=>history.push(`/reality/${reality.id}`)}>
+                        <div className="div-img" style={{backgroundImage: `url(https://admin.bossacriativa.art.br${reality.image.url})`}}>
+                            
                         </div>
-                        <h6 style={{backgroundColor: live.theme_color}}>{live.title}</h6>
-                        <p>{live.introduction}</p>
+                        <h6 style={{backgroundColor: reality.theme_color}}>{reality.title}</h6>
+                        <p>{reality.introduction}</p>
                     </div>
                     )}
                 </div>
@@ -90,4 +86,4 @@ class Lives extends Component{
         )   
     }
 }
-export default Lives
+export default Realities

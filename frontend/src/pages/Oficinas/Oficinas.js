@@ -48,15 +48,15 @@ class Oficinas extends React.Component{
     }
 
     async filterCategory(e){
-        const category = e.target.value;
-        const response = await strapi.get(`/oficinas?${category.length > 0 ? `categoria.name=${category}` : ''}`);
-        this.setState({ data: response.data });
+      const category = e.target.value;
+      const response = await strapi.get(`/oficinas?${category.length > 0 ? `categoria.name=${category}` : ''}`);
+      this.setState({ data: response.data });
     }
 
     async search(e){
-        e.preventDefault()
-        const workshops = await strapi.get(`/oficinas?artista.name_contains=${this.state.filter}`);
-        this.setState({ data: workshops.data })
+      e.preventDefault()
+      const workshops = await strapi.get(`/oficinas?artista.name_contains=${this.state.filter}`);
+      this.setState({ data: workshops.data })
     }
 
     render(){
