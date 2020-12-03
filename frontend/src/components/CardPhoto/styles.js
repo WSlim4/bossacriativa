@@ -35,7 +35,12 @@ export const Body = styled.main`
 
     figcaption {
       text-align: left;
-      font-size: .8em;
+      font-size: 1em;
+      display: -webkit-box;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
     }
     
     button {
@@ -56,6 +61,8 @@ export const Info = styled.div`
   bottom: 30px;
   opacity: 0;
   transition: opacity .3s linear;
+  padding: 10px;
+  padding-top: 20px;
 
   > p {
     margin: 5px;

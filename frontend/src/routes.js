@@ -29,6 +29,8 @@ import Lives from './pages/Lives'
 import Live from './pages/Live'
 import Schedule from './pages/Schedule'
 import Analytics from 'react-router-ga';
+import Realities from './pages/Realities/index'
+import Reality from './pages/Reality/index'
 
 export default function Routes(){
 
@@ -60,6 +62,8 @@ export default function Routes(){
                 <Route path="/apresentacao/:id?" component={Apresentacao}/>
                 <Route path="/lives/:page?" component={Lives}/>
                 <Route path="/live/:id?" component={Live}/>
+                <Route path="/realidades" component={Realities}/>
+                <Route path="/realidade/:id?" component={Reality}/>
                 <Route path="/agenda" component={Schedule}/>
                 <Route path="/links" component={Links}/>
                 <Route path="" component={NotFound}/>
