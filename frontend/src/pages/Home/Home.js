@@ -11,7 +11,7 @@ export default function Home() {
   const [workshops, setWorkshop] = useState([])
   const [shows, setShows] = useState([])
   const [newses, setNews] = useState([])
-  const [publications, setPublications] = useState([])
+  const [posts, setPosts] = useState([])
   const [lives, setLives] = useState([])
   const [baseUrl, ] = useState('https://admin.bossacriativa.art.br');
 
@@ -20,16 +20,8 @@ export default function Home() {
     strapi.get(`/apresentacoes?_limit=8&_sort=date:desc`).then(({ data }) => setShows(data));
     strapi.get(`/noticias?_sort=date:desc&date_lte=${Date.now()}&_limit=4`).then(({ data }) => setNews(data));
     strapi.get('/lives?_limit=8&_sort=date:DESC').then(({data}) => setLives(data));
-  }, [])
-
-  useEffect(() => {
-    setPublications([
-      { ...shows[0], link: `/apresentacao/`, type: 'Apresentação' },
-      { ...lives[0], link: `/live/`, type: 'Live' },
-      { ...newses[0], link: `/noticia/`, type: 'Notícia' },
-      { ...workshops[0], link: `/oficina/`, type: 'Oficina' },
-    ]);
-  }, [shows, lives, workshops, newses]);
+    strapi.get('/postagens?_limit=9&_sort=order').then(({data}) => setPosts(data));
+  }, []);
 
   return (
     <div className="home-container">
@@ -38,14 +30,26 @@ export default function Home() {
           <div className="releases">
             <Carousel>
               {
-                publications.map(publication => (
+                posts.map(post => (
                   <Carousel.Item>
                     <div className="publication-div">
-                      <section className="section-img" style= {{ background:`${publication.banner ? `url(https://admin.bossacriativa.art.br${publication.banner.url}) center / cover no-repeat` : '#222'}`}}></section>
+                      <section className="section-img" style= {{ background:`${post.image ? `url(https://admin.bossacriativa.art.br${post.image.url}) center / cover no-repeat` : '#222'}`}}></section>
                       <div className="buttons banner-buttons">
                           <button>
-                            <a target='__blank' href={`${publication.link}${publication.id}`} style={{color: 'white'}}>
-                              {`${publication.type} | ${publication.title}`}
+                            <a 
+                              target='__blank' 
+                              href={() => {
+                                switch (post.tipo) {
+                                  case 'Apresentação': return `/apresentacao/${post.apresentacao.id}`;
+                                  case 'Live': return `/live/${post.live.id}`;
+                                  case 'Notícia': return `/noticia/${post.noticia.id}`;
+                                  case 'Oficina': return `/oficina/${post.oficina.id}`;
+                                  default: return null;
+                                }
+                              }}
+                              style={{color: 'white'}}
+                            >
+                              {`${post.tipo} | ${post.title}`}
                             </a>
                           </button>
                       </div>
