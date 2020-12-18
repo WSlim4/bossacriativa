@@ -73,7 +73,7 @@ class Realities extends Component{
                 <div className="main-content"> 
                     {realities.map(reality=>
                     <div onClick={()=>history.push(`/realidade/${reality.id}`)}>
-                        <div className="div-img" style={{backgroundImage: `url(https://admin.bossacriativa.art.br${reality.image.url})`}}>
+                        <div className="div-img" style={{backgroundImage: `url(https://admin.bossacriativa.art.br${reality.image ? reality.image.url : ''})`}}>
                             
                         </div>
                         <h6 style={{backgroundColor: reality.theme_color}}>{reality.title}</h6>
