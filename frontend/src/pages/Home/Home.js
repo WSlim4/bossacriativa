@@ -20,7 +20,7 @@ function Home() {
     strapi.get(`/oficinas?_limit=8&_sort=date:desc`).then(({ data }) => setWorkshop(data));
     strapi.get(`/apresentacoes?_limit=8&_sort=date:desc`).then(({ data }) => setShows(data));
     strapi.get(`/noticias?_sort=date:desc&date_lte=${Date.now()}&_limit=4`).then(({ data }) => setNews(data));
-    strapi.get(`/events?_limit=4&date_gte=${Date.now()}`).then(({ data }) => setEvents(data));
+    strapi.get(`/events?_limit=4&_sort=date:asc&&date_gte=${Date.now()}`).then(({ data }) => setEvents(data));
     strapi.get('/lives?_limit=8&_sort=date:DESC').then(({data}) => setLives(data));
     strapi.get('/lives?_limit=8&_sort=date:DESC').then(({data}) => setLives(data));
     

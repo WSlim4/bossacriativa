@@ -10,12 +10,12 @@ export default function Schedule() {
 
   useEffect(() => {
     strapi.get(`/months`).then(({ data }) => setMonths(data));
-    strapi.get(`/events?month.id=${month}`).then(({ data }) => setEvents(data));
+    strapi.get(`/events?month.id=${month}&_sort=date:asc`).then(({ data }) => setEvents(data));
   }, []);
 
   async function handleClick(i) {
     if (month + i < new Date().getMonth() + 1 || month + i > 12) return;
-    const {data} = await strapi.get(`/events?month.id=${month + i}`);
+    const {data} = await strapi.get(`/events?month.id=${month + i}&_sort=date:asc`);
     setMonth(old => old + i);
     setEvents(data);  
   }

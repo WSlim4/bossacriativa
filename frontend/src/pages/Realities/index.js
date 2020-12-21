@@ -68,7 +68,7 @@ class Realities extends Component{
             <>
             <div className="home-content">
                 <div className="head title">
-                  <h2>Realidades Atuais</h2>
+                  <h2>Mostra Realidades Atuais em Artes</h2>
                 </div>
                 <div className="main-content"> 
                     {realities.map(reality=>
