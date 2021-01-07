@@ -12,7 +12,7 @@ export default function Schedule() {
 
   useEffect(() => {
     strapi.get(`/months`).then(({ data }) => setMonths(data));
-    strapi.get(`/events?month.id=${month}&date_gte=${year}-01-01&date_lte=${year}-12-31`)
+    strapi.get(`/events?month.id=${month}&date_gte=${year}-01-01&date_lte=${year}-12-31&_sort=date:asc`)
       .then(({ data }) => setEvents(data));
   }, []);
 
@@ -25,7 +25,7 @@ export default function Schedule() {
       newMonth = 1;
       setYear(year + 1);
     }
-    const {data} = await strapi.get(`/events?month.id=${newMonth}&date_gte=${year}-01-01&date_lte=${year}-12-31`);
+    const {data} = await strapi.get(`/events?month.id=${newMonth}&date_gte=${year}-01-01&date_lte=${year}-12-31&_sort=date:asc`);
     setMonth(newMonth);
     setEvents(data);  
   }
