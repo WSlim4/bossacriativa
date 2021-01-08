@@ -1,3 +1,5 @@
+
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap'
 import './styles.css'
@@ -5,18 +7,27 @@ import strapi from '../../services/strapi';
 
 export default function Schedule() {
   const [events, setEvents] = useState([]);
-  const [month, setMonth] = useState(new Date().getMonth() + 1)
+  const [month, setMonth] = useState(new Date().getMonth() + 1);
+  const [year, setYear] = useState(new Date().getFullYear());
   const [months, setMonths] = useState([])
 
   useEffect(() => {
     strapi.get(`/months`).then(({ data }) => setMonths(data));
-    strapi.get(`/events?month.id=${month}&_sort=date:asc`).then(({ data }) => setEvents(data));
+    strapi.get(`/events?month.id=${month}&date_gte=${year}-01-01&date_lte=${year}-12-31&_sort=date:asc`)
+      .then(({ data }) => setEvents(data));
   }, []);
 
   async function handleClick(i) {
-    if (month + i < new Date().getMonth() + 1 || month + i > 12) return;
-    const {data} = await strapi.get(`/events?month.id=${month + i}&_sort=date:asc`);
-    setMonth(old => old + i);
+    let newMonth = month + i;
+    if (newMonth === 0) {
+      newMonth = 12;
+      setYear(year - 1);
+    } else if (newMonth === 13) {
+      newMonth = 1;
+      setYear(year + 1);
+    }
+    const {data} = await strapi.get(`/events?month.id=${newMonth}&date_gte=${year}-01-01&date_lte=${year}-12-31&_sort=date:asc`);
+    setMonth(newMonth);
     setEvents(data);  
   }
 
@@ -35,7 +46,7 @@ export default function Schedule() {
                   </button>
                 </div>
                 <div style={{ marginLeft: 10, marginRight: 10, backgroundColor: '#efefef', padding: '3px 15px', height: 34, display: 'flex', alignItems: 'center' }}>
-                  {months.length > 0 ? months[month - 1].name : ''}
+                  {months.length > 0 ? `${months[month - 1].name} - ${year}` : ''}
                 </div>
                 <div>
                   <button onClick={() => handleClick(1)} className="arrow-right">
@@ -74,7 +85,7 @@ export default function Schedule() {
                 </button>
               </span>
               <span style={{ marginLeft: 10, marginRight: 10, backgroundColor: '#efefef', padding: '3px 15px', height: 34, display: 'flex', alignItems: 'center' }}>
-                {months.length > 0 ? months[month - 1].name : ''}
+                {months.length > 0 ? `${months[month - 1].name} - ${year}` : ''}
               </span>
               <span>
                 <button onClick={() => handleClick(1)} className="arrow-right">
